@@ -1,0 +1,132 @@
+<app-menu-bar></app-menu-bar>
+<div class="card">
+    <div class="card-container overflow-hidden">
+        <div class="flex">
+            <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
+                <p-panel header="รายละเอียดการเลือกตั้ง">
+                    <div class="card">
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-start justify-content-start border-round" style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="Number" class="block text-xl"><b>ชื่อหัวข้อการเลือกตั้ง : </b></label>
+                                    <div class="flex align-items-center justify-content-start border-round" style="min-width: 200px; min-height: 50px">
+                                        <label for="Number" class="block"><b>ประยุทธ์ต้องชนะ </b></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-start justify-content-start border-round" style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="Number" class="block text-xl"><b>รายละเอียดการเลือกตั้ง : </b></label>
+                                    <div class="flex align-items-center justify-content-start border-round" style="min-width: 200px; min-height: 50px">
+                                        <label for="Number" class="block"><b>ประยุทธ์ต้องชนะ </b></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 200px; min-height: 10px">
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 200px; min-height: 10px">
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 200px; min-height: 10px">
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+                <div class="flex m-3">
+                    <p-panel header="ระยะเวลาและสถานะ">
+                        <div class="card">
+                            <div class="flex flex-wrap card-container blue-container " style="max-width: 100%">
+                                <div class="flex align-items-center justify-content-start border-round" style="min-width: 200px;">
+                                    <i class="pi pi-clock" style="font-size: 1rem;margin-right: 5px;"></i>
+                                    <label for="Number" class="block text-xl"><b>ระยะเวลา : </b></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap card-container blue-container border-round border-300" style="max-width: 100%;background-color: #FFFAE5;">
+                                <div class="flex align-items-center justify-content-center border-round" style="min-width: 200px; min-height: 50px">
+                                    <i class="pi pi-clock" style="font-size: 1rem;margin-right: 5px;"></i>
+                                    <label for="Number" class="block"><b>เริ่มต้น : 15/03/2544</b></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap card-container blue-container border-round border-300" style="max-width: 100%;background-color: #FFFAE5;">
+                                <div class="flex align-items-center justify-content-center border-round" style="min-width: 200px; min-height: 50px">
+                                    <i class="pi pi-clock" style="font-size: 1rem;margin-right: 5px;"></i>
+                                    <label for="Number" class="block"><b>สิ้นสุด : 15/03/2544</b></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap card-container blue-container " style="max-width: 100%">
+                                <div class="flex align-items-center justify-content-start border-round mt-2" style="min-width: 200px; min-height: 75px">
+                                    <i class="pi pi-check-circle" style="font-size: 1rem;margin-right: 5px;"></i>
+                                    <label for="Number" class="block text-xl"><b>สถานะการเลือกตั้ง : เปิดโหวต</b></label>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                                <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 140px; min-height: 5px">
+                                    <p-button label="ตรวจสอบผลคะแนน" icon="pi pi-check" (onClick)="goToVotingScore()"></p-button>
+                                </div>
+                                <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 60px; min-height: 5px">
+                                </div>
+                            </div>
+                        </div>
+                    </p-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-container overflow-hidden" style="max-width: 100%">
+        <div class="flex flex-wrap border-round m-2 justify-content-center">
+            <p-panel header="รายชื่อผู้ลงสมัคร">
+                <div class="flex flex-wrap card-container align-items-center justify-content-start">
+                    <div class="flex m-2">
+                        <p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '340px'}" styleClass="p-card-shadow">
+                            <ng-template pTemplate="header">
+                                <img alt="Card" src="assets/showcase/images/usercard.png">
+                            </ng-template>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+                                quas!
+                            </p>
+                            <ng-template pTemplate="footer">
+                                <p-button label="Save" icon="pi pi-check"></p-button>
+                                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+                            </ng-template>
+                        </p-card>
+                    </div>
+                    <div class="flex m-2">
+                        <p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '340px'}" styleClass="p-card-shadow">
+                            <ng-template pTemplate="header">
+                                <img alt="Card" src="assets/showcase/images/usercard.png">
+                            </ng-template>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+                                quas!
+                            </p>
+                            <ng-template pTemplate="footer">
+                                <p-button label="Save" icon="pi pi-check"></p-button>
+                                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+                            </ng-template>
+                        </p-card>
+                    </div>
+                    <div class="flex m-2">
+                        <p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '340px'}" styleClass="p-card-shadow">
+                            <ng-template pTemplate="header">
+                                <img alt="Card" src="assets/showcase/images/usercard.png">
+                            </ng-template>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+                                quas!
+                            </p>
+                            <ng-template pTemplate="footer">
+                                <p-button label="Save" icon="pi pi-check"></p-button>
+                                <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+                            </ng-template>
+                        </p-card>
+                    </div>
+
+                </div>
+            </p-panel>
+        </div>
+    </div>
+</div>
+<div style="margin-top:2%;"></div>
+<app-footer></app-footer>

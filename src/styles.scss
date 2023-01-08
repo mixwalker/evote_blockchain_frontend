@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: prompt;
+    src: url(assets/font/Prompt-Light.ttf) format("opentype");
+}
+
+* {
+    font-family: prompt;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
