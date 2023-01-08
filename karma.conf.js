@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/blockchain-evote-ui'),
+      dir: require('path').join(__dirname, './coverage/evote_blockchain_frontend'),
       subdir: '.',
       reporters: [
         { type: 'html' },

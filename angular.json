@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "Blockchain-Evote-UI": {
+        "evote_blockchain_frontend": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/blockchain-evote-ui",
+                        "outputPath": "dist/evote_blockchain_frontend",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -32,10 +32,11 @@
                             "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
                             "node_modules/primeng/resources/primeng.min.css",
                             "node_modules/primeicons/primeicons.css",
-                            "node_modules/primeflex/primeflex.css",
-                            "../node_modules/chart.js/dist/chart.js"
+                            "node_modules/primeflex/primeflex.css"
                         ],
-                        "scripts": []
+                        "scripts": [
+                            "node_modules/chart.js/dist/chart.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
@@ -71,10 +72,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "Blockchain-Evote-UI:build:production"
+                            "browserTarget": "evote_blockchain_frontend:build:production"
                         },
                         "development": {
-                            "browserTarget": "Blockchain-Evote-UI:build:development"
+                            "browserTarget": "evote_blockchain_frontend:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -82,7 +83,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "Blockchain-Evote-UI:build"
+                        "browserTarget": "evote_blockchain_frontend:build"
                     }
                 },
                 "test": {
