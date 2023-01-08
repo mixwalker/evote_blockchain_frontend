@@ -48,6 +48,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(private clientService: ClientService,private router:Router) {
     console.log('test');
+    console.log('test');
     
   }
 
