@@ -29,6 +29,8 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { VotingPageComponent } from './blockchain-evote/user/voting-page/voting-page.component';
 import { VotingScoreComponent } from './blockchain-evote/user/voting-score/voting-score.component';
 import { ChartModule } from 'primeng/chart';
+import { HomepageAdminComponent } from './blockchain-evote/admin/homepage-admin/homepage-admin.component';
+import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-admin/votingscore-admin.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ChartModule } from 'primeng/chart';
     RegisStatusComponent,
     VotingPageComponent,
     VotingScoreComponent,
+    HomepageAdminComponent,
+    VotingscoreAdminComponent,
   ],
   imports: [
     BrowserModule,

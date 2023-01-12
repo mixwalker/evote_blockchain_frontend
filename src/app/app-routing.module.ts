@@ -9,6 +9,8 @@ import { RegPresidentComponent } from './blockchain-evote/user/register/reg-pres
 import { RegisStatusComponent } from './blockchain-evote/user/regis-status/regis-status.component';
 import { VotingPageComponent } from './blockchain-evote/user/voting-page/voting-page.component';
 import { VotingScoreComponent } from './blockchain-evote/user/voting-score/voting-score.component';
+import { HomepageAdminComponent } from './blockchain-evote/admin/homepage-admin/homepage-admin.component';
+import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-admin/votingscore-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -24,10 +26,6 @@ const routes: Routes = [
         path: 'homepage',
         component: HomePageComponent
       },
-      // {
-      //   path: 'score',
-      //   component: CheckScoreComponent
-      // },
       {
         path: 'reg_president',
         component: RegPresidentComponent
@@ -51,6 +49,14 @@ const routes: Routes = [
       {
         path: 'score',
         component: VotingScoreComponent
+      },
+      {
+        path: 'homepage_admin',
+        component: HomepageAdminComponent
+      },
+      {
+        path: 'score_admin',
+        component: VotingscoreAdminComponent
       }
     ]
   }

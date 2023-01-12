@@ -1,7 +1,7 @@
 .headerFont {
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 27px;
     line-height: 37px;
     /* identical to box height */
     text-align: center;
@@ -10,4 +10,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.blockBg {
+    background: linear-gradient(46.33deg, rgba(4, 152, 143, 0.75) 46.58%, rgba(152, 255, 206, 0.75) 99.97%);
+    border-radius: 11.4995px;
+}
+
+.blockBg:hover {
+    background: linear-gradient(46.33deg, rgba(4, 152, 143, 0.75) 100%, rgba(152, 255, 206, 0.75) 99.97%);
 }
