@@ -10,6 +10,7 @@ import { ClientService } from 'src/app/service/client.service';
 export class HomepageAdminComponent implements OnInit {
   student: any;
   items: any;
+  options:any;
   images: any[] = [
     {
       "previewImageSrc": "assets\\img\\homepage_img.png",
@@ -49,7 +50,6 @@ export class HomepageAdminComponent implements OnInit {
   constructor(private clientService: ClientService, private router: Router) {
     console.log('test');
     console.log('test');
-
   }
 
   ngOnInit(): void {
@@ -57,9 +57,14 @@ export class HomepageAdminComponent implements OnInit {
       this.student = res;
       console.log(this.student)
     })
+
+    this.options = {
+      center: {lat: 36.890257, lng: 30.707417},
+      zoom: 12
+  };
   }
 
   goToVotePage() {
-    this.router.navigateByUrl("/blockchain-evote/voting");
+    this.router.navigateByUrl("/blockchain-evote/create_election");
   }
 }
