@@ -14,6 +14,11 @@ export class LogInComponent implements OnInit {
   constructor(private auth:AuthService,private router:Router) { }
 
   ngOnInit(): void {
+    this.auth.isLoggedIn$.subscribe(res =>{
+      if(res){
+        this.router.navigateByUrl("/blockchain-evote/homepage");
+      }
+    })
   }
 
   login(){
