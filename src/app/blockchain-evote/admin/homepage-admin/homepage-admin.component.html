@@ -15,7 +15,7 @@
             <div class="flex-1 flex align-items-center justify-content-center m-2 px-5 py-3 border-round">
                 <div class="flex flex-wrap align-items-center justify-content-center font-bold  text-white m-2 border-round" style="min-width: 60%; min-height: 200px">
                     <div class="flex-row align-items-center justify-content-center blockBg m-3 border-round" style="min-width: 25%; min-height: 200px">
-                        <label for="buttonClick">
+                        <label for="buttonCreate">
                             <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 150px;cursor: pointer;">
                                 <img src="assets\img\icon\createvote.png" height="70" width="70" class="mr-2">
                             </div>
@@ -23,10 +23,10 @@
                                 สร้างการเลือกตั้ง
                         </div>
                         </label>
-                        <button type="button" id="buttonClick" style="display: none;visibility: hidden;" (click)="goToVotePage()"></button>
+                        <button type="button" id="buttonCreate" style="display: none;visibility: hidden;" (click)="goToCreateElection()"></button>
                     </div>
                     <div class="flex-row align-items-center justify-content-center blockBg m-3 border-round" style="min-width: 25%; min-height: 200px">
-                        <label for="buttonClick">
+                        <label for="buttonManage">
                             <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 150px;cursor: pointer;">
                                 <img src="assets\img\icon\manage.png" height="70" width="55" class="mr-2">
                             </div>
@@ -34,10 +34,10 @@
                                 จัดการผู้มีสิทธิ์เลือกตั้ง
                         </div>
                         </label>
-                        <button type="button" id="buttonClick" style="display: none;visibility: hidden;" (click)="goToVotePage()"></button>
+                        <button type="button" id="buttonManage" style="display: none;visibility: hidden;" (click)="goToManageVoter()"></button>
                     </div>
                     <div class="flex-row align-items-center justify-content-center blockBg m-3 border-round" style="min-width: 25%; min-height: 200px">
-                        <label for="buttonClick">
+                        <label for="buttonList">
                             <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 150px;cursor: pointer;">
                                 <img src="assets\img\icon\list.png" height="70" width="55" class="mr-2">
                             </div>
@@ -45,7 +45,7 @@
                                 รายชื่อผู้ลงสมัคร
                         </div>
                         </label>
-                        <button type="button" id="buttonClick" style="display: none;visibility: hidden;" (click)="goToVotePage()"></button>
+                        <button type="button" id="buttonList" style="display: none;visibility: hidden;" (click)="goToCandidatelist()"></button>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
                 </p>
                 <ng-template pTemplate="footer">
-                    <p-button label="Save" icon="pi pi-check" (onClick)="goToVotePage()"></p-button>
+                    <p-button label="Save" icon="pi pi-check"></p-button>
                     <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
                 </ng-template>
             </p-card>

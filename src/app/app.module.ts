@@ -36,6 +36,10 @@ import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-el
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { AddCandidateComponent } from './blockchain-evote/admin/create-election-admin/add-candidate/add-candidate.component';
 import { BlockUIModule } from 'primeng/blockui';
+import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
+import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
+import { TabViewModule } from 'primeng/tabview';
+import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +59,9 @@ import { BlockUIModule } from 'primeng/blockui';
     VotingscoreAdminComponent,
     CreateElectionAdminComponent,
     AddCandidateComponent,
+    ManagevoterAdminComponent,
+    CandidatelistAdminComponent,
+    AddremoveVoterComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,8 @@ import { BlockUIModule } from 'primeng/blockui';
     ChartModule,
     InputTextareaModule,
     InputSwitchModule,
-    BlockUIModule
+    BlockUIModule,
+    TabViewModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

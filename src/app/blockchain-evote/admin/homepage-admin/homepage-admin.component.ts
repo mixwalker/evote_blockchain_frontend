@@ -64,7 +64,15 @@ export class HomepageAdminComponent implements OnInit {
   };
   }
 
-  goToVotePage() {
+  goToCreateElection() {
     this.router.navigateByUrl("/blockchain-evote/create_election");
+  }
+
+  goToManageVoter() {
+    this.router.navigateByUrl("/blockchain-evote/managevoter");
+  }
+
+  goToCandidatelist() {
+    this.router.navigateByUrl("/blockchain-evote/candidatelist");
   }
 }

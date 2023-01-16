@@ -12,6 +12,8 @@ import { VotingScoreComponent } from './blockchain-evote/user/voting-score/votin
 import { HomepageAdminComponent } from './blockchain-evote/admin/homepage-admin/homepage-admin.component';
 import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-admin/votingscore-admin.component';
 import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-election-admin/create-election-admin.component';
+import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
+import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -62,7 +64,15 @@ const routes: Routes = [
       {
         path: 'create_election',
         component: CreateElectionAdminComponent
-      }
+      },
+      {
+        path: 'managevoter',
+        component: ManagevoterAdminComponent
+      },
+      {
+        path: 'candidatelist',
+        component: CandidatelistAdminComponent
+      },
     ]
   }
 ];
