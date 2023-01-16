@@ -10,17 +10,17 @@
         <div class="field" style="margin-bottom: 3vh;">
             <span class="p-input-icon-left" [style]="{'width': '100%'}">
                         <i class="pi pi-user"></i>
-                        <input type="text" pInputText placeholder="บัญชีผู้ใช้งาน" [style]="{'width': '100%'}"/>
+                        <input type="text" pInputText placeholder="บัญชีผู้ใช้งาน" [style]="{'width': '100%'}" [(ngModel)]="studentId"/>
                     </span>
         </div>
         <div class="field">
             <span class="p-input-icon-left" [style]="{'width': '100%'}">
                         <i class="pi pi-lock"></i>
-                        <input type="text" pInputText placeholder="รหัสผ่าน" [style]="{'width': '100%'}"/>
+                        <input type="text" pInputText placeholder="รหัสผ่าน" [style]="{'width': '100%'}" [(ngModel)]="password"/>
                     </span>
         </div>
         <ng-template pTemplate="footer">
-            <p-button label="เข้าสู่ระบบ" icon="pi pi-sign-in" [style]="{'width': '100%'}"></p-button>
+            <p-button label="เข้าสู่ระบบ" icon="pi pi-sign-in" [style]="{'width': '100%'}" (onClick)="login()"></p-button>
         </ng-template>
     </p-card>
 </div>

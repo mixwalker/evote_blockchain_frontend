@@ -8,19 +8,19 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientService {
 
-  private readonly api = environment.api
+  // private readonly api = environment.api
   constructor(private http: HttpClient) { }
 
   //student Service
   getAllStudent() {
-    return this.http.get<any>(this.api + `/student`);
+    return this.http.get<any>(`api/student`);
   }
 
   getStudentById(id:string) {
-    return this.http.get<any>(this.api + `/student/${id}`);
+    return this.http.get<any>(`api/student/${id}`);
   }
 
   addStudent(student:any){
-    return this.http.post(this.api + `/student/`,student);
+    return this.http.post(`api/student/`,student);
   }
 }

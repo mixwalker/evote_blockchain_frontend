@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlockchainEvoteComponent } from './blockchain-evote/blockchain-evote.component';
 import { HomePageComponent } from './blockchain-evote/user/home-page/home-page.component';
-import { LogInComponent } from './blockchain-evote/log-in/log-in.component';
+import { LogInComponent } from './blockchain-evote/auth/log-in/log-in.component';
 import { RegMemclubComponent } from './blockchain-evote/user/register/reg-memclub/reg-memclub.component';
 import { RegMemconcilComponent } from './blockchain-evote/user/register/reg-memconcil/reg-memconcil.component';
 import { RegPresidentComponent } from './blockchain-evote/user/register/reg-president/reg-president.component';
@@ -15,6 +15,7 @@ import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-el
 import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
+import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   {
     path: 'blockchain-evote',
     component: BlockchainEvoteComponent,
+    canActivate:[HasLoginGuard],
     children: [
       {
         path: 'homepage',

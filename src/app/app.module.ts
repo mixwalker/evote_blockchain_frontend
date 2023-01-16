@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { BlockchainEvoteComponent } from './blockchain-evote/blockchain-evote.component';
-import { LogInComponent } from './blockchain-evote/log-in/log-in.component';
+import { LogInComponent } from './blockchain-evote/auth/log-in/log-in.component';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
@@ -41,6 +41,7 @@ import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatel
 import { TabViewModule } from 'primeng/tabview';
 import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-el
     InputTextareaModule,
     InputSwitchModule,
     BlockUIModule,
-    TabViewModule
+    TabViewModule,
+    FormsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
