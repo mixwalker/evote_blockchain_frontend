@@ -40,6 +40,7 @@ import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 import { TabViewModule } from 'primeng/tabview';
 import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
+import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-ad
     ManagevoterAdminComponent,
     CandidatelistAdminComponent,
     AddremoveVoterComponent,
+    ManageElectionAdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,10 +4,10 @@
             <p-table #inputEL [value]="student" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} โครงการทั้งหมด">
                 <ng-template pTemplate="caption">
                     <div class="flex align-items-center justify-content-between">
-                        รายชื่อผู้ผ่านการตรวจสอบ
+                        รายชื่อนักศึกษา
                         <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input type="text"  pInputText placeholder="กรุณากรอกผู้ลงสมัคร" (input)="inputSearch(inputEL, $event)"/>
+                    <input type="text"  pInputText placeholder="กรุณากรอกข้อมูลนักศึกษา" (input)="inputSearch(inputEL, $event)"/>
                 </span>
                     </div>
                 </ng-template>
@@ -38,7 +38,7 @@
                 </ng-template>
                 <ng-template pTemplate="summary">
                     <div class="flex align-items-center justify-content-between">
-                        จำนวนผู้ลงสมัครทั้งหมด คน
+                        จำนวนนักศึกษาทั้งหมด คน
                     </div>
                 </ng-template>
             </p-table>

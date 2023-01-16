@@ -75,4 +75,9 @@ export class HomepageAdminComponent implements OnInit {
   goToCandidatelist() {
     this.router.navigateByUrl("/blockchain-evote/candidatelist");
   }
+
+  goToManageElection(){
+    this.router.navigateByUrl("/blockchain-evote/manage_election");
+
+  }
 }
