@@ -13,7 +13,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { HomePageComponent } from './blockchain-evote/user/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-import { MenuBarComponent } from './blockchain-evote/menu-bar/menu-bar.component';
+import { MenuBarComponent } from './blockchain-evote/user/menu-bar/menu-bar.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { FooterComponent } from './blockchain-evote/footer/footer.component';
 import { MenuModule } from 'primeng/menu';
@@ -42,6 +42,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { FormsModule } from '@angular/forms';
+import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { FormsModule } from '@angular/forms';
     CandidatelistAdminComponent,
     AddremoveVoterComponent,
     ManageElectionAdminComponent,
+    MenuBarAdminComponent,
   ],
   imports: [
     BrowserModule,

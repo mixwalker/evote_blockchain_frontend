@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
@@ -10,14 +9,15 @@ export class AuthService {
 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   private readonly TOKENNAME = 'token';
-  // private readonly api = environment.api
   user: any;
   isLoggedIn$ = this._isLoggedIn$.asObservable();
+  
   get token() {
-    return sessionStorage.getItem(this.TOKENNAME);
+    return localStorage.getItem(this.TOKENNAME);
   }
   constructor(private http: HttpClient) {
     this._isLoggedIn$.next(!!this.token)
+    this.user = this.getStudent(this.token!);
   }
 
   login(studentId: string, password: string) {
@@ -28,21 +28,25 @@ export class AuthService {
       }).pipe(
         tap((res: any) => {
           this._isLoggedIn$.next(true);
-          const encodeStudent = btoa(res.studentId)
-          sessionStorage.setItem(this.TOKENNAME, encodeStudent);
-          this.user = this.getStudentId(encodeStudent);
+          const std = {
+            studentId: res.studentId,
+            role: res.role
+          }
+          const stdEncode = btoa(JSON.stringify(std));
+          localStorage.setItem(this.TOKENNAME, stdEncode);
+          this.user = this.getStudent(stdEncode);
         })
       );
   }
 
   logout() {
     this._isLoggedIn$.next(false);
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
-  private getStudentId(token: string) {
+  private getStudent(token: string) {
     if (!token) return;
-    const studentId = atob(token)
-    return { studentId: studentId };
+    const stdDecode = JSON.parse(atob(token));
+    return { studentId: stdDecode.studentId, role: stdDecode.role };
   }
 }

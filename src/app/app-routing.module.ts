@@ -16,6 +16,7 @@ import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
+import { HasAdminloginGuard } from './blockchain-evote/guard/has-adminlogin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -56,12 +57,21 @@ const routes: Routes = [
         path: 'score',
         component: VotingScoreComponent
       },
+    ]
+  },{
+    path: 'blockchain-admin',
+    component: BlockchainEvoteComponent,
+    canActivate:[HasLoginGuard,HasAdminloginGuard],
+    data: {
+      role: 'admin'
+    },
+    children: [
       {
-        path: 'homepage_admin',
+        path: 'homepage',
         component: HomepageAdminComponent
       },
       {
-        path: 'score_admin',
+        path: 'score',
         component: VotingscoreAdminComponent
       },
       {
@@ -79,7 +89,7 @@ const routes: Routes = [
       {
         path: 'manage_election',
         component: ManageElectionAdminComponent
-      },
+      }
     ]
   }
 ];

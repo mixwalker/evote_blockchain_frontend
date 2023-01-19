@@ -65,19 +65,19 @@ export class HomepageAdminComponent implements OnInit {
   }
 
   goToCreateElection() {
-    this.router.navigateByUrl("/blockchain-evote/create_election");
+    this.router.navigateByUrl("/blockchain-admin/create_election");
   }
 
   goToManageVoter() {
-    this.router.navigateByUrl("/blockchain-evote/managevoter");
+    this.router.navigateByUrl("/blockchain-admin/managevoter");
   }
 
   goToCandidatelist() {
-    this.router.navigateByUrl("/blockchain-evote/candidatelist");
+    this.router.navigateByUrl("/blockchain-admin/candidatelist");
   }
 
   goToManageElection(){
-    this.router.navigateByUrl("/blockchain-evote/manage_election");
+    this.router.navigateByUrl("/blockchain-admin/manage_election");
 
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkWithHref } from '@angular/router';
+import { Router, RouterLink, RouterLinkWithHref } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -10,7 +11,7 @@ export class MenuBarComponent implements OnInit {
 
   items: any;
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.items = [
@@ -47,15 +48,19 @@ export class MenuBarComponent implements OnInit {
           },
           {
             label: 'ออกจากระบบ',
-            icon: 'pi pi-fw pi-sign-out'
+            icon: 'pi pi-fw pi-sign-out',
+            command: (event:any) =>{
+              this.logout();
+              window.location.reload();
+            }
           },
         ]
       }
     ]
   }
 
-  hello(){
-    console.log("hello")
+  logout(){
+    this.auth.logout();
   }
 
 }
