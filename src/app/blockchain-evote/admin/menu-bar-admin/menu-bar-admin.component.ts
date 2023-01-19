@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/service/admin.service';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -10,33 +11,39 @@ import { AuthService } from 'src/app/service/auth.service';
 export class MenuBarAdminComponent implements OnInit {
 
   items: any;
-  constructor(private auth: AuthService, private router: Router) { }
+  admin: any;
+  constructor(private auth: AuthService, private router: Router, private adminService: AdminService) {
 
-  ngOnInit(): void {
-    this.items = [
-      {
-        label: 'หน้าแรก',
-        icon: 'pi pi-fw pi-home',
-        routerLink:['/blockchain-admin/homepage']
-      },
-      {
-        label: 'สรวิชญ์ เจียวก๊ก',
-        icon: 'pi pi-fw pi-user',
-        items:[
-          {
-            label: 'ออกจากระบบ',
-            icon: 'pi pi-fw pi-sign-out',
-            command: (event:any) =>{
-              this.logout();
-              window.location.reload();
-            }
-          },
-        ]
-      }
-    ]
   }
 
-  logout(){
+  ngOnInit(): void {
+    this.adminService.getAdminById(this.auth.user.studentId).subscribe(res => {
+      this.admin = res;
+      this.items = [
+        {
+          label: 'หน้าแรก',
+          icon: 'pi pi-fw pi-home',
+          routerLink: ['/blockchain-admin/homepage']
+        },
+        {
+          label: `${this.admin.firstName} ${this.admin.lastName}`,
+          icon: 'pi pi-fw pi-user',
+          items: [
+            {
+              label: 'ออกจากระบบ',
+              icon: 'pi pi-fw pi-sign-out',
+              command: (event: any) => {
+                this.logout();
+                window.location.reload();
+              }
+            },
+          ]
+        }
+      ]
+    });
+  }
+
+  logout() {
     this.auth.logout();
   }
 

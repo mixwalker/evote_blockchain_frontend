@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { ClientService } from 'src/app/service/client.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { ClientService } from 'src/app/service/client.service';
 export class HomePageComponent implements OnInit {
   student: any;
   items: any;
+  election:any;
   images: any[] = [
       {
         "previewImageSrc": "assets\\img\\homepage_img.png",
@@ -46,16 +48,15 @@ export class HomePageComponent implements OnInit {
     }
   ];
 
-  constructor(private clientService: ClientService,private router:Router) {
-    console.log('test');
-    console.log('test');
-    
+  constructor(private clientService: ClientService,private router:Router,private auth: AuthService) {
+
   }
 
   ngOnInit(): void {
-    this.clientService.getAllStudent().subscribe(res => {
-      this.student = res;
-      console.log(this.student)
+    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe(res =>{
+      this.election = res;
+      console.log(this.election);
+      
     })
   }
 

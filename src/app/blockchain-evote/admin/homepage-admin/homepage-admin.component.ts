@@ -48,14 +48,11 @@ export class HomepageAdminComponent implements OnInit {
   ];
 
   constructor(private clientService: ClientService, private router: Router) {
-    console.log('test');
-    console.log('test');
   }
 
   ngOnInit(): void {
     this.clientService.getAllStudent().subscribe(res => {
       this.student = res;
-      console.log(this.student)
     })
 
     this.options = {

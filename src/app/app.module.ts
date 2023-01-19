@@ -43,6 +43,7 @@ import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-ad
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { FormsModule } from '@angular/forms';
 import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/m
     InputSwitchModule,
     BlockUIModule,
     TabViewModule,
-    FormsModule
+    FormsModule,
+    PasswordModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

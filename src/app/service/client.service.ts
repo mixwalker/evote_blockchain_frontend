@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ClientService {
 
-  // private readonly api = environment.api
   constructor(private http: HttpClient) { }
 
   //student Service
@@ -23,4 +22,15 @@ export class ClientService {
   addStudent(student:any){
     return this.http.post(`api/student/`,student);
   }
+  
+
+  //electionAndStudent
+  getElecByStudent(id:string){
+    return this.http.get<any>(`api/elec_student/findbystudent/${id}`);
+  }
+
+  getStudentByElection(id:string){
+    return this.http.get<any>(`api/elec_student/findbyelection/${id}`);
+  }
+  
 }

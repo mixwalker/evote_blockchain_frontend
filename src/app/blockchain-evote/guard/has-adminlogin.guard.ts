@@ -12,8 +12,6 @@ export class HasAdminloginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isAuthorized = this.auth.user.role === route.data['role'];
-      console.log('role', this.auth.user.role);
-      
       if (!isAuthorized) {
         this.router.navigate(['']);
       }
