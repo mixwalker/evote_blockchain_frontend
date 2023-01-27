@@ -40,13 +40,13 @@
                             สิ้นสุด : {{elec.election.elecEnddate}}
                         </p>
                         <p>
-                            ผู้ลงสมัคร :
+                            ผู้ลงสมัครทั้งหมด : {{elec.election.countCandi}} คน
                         </p>
                     </b>
                 </div>
 
                 <ng-template pTemplate="footer">
-                    <p-button label="ลงคะแนน" (onClick)="goToVotePage()" [style]="{width: '100%'}"></p-button>
+                    <button pButton type="button" class="p-button buttonColor" label="ลงคะแนน" [style]="{width: '100%'}" (click)="goToElectionById(elec.election.elecId)"></button>
                 </ng-template>
             </p-card>
         </div>

@@ -13,7 +13,7 @@ export class HasAdminloginGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isAuthorized = this.auth.user.role === route.data['role'];
       if (!isAuthorized) {
-        this.router.navigate(['']);
+        this.router.navigateByUrl("/blockchain-evote/login");
       }
       return isAuthorized;
   }

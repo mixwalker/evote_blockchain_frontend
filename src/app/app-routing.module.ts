@@ -28,6 +28,9 @@ const routes: Routes = [
     path: 'blockchain-evote',
     component: BlockchainEvoteComponent,
     canActivate:[HasLoginGuard],
+    data:{
+      role: 'student'
+    },
     children: [
       {
         path: 'homepage',
@@ -50,7 +53,7 @@ const routes: Routes = [
         component: RegisStatusComponent
       },
       {
-        path: 'voting',
+        path: 'voting/:id',
         component: VotingPageComponent
       },
       {

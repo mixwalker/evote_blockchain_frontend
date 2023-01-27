@@ -11,26 +11,26 @@ import { ClientService } from 'src/app/service/client.service';
 export class HomePageComponent implements OnInit {
   student: any;
   items: any;
-  election:any;
+  election: any;
   images: any[] = [
-      {
-        "previewImageSrc": "assets\\img\\homepage_img.png",
-        "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-        "alt": "Description for Image 1",
-        "title": "Title 1"
-      },
-      {
-        "previewImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
-        "thumbnailImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
-        "alt": "Description for Image 1",
-        "title": "Title 1"
-      },
-      {
-        "previewImageSrc": "assets\\img\\homepage_img.png",
-        "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-        "alt": "Description for Image 1",
-        "title": "Title 1"
-      }
+    {
+      "previewImageSrc": "assets\\img\\homepage_img.png",
+      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
+      "alt": "Description for Image 1",
+      "title": "Title 1"
+    },
+    {
+      "previewImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
+      "thumbnailImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
+      "alt": "Description for Image 1",
+      "title": "Title 1"
+    },
+    {
+      "previewImageSrc": "assets\\img\\homepage_img.png",
+      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
+      "alt": "Description for Image 1",
+      "title": "Title 1"
+    }
   ];
 
   responsiveOptions: any[] = [
@@ -48,20 +48,23 @@ export class HomePageComponent implements OnInit {
     }
   ];
 
-  constructor(private clientService: ClientService,private router:Router,private auth: AuthService) {
+  constructor(private clientService: ClientService, private router: Router, private auth: AuthService) {
 
   }
 
   ngOnInit(): void {
-    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe(res =>{
-      this.election = res;
-      console.log(this.election);
-      
+    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe({
+      next: (res) => {
+        this.election = res;
+      },
+      complete: () => {
+        this.clientService.countCandidate(0).subscribe();
+      }
     })
   }
 
-  goToVotePage(){
-    this.router.navigateByUrl("/blockchain-evote/voting");
+  goToElectionById(id: string) {
+    this.router.navigate(['blockchain-evote/voting/', id])
   }
 
 }

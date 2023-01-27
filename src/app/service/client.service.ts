@@ -22,15 +22,40 @@ export class ClientService {
   addStudent(student:any){
     return this.http.post(`api/student/`,student);
   }
-  
+
+  //ElectionService
+  getAllElection() {
+    return this.http.get<any>(`api/election`);
+  }
+
+  getElectionById(id:number) {
+    return this.http.get<any>(`api/election/${id}`);
+  }
+
+  addElection(election:any){
+    return this.http.post(`api/election/`,election);
+  }
+
+  countCandidate(update:any){
+    return this.http.put(`api/election/update_count`,update);
+  }
 
   //electionAndStudent
   getElecByStudent(id:string){
     return this.http.get<any>(`api/elec_student/findbystudent/${id}`);
   }
 
-  getStudentByElection(id:string){
+  getStudentByElection(id:number){
     return this.http.get<any>(`api/elec_student/findbyelection/${id}`);
   }
   
+  //electionAndCandidate
+  getElecByCandidate(id:number){
+    return this.http.get<any>(`api/elec_candidate/findbycandidate/${id}`);
+  }
+
+  getCandidateByElection(id:number){
+    return this.http.get<any>(`api/elec_candidate/findbyelection/${id}`);
+  }
+
 }

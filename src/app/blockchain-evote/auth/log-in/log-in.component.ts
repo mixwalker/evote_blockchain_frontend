@@ -16,8 +16,10 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
     this.auth.isLoggedIn$.subscribe(res => {
       if (res) {
-        this.router.navigateByUrl("/blockchain-evote/homepage");
+        const role = this.auth.user?.role;
+        this.router.navigateByUrl(role === 'user' ? '/blockchain-evote/homepage' : '/blockchain-admin/homepage');
       }
+
     })
   }
 

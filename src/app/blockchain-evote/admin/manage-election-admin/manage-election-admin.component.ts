@@ -23,7 +23,6 @@ export class ManageElectionAdminComponent implements OnInit {
   }
 
   goToVotingScore(){
-    this.router.navigateByUrl("/blockchain-admin/score_admin");
-
+    this.router.navigateByUrl("/blockchain-admin/score");
   }
 }
