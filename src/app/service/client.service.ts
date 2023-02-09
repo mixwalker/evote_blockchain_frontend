@@ -15,7 +15,7 @@ export class ClientService {
     return this.http.get<any>(`api/student`);
   }
 
-  getStudentById(id:string) {
+  getStudentById(id:number) {
     return this.http.get<any>(`api/student/${id}`);
   }
 
@@ -57,5 +57,16 @@ export class ClientService {
   getCandidateByElection(id:number){
     return this.http.get<any>(`api/elec_candidate/findbyelection/${id}`);
   }
+
+  //createaCandidate
+  createCandidate(candidateObj:any){
+    return this.http.post<any>(`api/candidate`,candidateObj);
+  }
+
+  uploadImageCandidate(formdata:any){
+    return this.http.post<any>(`api/candidate/upload`,formdata);
+  }
+
+
 
 }

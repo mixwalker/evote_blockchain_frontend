@@ -53,11 +53,11 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe({
+    this.clientService.getElecByStudent(this.auth.user.studentCode).subscribe({
       next: (res) => {
         this.election = res;
       },
-      complete: () => {
+      complete: () =>{
         this.clientService.countCandidate(0).subscribe();
       }
     })

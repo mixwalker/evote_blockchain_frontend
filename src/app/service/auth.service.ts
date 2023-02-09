@@ -20,16 +20,17 @@ export class AuthService {
     this.user = this.getStudent(this.token!);
   }
 
-  login(studentId: string, password: string) {
+  login(studentCode: string, password: string) {
     return this.http.post('api/student/login',
       {
-        studentId: studentId,
+        studentCode: studentCode,
         password: password
       }).pipe(
         tap((res: any) => {
           this._isLoggedIn$.next(true);
           const std = {
             studentId: res.studentId,
+            studentCode: res.studentCode,
             role: res.role
           }
           const stdEncode = btoa(JSON.stringify(std));
@@ -47,6 +48,6 @@ export class AuthService {
   private getStudent(token: string) {
     if (!token) return;
     const stdDecode = JSON.parse(atob(token));
-    return { studentId: stdDecode.studentId, role: stdDecode.role };
+    return stdDecode;
   }
 }

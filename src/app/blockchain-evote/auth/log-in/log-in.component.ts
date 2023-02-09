@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LogInComponent implements OnInit {
 
-  studentId!: string;
+  studentCode!: string;
   password!: string;
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -17,19 +17,21 @@ export class LogInComponent implements OnInit {
     this.auth.isLoggedIn$.subscribe(res => {
       if (res) {
         const role = this.auth.user?.role;
-        this.router.navigateByUrl(role === 'user' ? '/blockchain-evote/homepage' : '/blockchain-admin/homepage');
+        this.router.navigateByUrl(role === 'student' ? '/blockchain-evote/homepage' : '/blockchain-admin/homepage');
       }
-
     })
+    // console.log(this.auth.isLoggedIn$);
+    
   }
 
   login() {
-    this.auth.login(this.studentId, this.password).subscribe(res => {
-      if (res.role === "admin") {
-        this.router.navigateByUrl("/blockchain-admin/homepage");
-      } else {
-        this.router.navigateByUrl("/blockchain-evote/homepage");
-      }
+    this.auth.login(this.studentCode, this.password).subscribe(res => {
+      
+      // if (res.role === "admin") {
+      //   this.router.navigateByUrl("/blockchain-admin/homepage");
+      // } else {
+      //   this.router.navigateByUrl("/blockchain-evote/homepage");
+      // }
     });
   }
 }
