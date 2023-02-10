@@ -27,22 +27,10 @@ export class MenuBarComponent implements OnInit {
       {
         label: 'ลงสมัครเลือกตั้ง',
         icon: 'pi pi-fw pi-pencil',
-        items: [{
-          label: 'ลงทะเบียนนายกสโมสร',
-          routerLink: ['/blockchain-evote/reg_president']
-        },
-        {
-          label: 'ลงทะเบียนสมาชิกสโมสร',
-          routerLink: ['/blockchain-evote/reg_memclub']
-        },
-        {
-          label: 'ลงทะเบียนสมาชิกสภานักศึกษา',
-          routerLink: ['/blockchain-evote/reg_memconcil']
-        },
-        ]
+        routerLink: ['/blockchain-evote/register']
       },
       {
-        label: `${this.students.firstName} ${this.students.lastName}`,
+        label: `${this.students!.firstName} ${this.students!.lastName}`,
         icon: 'pi pi-fw pi-user',
         items: [
           {
@@ -55,7 +43,6 @@ export class MenuBarComponent implements OnInit {
             icon: 'pi pi-fw pi-sign-out',
             command: (event: any) => {
               this.logout();
-              window.location.reload();
             }
           },
         ]
@@ -65,6 +52,7 @@ export class MenuBarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    window.location.reload();
   }
 
 }

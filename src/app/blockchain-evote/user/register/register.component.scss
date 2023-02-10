@@ -1,0 +1,25 @@
+.headerFont {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 37px;
+    /* identical to box height */
+    text-align: center;
+    /* gradient-main */
+    background: linear-gradient(270deg, #4BBC99 0%, #009DC8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.buttonColor {
+    background: #05A4A9;
+    border-radius: 5px;
+    border-color: #05A4A9;
+}
+
+.buttonColor:hover {
+    background: #039396;
+    border-radius: 5px;
+    border-color: #039396;
+}

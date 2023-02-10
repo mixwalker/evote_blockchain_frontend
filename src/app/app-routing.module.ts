@@ -4,8 +4,7 @@ import { BlockchainEvoteComponent } from './blockchain-evote/blockchain-evote.co
 import { HomePageComponent } from './blockchain-evote/user/home-page/home-page.component';
 import { LogInComponent } from './blockchain-evote/auth/log-in/log-in.component';
 import { RegMemclubComponent } from './blockchain-evote/user/register/reg-memclub/reg-memclub.component';
-import { RegMemconcilComponent } from './blockchain-evote/user/register/reg-memconcil/reg-memconcil.component';
-import { RegPresidentComponent } from './blockchain-evote/user/register/reg-president/reg-president.component';
+import { RegCandidateComponent } from './blockchain-evote/user/register/reg-candidate/reg-candidate.component';
 import { RegisStatusComponent } from './blockchain-evote/user/regis-status/regis-status.component';
 import { VotingPageComponent } from './blockchain-evote/user/voting-page/voting-page.component';
 import { VotingScoreComponent } from './blockchain-evote/user/voting-score/voting-score.component';
@@ -17,6 +16,7 @@ import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatel
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
 import { HasAdminloginGuard } from './blockchain-evote/guard/has-adminlogin.guard';
+import { RegisterComponent } from './blockchain-evote/user/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -37,16 +37,16 @@ const routes: Routes = [
         component: HomePageComponent
       },
       {
-        path: 'reg_president',
-        component: RegPresidentComponent
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'register/:id',
+        component: RegCandidateComponent
       },
       {
         path: 'reg_memclub',
         component: RegMemclubComponent
-      },
-      {
-        path: 'reg_memconcil',
-        component: RegMemconcilComponent
       },
       {
         path: 'reg_status',

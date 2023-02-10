@@ -50,4 +50,6 @@ export class AuthService {
     const stdDecode = JSON.parse(atob(token));
     return stdDecode;
   }
+
+  
 }

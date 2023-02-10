@@ -28,6 +28,11 @@ export class ClientService {
     return this.http.get<any>(`api/election`);
   }
 
+  getElectionByRegisOn(){
+    return this.http.get<any>(`api/election/regis_on`);
+
+  }
+
   getElectionById(id:number) {
     return this.http.get<any>(`api/election/${id}`);
   }

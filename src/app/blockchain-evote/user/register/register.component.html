@@ -1,0 +1,54 @@
+<app-menu-bar></app-menu-bar>
+<p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false">
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.previewImageSrc" style="width: 70%; display: block;" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item.thumbnailImageSrc" style="display: block;" />
+        </div>
+    </ng-template>
+</p-galleria>
+<div class="card">
+    <div class="card-container yellow-container overflow-hidden">
+        <div class="flex">
+            <div class="flex align-items-center justify-content-center font-bold px-2 py-3 text-3xl ml-2">
+                <div class="headerFont">
+                    กิจกรรมที่เปิดให้ลงทะเบียน
+                </div>
+            </div>
+            <div class="flex align-items-end justify-content-center px-2 py-3 text-1xl">เฉพาะกิจกรรมของคุณ</div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="flex flex-wrap card-container" style="max-width: 100%">
+        <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px" *ngFor="let elec of election">
+            <p-card header="{{elec.elecName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="assets/showcase/images/usercard.png">
+                </ng-template>
+                <p>
+                    {{elec.elecDetail}}
+                </p>
+                <div style="margin-top: 1rem">
+                    <b>
+                        <p>
+                            เริ่มต้น : {{elec.elecStartdate}}
+                        </p>
+                        <p>
+                            สิ้นสุด : {{elec.elecEnddate}}
+                        </p>
+                    </b>
+                </div>
+
+                <ng-template pTemplate="footer">
+                    <button pButton type="button" class="p-button buttonColor" label="ลงทะเบียน" [style]="{width: '100%'}" (click)="goToRegister(elec.elecId)"></button>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>
+<div style="margin-top:2%;">
+    <app-footer></app-footer>
+</div>

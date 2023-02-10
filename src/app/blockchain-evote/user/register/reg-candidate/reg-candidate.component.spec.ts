@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RegPresidentComponent } from './reg-president.component';
+import { RegCandidateComponent } from './reg-candidate.component';
 
 describe('RegPresidentComponent', () => {
-  let component: RegPresidentComponent;
-  let fixture: ComponentFixture<RegPresidentComponent>;
+  let component: RegCandidateComponent;
+  let fixture: ComponentFixture<RegCandidateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegPresidentComponent ]
+      declarations: [ RegCandidateComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegPresidentComponent);
+    fixture = TestBed.createComponent(RegCandidateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

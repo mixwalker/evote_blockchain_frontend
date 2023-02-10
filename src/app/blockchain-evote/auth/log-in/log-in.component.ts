@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LogInComponent implements OnInit {
 
   studentCode!: string;
   password!: string;
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.auth.isLoggedIn$.subscribe(res => {
@@ -20,18 +21,20 @@ export class LogInComponent implements OnInit {
         this.router.navigateByUrl(role === 'student' ? '/blockchain-evote/homepage' : '/blockchain-admin/homepage');
       }
     })
-    // console.log(this.auth.isLoggedIn$);
     
   }
 
   login() {
-    this.auth.login(this.studentCode, this.password).subscribe(res => {
-      
-      // if (res.role === "admin") {
-      //   this.router.navigateByUrl("/blockchain-admin/homepage");
-      // } else {
-      //   this.router.navigateByUrl("/blockchain-evote/homepage");
-      // }
+    this.auth.login(this.studentCode, this.password).subscribe({
+      complete:()=>{
+        this.messageService.add({severity:'success', summary: 'เข้าสู่ระบบ', detail: 'เข้าสู่ระบบสำเร็จ'});
+        setTimeout(() => {
+          this.ngOnInit();
+        }, 1000);
+      },
+      error:()=>{
+        this.messageService.add({severity:'error', summary: 'ไม่สามารถเข้าสู่ระบบได้', detail: 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง'});
+      }
     });
   }
 }

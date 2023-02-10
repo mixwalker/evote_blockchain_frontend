@@ -17,9 +17,8 @@ import { MenuBarComponent } from './blockchain-evote/user/menu-bar/menu-bar.comp
 import { GalleriaModule } from 'primeng/galleria';
 import { FooterComponent } from './blockchain-evote/footer/footer.component';
 import { MenuModule } from 'primeng/menu';
-import { RegPresidentComponent } from './blockchain-evote/user/register/reg-president/reg-president.component';
+import { RegCandidateComponent } from './blockchain-evote/user/register/reg-candidate/reg-candidate.component';
 import { RegMemclubComponent } from './blockchain-evote/user/register/reg-memclub/reg-memclub.component';
-import { RegMemconcilComponent } from './blockchain-evote/user/register/reg-memconcil/reg-memconcil.component';
 import { PanelModule } from 'primeng/panel';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
@@ -41,9 +40,10 @@ import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatel
 import { TabViewModule } from 'primeng/tabview';
 import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
 import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
 import { PasswordModule } from 'primeng/password';
+import { RegisterComponent } from './blockchain-evote/user/register/register.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +53,8 @@ import { PasswordModule } from 'primeng/password';
     HomePageComponent,
     MenuBarComponent,
     FooterComponent,
-    RegPresidentComponent,
+    RegCandidateComponent,
     RegMemclubComponent,
-    RegMemconcilComponent,
     RegisStatusComponent,
     VotingPageComponent,
     VotingScoreComponent,
@@ -68,6 +67,7 @@ import { PasswordModule } from 'primeng/password';
     AddremoveVoterComponent,
     ManageElectionAdminComponent,
     MenuBarAdminComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +93,8 @@ import { PasswordModule } from 'primeng/password';
     BlockUIModule,
     TabViewModule,
     FormsModule,
-    PasswordModule
+    PasswordModule,
+    ReactiveFormsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
