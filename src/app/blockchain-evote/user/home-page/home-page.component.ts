@@ -53,18 +53,25 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getElecByStudent(this.auth.user.studentCode).subscribe({
+    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe({
       next: (res) => {
         this.election = res;
+        console.log(res);
+        
       },
       complete: () =>{
-        this.clientService.countCandidate(0).subscribe();
+        for(let electionList of this.election){
+          const startDateSplit = electionList.election.elecStartdate.split('[UTC]');
+          const endDateSplit = electionList.election.elecEnddate.split('[UTC]');
+          electionList.election.elecStartdate = startDateSplit[0];
+          electionList.election.elecEnddate = endDateSplit[0];
+        }       
       }
     })
   }
 
   goToElectionById(id: string) {
-    this.router.navigate(['blockchain-evote/voting/', id])
+    this.router.navigate(['blockchain-evote/voting/', id])  
   }
 
 }

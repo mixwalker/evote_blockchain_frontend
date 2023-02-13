@@ -44,6 +44,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
 import { PasswordModule } from 'primeng/password';
 import { RegisterComponent } from './blockchain-evote/user/register/register.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { FormatDatePipe } from './pipe/format-date.pipe';
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +73,7 @@ import { RegisterComponent } from './blockchain-evote/user/register/register.com
     ManageElectionAdminComponent,
     MenuBarAdminComponent,
     RegisterComponent,
+    FormatDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -94,9 +100,11 @@ import { RegisterComponent } from './blockchain-evote/user/register/register.com
     TabViewModule,
     FormsModule,
     PasswordModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialogModule,
+    DialogModule  
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

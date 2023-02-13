@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Election } from 'src/app/interface/electionAndStudent';
+import { BlockchainApiService } from 'src/app/service/blockchain-api.service';
+import { ClientService } from 'src/app/service/client.service';
 
 @Component({
   selector: 'app-voting-score',
@@ -7,11 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VotingScoreComponent implements OnInit {
 
-  options:any;
+  election!: Election;
+  options: any;
   data: any;
-  constructor() { }
+  constructor(private router: Router,
+    private clientService: ClientService,
+    private blockchainService: BlockchainApiService,
+  ) { }
 
   ngOnInit(): void {
+    const url = this.router.url.split('/');
+    const id = parseInt(url[url.length - 1]);
+    this.clientService.getElectionById(id).subscribe(res => {
+      this.election = res
+    });
+
     this.data = {
       labels: ['A', 'B', 'C'],
       datasets: [

@@ -266,9 +266,10 @@
                             <div class="flex flex-wrap card-container blue-container " style="max-width: 100% ">
                                 <div class="flex align-items-center justify-content-center border-round " style="min-width: 100%; min-height: 50px ">
                                     <div style="margin-right: 1rem; ">
-                                        <button pButton pRipple type="button " label="ลงทะเบียน" class="p-button-raised p-button-success " (click)="register()"></button>
+                                        <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" [baseZIndex]="10000" acceptButtonStyleClass="p-button-success" rejectButtonStyleClass="p-button-danger p-button-text"></p-confirmDialog>
+                                        <button pButton pRipple type="button " icon="pi pi-check" label="ลงทะเบียน" class="p-button-raised p-button-success " (click)="register()"></button>
                                     </div>
-                                    <button pButton pRipple type="button" label="ล้างข้อมูล" class="p-button-raised p-button-danger " style="width: 107px; " (click)="refresh(upload)"></button>
+                                    <button pButton pRipple type="button" icon="pi pi-times" label="ล้างข้อมูล" class="p-button-raised p-button-danger " style="width: 140px; " (click)="refresh(upload)"></button>
                                 </div>
                             </div>
                         </div>
@@ -280,3 +281,11 @@
     </div>
 </div>
 <app-footer></app-footer>
+<p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false" [transitionOptions]="'280ms'">
+    <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+        <img src="assets\img\status.png" height="65" width="65">
+    </div>
+    <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+        <H1>ลงทะเบียนสำเร็จ</H1>
+    </div>
+</p-dialog>

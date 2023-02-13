@@ -13,7 +13,7 @@ export class MenuBarComponent implements OnInit {
 
   items: any;
   students: any;
-  constructor(private auth: AuthService, private router: Router, private clientService: ClientService) { }
+  constructor(private auth: AuthService, private clientService: ClientService) { }
 
   async ngOnInit() {
     this.students = await lastValueFrom(this.clientService.getStudentById(this.auth.user.studentId));

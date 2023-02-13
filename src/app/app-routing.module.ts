@@ -57,7 +57,7 @@ const routes: Routes = [
         component: VotingPageComponent
       },
       {
-        path: 'score',
+        path: 'score/:id',
         component: VotingScoreComponent
       },
     ]

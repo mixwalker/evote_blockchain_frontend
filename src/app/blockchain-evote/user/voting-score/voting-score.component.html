@@ -4,7 +4,7 @@
         <div class="flex">
             <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
                 <div class="headerFont">
-                    ผลคะแนนการเลือกตั้ง<br> การเลือกตั้งนายกสมาคมคนเหลี่ยมแห่งชาติ
+                    ผลคะแนนการเลือกตั้ง<br> {{election.elecName}}
                 </div>
             </div>
         </div>
@@ -16,9 +16,9 @@
                     <div class="flex align-items-start justify-content-center m-2 border-round" style="min-width: 80%; min-height: 500px">
                         <p-chart type="pie" [data]="data" width="40vw" height="60vh" [options]="options"></p-chart>
                     </div>
-                    <div class="flex align-items-center justify-content-center bg-yellow-500 font-bold text-white m-2 border-round" style="min-width: 80%; min-height: 200px">
+                    <!-- <div class="flex align-items-center justify-content-center bg-yellow-500 font-bold text-white m-2 border-round" style="min-width: 80%; min-height: 200px">
                         Hello
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

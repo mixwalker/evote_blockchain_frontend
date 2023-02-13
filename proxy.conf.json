@@ -4,8 +4,8 @@
         "secure": false
     },
 
-    "/chainapi": {
-        "target": "http://localhost:3000",
+    "/chain_api": {
+        "target": "http://localhost:3000/sorrawitj",
         "secure": false
     }
 }
