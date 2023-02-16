@@ -48,7 +48,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { FormatDatePipe } from './pipe/format-date.pipe';
 import { DialogModule } from 'primeng/dialog';
-
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,8 @@ import { DialogModule } from 'primeng/dialog';
     PasswordModule,
     ReactiveFormsModule,
     ConfirmDialogModule,
-    DialogModule  
+    DialogModule,
+    ScrollPanelModule
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

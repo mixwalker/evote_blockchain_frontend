@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { electionAndStudent } from '../interface/electionAndStudent';
 import { Student } from '../interface/Student';
 import { Election } from '../interface/Election';
+import { ElectionAndStudent } from '../interface/ElectionAndStudent';
 
 
 @Injectable({
@@ -49,11 +49,11 @@ export class ClientService {
 
   //electionAndStudent
   getElecByStudent(id: string) {
-    return this.http.get<electionAndStudent>(`api/elec_student/findbystudent/${id}`);
+    return this.http.get<ElectionAndStudent>(`api/elec_student/findbystudent/${id}`);
   }
 
   getStudentByElection(id: number) {
-    return this.http.get<electionAndStudent>(`api/elec_student/findbyelection/${id}`);
+    return this.http.get<ElectionAndStudent>(`api/elec_student/findbyelection/${id}`);
   }
 
   //electionAndCandidate

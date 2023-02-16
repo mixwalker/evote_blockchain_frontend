@@ -1,8 +1,9 @@
+import { Candidate } from "./Candidate";
 import { Student } from "./Student";
 
-export interface studentAndCandidate {
-  candidate: Candidate;
+export interface StudentAndCandidate {
+  candidate: Candidate[];
   scId: number;
-  student: Student;
+  student: Student[];
 }
 

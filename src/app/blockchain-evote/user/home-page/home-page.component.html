@@ -23,7 +23,7 @@
 </div>
 <div class="card">
     <div class="flex flex-wrap card-container" style="max-width: 100%">
-        <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px" *ngFor="let elec of election">
+        <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px" *ngFor="let elec of election;let indexOfelement=index;">
             <p-card header="{{elec.election.elecName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
                     <img alt="Card" src="assets/showcase/images/usercard.png">
@@ -40,7 +40,7 @@
                             สิ้นสุด : {{elec.election.elecEnddate | formatDate}}
                         </p>
                         <p>
-                            ผู้ลงสมัครทั้งหมด : {{elec.election.countCandi}} คน
+                            ผู้ลงสมัครทั้งหมด : {{candidateList[indexOfelement] | json}} คน
                         </p>
                     </b>
                 </div>

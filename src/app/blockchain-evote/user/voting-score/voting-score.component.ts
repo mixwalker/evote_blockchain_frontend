@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BlockChain } from 'src/app/interface/blockchain';
+import { BlockChain } from 'src/app/interface/Blockchain';
 import { Election } from 'src/app/interface/Election';
 import { BlockchainApiService } from 'src/app/service/blockchain-api.service';
 import { ClientService } from 'src/app/service/client.service';

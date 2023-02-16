@@ -1,11 +1,11 @@
-interface Candidate {
+export interface Candidate {
     candiExpList: CandiExpList[];
     candiId: number;
     candiImage: string;
     regisDate: string;
   }
   
-  interface CandiExpList {
+export  interface CandiExpList {
     canExpId: number;
     years: string;
   }

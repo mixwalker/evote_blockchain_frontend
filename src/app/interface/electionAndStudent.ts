@@ -1,9 +1,9 @@
 import { Election } from "./Election";
 import { Student } from "./Student";
 
-export interface electionAndStudent {
-  election: Election;
+export interface ElectionAndStudent {
+  election: Election[];
   esId: number;
-  student: Student;
+  student: Student[];
 }
 
