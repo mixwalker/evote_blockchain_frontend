@@ -30,7 +30,7 @@ export class RegCandidateComponent implements OnInit {
   studentData: any;
   studentAge!: number;
   electionId!: number;
-  displayModal:boolean = false;
+  displayModal: boolean = false;
   constructor(private auth: AuthService,
     private router: Router,
     private clientService: ClientService,
@@ -38,10 +38,12 @@ export class RegCandidateComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.clientService.getCandidatebyStudent(this.auth.user.studentId).subscribe(res =>{
-      if(res.length > 0){
-        this.router.navigateByUrl('/blockchain-admin/homepage');
-      }
+    this.clientService.getCandidatebyStudent(this.auth.user.studentId).subscribe(res => {
+      // this.clientService.getElecByCandidate(res[0].candidate.candiId).subscribe(res => {
+      //   if(res.length > 0){
+      //     this.router.navigateByUrl('/blockchain-admin/homepage');
+      //   }
+      // })
     })
     const url = this.router.url.split('/').at(-1);
     this.electionId = parseInt(url!);

@@ -8,12 +8,8 @@ export class BlockchainApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllChain() {
-    return this.http.get<any>(`chain_api/get_chain`);
-  }
-
-  getByElectionId() {
-    return this.http.get<any>(`chain_api/getby_elecId`);
+  getChain(elecId:any) {
+    return this.http.post<any>(`chain_api/get_chain`,elecId);
   }
 
   mining(data:any) {

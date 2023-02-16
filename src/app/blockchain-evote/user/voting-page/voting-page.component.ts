@@ -69,19 +69,34 @@ export class VotingPageComponent implements OnInit {
       acceptLabel: 'ลงคะแนน',
       rejectLabel: 'ยกเลิก',
       accept: () => {
-        const data = {
-          elecId: this.election.elecId,
-          candiId: candidate.candiId,
-          studentId: this.auth.user.studentId
-        }
-        this.blockchainService.mining(data).subscribe({
-          complete: () => {
-            this.displayModal = true;
-            setTimeout(() => {
-              this.router.navigateByUrl("/blockchain-evote/homepage");
-            }, 1500)
+        let data = {}
+        this.clientService.getStudentById(this.auth.user.studentId).subscribe({
+          next: (res) =>{
+            data = {
+              elecId: this.election.elecId,
+              candidate: {
+                candiId: candidate.candiId,
+                candiName: candidate.name
+              },
+              student: {
+                studentId: res.studentId,
+                studentCode: res.studentCode,
+                studenName: `${res.prefix}${res.firstName} ${res.lastName}`
+              }
+            }
+          },
+          complete: () =>{
+            this.blockchainService.mining(data).subscribe({
+              complete: () => {
+                this.displayModal = true;
+                setTimeout(() => {
+                  this.router.navigateByUrl("/blockchain-evote/homepage");
+                }, 1500)
+              }
+            })
           }
         })
+        
       }
     })
   }
