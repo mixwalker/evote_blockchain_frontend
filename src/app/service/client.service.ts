@@ -65,6 +65,10 @@ export class ClientService {
     return this.http.get<any>(`api/elec_candidate/findbyelection/${id}`);
   }
 
+  getCandidateByElectionWithApprove(id: number){
+    return this.http.get<any>(`api/elec_candidate/findbyelectionwith_approve/${id}`);
+  }
+
   createElecWCandidate(ElecWCandi: any) {
     return this.http.post<any>(`api/elec_candidate/`, ElecWCandi);
   }

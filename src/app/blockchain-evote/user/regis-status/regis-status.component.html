@@ -4,31 +4,67 @@
         <div class="flex align-items-center justify-content-center h-4rem"></div>
     </div>
     <div class="card">
-        <div class="flex justify-content-center border-transparent align-items-center flex-wrap-reverse                                                          card-container">
-            <div class="flex justify-content-center font-bold surface-border surface-overlay border-3 border-round text-gray-900 m-2" style="width: 650px;height: 609px;">
+        <div class="flex justify-content-center border-transparent align-items-center flex-wrap-reverse card-container">
+            <div *ngIf="regisDetailBoolean" class="flex justify-content-center font-bold surface-border surface-overlay border-3 border-round text-gray-900 m-2" style="width: 650px;height: 609px;">
+                <div class="card">
+                    <div class="flex justify-content-center flex-wrap card-container yellow-container" style="min-height: 100%">
+                        <div class="flex flex-wrap align-items-center justify-content-center font-bold text-gray-900 border-round m-2" style="max-width: 100%; min-height: 50px">
+                            <div>
+                                <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 100%; min-height:50px">
+                                    <img src="assets\img\icon\select_regisdetail.png" height="130" width="130">
+                                </div>
+                                <div class="flex align-items-center justify-content-center text-2xl border-round m-2 mt-5" style="min-width: 100%px; min-height: 50px">
+                                    กรุณาเลือกผลการลงสมัคร
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="regisDetail" class="flex justify-content-center font-bold surface-border surface-overlay border-3 border-round text-gray-900 m-2" style="width: 650px;height: 609px;">
                 <div class="card">
                     <div class="flex justify-content-center flex-wrap card-container yellow-container" style="min-height: 300px">
                         <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height: 50px"></div>
                         <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height: 20px"></div>
                         <div class="flex flex-wrap align-items-center justify-content-center font-bold text-gray-900 border-round m-2" style="max-width: 200px; min-height: 50px">
-                            <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height:50px">
-                                <img src="assets\img\status.png" height="65" width="65">
+                            <div *ngIf="regisDetail[0].candidate.candiStatus === '0'">
+                                <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height:50px">
+                                    <img src="assets\img\icon\status_wait.png" height="65" width="65">
+                                </div>
+                                <div class="flex align-items-center justify-content-center text-2xl border-round m-2 mt-5" style="min-width: 200px; min-height: 50px">
+                                    รอการอนุมัติ
+                                </div>
                             </div>
-                            <div class="flex align-items-center justify-content-center text-2xl border-round m-1" style="min-width: 200px; min-height: 50px">
-                                ผ่าน
+                            <div *ngIf="regisDetail[0].candidate.candiStatus === '1'">
+                                <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height:50px">
+                                    <img src="assets\img\icon\status_yes.png" height="65" width="65">
+                                </div>
+                                <div class="flex align-items-center justify-content-center text-2xl border-round m-2 mt-5" style="min-width: 200px; min-height: 50px">
+                                    ได้รับการอนุมัติ
+                                </div>
+                            </div>
+                            <div *ngIf="regisDetail[0].candidate.candiStatus === '2'">
+                                <div class="flex align-items-center justify-content-center border-round m-2" style="min-width: 200px; min-height:50px">
+                                    <img src="assets\img\icon\status_no.png" height="65" width="65">
+                                </div>
+                                <div class="flex align-items-center justify-content-center text-2xl border-round m-2 mt-5" style="min-width: 200px; min-height: 50px">
+                                    ไม่ได้รับการอนุมัติ
+                                </div>
                             </div>
                             <div class="flex align-items-center justify-content-center text-2xl border-round m-1" style="min-width: 200px; min-height: 50px">
                                 สรุปผลการลงสมัคร
                             </div>
                         </div>
                     </div>
-                    <div class="flex align-content-end justify-content-center flex-wrap card-container green-container" style="min-height: 280px">
+                    <div class="flex align-content-end justify-content-center flex-wrap card-container green-container" style="min-height: 260px">
                         <div class="flex align-items-center border-bottom-1 justify-content-center font-bold m-1" style="min-width: 95%; min-height: 50px">
                             <div class="flex align-items-center justify-content-start font-bold border-round m-1" style="min-width: 45%; min-height: 50px">
-                                ประเภทใบสมัคร
+                                รายการที่สมัคร
                             </div>
                             <div class="flex align-items-center justify-content-end text-blue-300 border-round m-1" style="min-width: 50%;min-height: 50px">
-                                ใบสมัครนายกสโมสร
+                                <div>
+                                    {{regisDetail[0].election.elecName}}
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center border-bottom-1 font-bold m-1" style="min-width: 95% ; min-height: 50px">
@@ -36,7 +72,7 @@
                                 วันที่ลงสมัคร
                             </div>
                             <div class="flex align-items-center justify-content-end font-bold text-blue-300 border-round m-1" style="min-width: 50%;min-height: 50px">
-                                4/12/2565
+                                {{regisDetail[0].candidate.regisDate | formatDate}}
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center font-bold border-bottom-1 m-1" style="min-width: 95%; min-height: 50px">
@@ -50,35 +86,51 @@
                     </div>
                 </div>
             </div>
-
-            <div class="flex justify-content-center surface-border surface-overlay border-3 border-round m-2" style="width: 330px;height: 610px;">
-                <div class="card">
-                    <div class="flex align-content-start justify-content-center flex-wrap" style="max-height: 100%">
-                        <div class="flex align-items-center border-3 border-blue-300 justify-content-center font-bold m-1" style="min-width: 95%; min-height: 50px">
-                            <div class="flex align-items-center justify-content-start font-bold border-round m-1" style="min-width: 45%; min-height: 50px">
-                                <div class="headerFont">
-                                    ประวัติผลการลงสมัคร
+            <div class="flex">
+                <div class="flex justify-content-center surface-border surface-overlay border-3 border-round m-2" style="width: 330px;height: 610px;">
+                    <div class="card">
+                        <div class="flex align-content-start justify-content-center flex-wrap" style="width: 320px">
+                            <div class="flex align-items-center border-3 border-blue-300 justify-content-center font-bold m-1" style="min-width: 95%; min-height: 50px">
+                                <div class="flex align-items-center justify-content-start font-bold border-round m-1" style="min-width: 45%; min-height: 50px">
+                                    <div class="headerFont">
+                                        ประวัติผลการลงสมัคร
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center">
+                                <p-scrollPanel [style]="{width: '100%', height: '460px'}" styleClass="custombar2">
+                                    <div *ngFor="let election of electionList;index as i" class="flex align-items-center justify-content-center border-bottom-1 m-1 button" style="min-width: 96% ; min-height: 30px;cursor: pointer;">
+                                        <label for="{{candidateList[i].candidate.candiId}}" style="cursor: pointer;" class="flex align-items-center justify-content-center">
+                                        <div class="flex align-items-center justify-content-start m-1" style="min-width: 70%; min-height: 30px;">
+                                            <div>
+                                                    {{election.elecName}}
+                                                    <button type="button" id="{{candidateList[i].candidate.candiId}}" style="display: none;visibility: hidden;" (click)="checkstatus(candidateList[i].candidate.candiId)"></button>
+                                                </div>
+                                            </div>
+                                            <div class="flex align-items-center justify-content-end font-bold text-blue-300 border-round m-1" style="min-width: 20%;min-height: 30px">
+                                                <div *ngIf="candidateList[i].candidate.candiStatus === '0'">
+                                                    <img src="assets\img\icon\status_wait.png" height="20" width="20">
+                                                </div>
+                                                <div *ngIf="candidateList[i].candidate.candiStatus === '1'">
+                                                    <img src="assets\img\icon\status_yes.png" height="20" width="20">
+                                                </div>
+                                                <div *ngIf="candidateList[i].candidate.candiStatus === '2'">
+                                                    <img src="assets\img\icon\status_no.png" height="20" width="20">
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </p-scrollPanel>
                             </div>
                         </div>
-                        <p-scrollPanel [style]="{width: '100%', height: '460px'}">
-                            <div *ngFor="let election of electionList" class="flex align-items-center justify-content-center border-bottom-1 m-1" style="min-width: 100% ; min-height: 30px">
-                                <div class="flex align-items-center justify-content-start m-1" style="min-width: 75%; min-height: 30px">
-                                    {{election.elecName}}
+                        <div class="flex align-content-start justify-content-center flex-wrap " style="height: 10%">
+                            <div class="flex align-items-center justify-content-center border-2 border-gray-200 m-1" style="min-width: 95% ; min-height: 60px">
+                                <div class="flex align-items-center justify-content-start border-round m-1" style="min-width: 70%; min-height: 30px">
+                                    รายการลงสมัครทั้งหมด
                                 </div>
                                 <div class="flex align-items-center justify-content-end font-bold text-blue-300 border-round m-1" style="min-width: 20%;min-height: 30px">
-                                    <img src="assets\img\status_no.png" height="20" width="20">
+                                    {{electionList.length}} รายการ
                                 </div>
-                            </div>
-                        </p-scrollPanel>
-                    </div>
-                    <div class="flex align-content-start justify-content-center flex-wrap " style="height: 10%">
-                        <div class="flex align-items-center justify-content-center border-2 border-gray-200 m-1" style="min-width: 95% ; min-height: 60px">
-                            <div class="flex align-items-center justify-content-start border-round m-1" style="min-width: 70%; min-height: 30px">
-                                รายการลงสมัครทั้งหมด
-                            </div>
-                            <div class="flex align-items-center justify-content-end font-bold text-blue-300 border-round m-1" style="min-width: 20%;min-height: 30px">
-                                {{electionList.length}} รายการ
                             </div>
                         </div>
                     </div>

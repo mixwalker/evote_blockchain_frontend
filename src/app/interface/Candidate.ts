@@ -3,6 +3,7 @@ export interface Candidate {
     candiId: number;
     candiImage: string;
     regisDate: string;
+    candiStatus: string;
   }
   
 export  interface CandiExpList {

@@ -38,7 +38,7 @@ export class VotingPageComponent implements OnInit {
       }
     });
 
-    this.clientService.getCandidateByElection(id).subscribe({
+    this.clientService.getCandidateByElectionWithApprove(id).subscribe({
       next: (res) => {
         this.candidateList = res;
       },
@@ -58,7 +58,7 @@ export class VotingPageComponent implements OnInit {
   }
 
   defaultImage(event: Event) {
-    return (event.target as HTMLImageElement).src = "./assets/img/candidate.png";
+    return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
   }
 
   vote(candidate: any) {

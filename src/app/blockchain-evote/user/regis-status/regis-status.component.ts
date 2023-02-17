@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Election } from 'src/app/interface/Election';
+import { ElectionAndCandidate } from 'src/app/interface/ElectionAndCandidate';
 import { StudentAndCandidate } from 'src/app/interface/StudentAndCandidate';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClientService } from 'src/app/service/client.service';
@@ -14,6 +15,8 @@ export class RegisStatusComponent implements OnInit {
 
   candidateList: StudentAndCandidate[] = [];
   electionList: Election[] = [];
+  regisDetail: any;
+  regisDetailBoolean: any = true;
   constructor(private router: Router, private clientService: ClientService, private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -22,15 +25,26 @@ export class RegisStatusComponent implements OnInit {
         this.candidateList = res
       },
       complete: () => {
-        const candiIdList = this.candidateList.map(candidate => candidate.candidate).map((id:any)=> id.candiId);
-        candiIdList.forEach(list =>{
-          this.clientService.getElecByCandidate(list).subscribe(res=>{
-            this.electionList.push(res.map((list:any) => list.election)[0] as Election);
-            console.log();
-            
+        const candiIdList = this.candidateList.map(candidate => candidate.candidate).map((id: any) => id.candiId);
+        candiIdList.forEach(list => {
+          this.clientService.getElecByCandidate(list).subscribe(res => {
+            this.electionList.push(res.map((list: any) => list.election)[0] as Election);
           })
-        })        
+        })
       }
+    })
+  }
+
+  checkstatus(candidateId: number) {
+    this.clientService.getElecByCandidate(candidateId).subscribe(res => {
+      res.map((items: any) => {
+        if(items.candidate.regisDate){
+          const regisDateSplit = items.candidate.regisDate.split('[UTC]');
+          items.candidate.regisDate = regisDateSplit[0];
+        }
+      })
+      this.regisDetail = res
+      this.regisDetailBoolean = false
     })
   }
 
