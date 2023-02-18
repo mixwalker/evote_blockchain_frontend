@@ -49,6 +49,7 @@ import { ConfirmationService } from 'primeng/api';
 import { FormatDatePipe } from './pipe/format-date.pipe';
 import { DialogModule } from 'primeng/dialog';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit-register/edit-register.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     MenuBarAdminComponent,
     RegisterComponent,
     FormatDatePipe,
+    EditRegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@
                     </span>
         </div>
         <ng-template pTemplate="footer">
-            <p-button label="เข้าสู่ระบบ" icon="pi pi-sign-in" [style]="{'width': '100%'}" (onClick)="login()"></p-button>
+            <button pButton type="button" class="p-button buttonColor" label="เข้าสู่ระบบ" (click)="login()" icon="pi pi-sign-in" style="width: 200px;" [style]="{'width': '100%'}"></button>
         </ng-template>
     </p-card>
 </div>

@@ -74,6 +74,10 @@ export class ClientService {
   }
 
   //Candidate
+  getCandidateById(candiId:number){
+    return this.http.get<any>(`api/candidate/${candiId}`);
+  }
+
   createCandidate(candidateObj: any) {
     return this.http.post<any>(`api/candidate`, candidateObj);
   }

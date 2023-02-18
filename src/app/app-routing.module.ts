@@ -17,6 +17,7 @@ import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-el
 import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
 import { HasAdminloginGuard } from './blockchain-evote/guard/has-adminlogin.guard';
 import { RegisterComponent } from './blockchain-evote/user/register/register.component';
+import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit-register/edit-register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'register/:id',
         component: RegCandidateComponent
+      },
+      {
+        path: 'edit_register/:id',
+        component: EditRegisterComponent
       },
       {
         path: 'reg_memclub',

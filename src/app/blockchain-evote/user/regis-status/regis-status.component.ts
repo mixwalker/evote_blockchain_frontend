@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Election } from 'src/app/interface/Election';
-import { ElectionAndCandidate } from 'src/app/interface/ElectionAndCandidate';
 import { StudentAndCandidate } from 'src/app/interface/StudentAndCandidate';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClientService } from 'src/app/service/client.service';
@@ -17,12 +16,14 @@ export class RegisStatusComponent implements OnInit {
   electionList: Election[] = [];
   regisDetail: any;
   regisDetailBoolean: any = true;
+  studentName!:string 
   constructor(private router: Router, private clientService: ClientService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.clientService.getCandidatebyStudent(this.auth.user.studentId).subscribe({
       next: (res) => {
         this.candidateList = res
+        this.studentName = `${res[0].student.prefix}${res[0].student.firstName} ${res[0].student.lastName}`
       },
       complete: () => {
         const candiIdList = this.candidateList.map(candidate => candidate.candidate).map((id: any) => id.candiId);
@@ -38,7 +39,7 @@ export class RegisStatusComponent implements OnInit {
   checkstatus(candidateId: number) {
     this.clientService.getElecByCandidate(candidateId).subscribe(res => {
       res.map((items: any) => {
-        if(items.candidate.regisDate){
+        if (items.candidate.regisDate) {
           const regisDateSplit = items.candidate.regisDate.split('[UTC]');
           items.candidate.regisDate = regisDateSplit[0];
         }
@@ -46,6 +47,10 @@ export class RegisStatusComponent implements OnInit {
       this.regisDetail = res
       this.regisDetailBoolean = false
     })
+  }
+
+  goToEdit(candidateId: number) {
+    this.router.navigate(['blockchain-evote/edit_register/', candidateId])
   }
 
 }

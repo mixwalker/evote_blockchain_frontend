@@ -4,6 +4,7 @@ export interface Candidate {
     candiImage: string;
     regisDate: string;
     candiStatus: string;
+    candiPhone: string;
   }
   
 export  interface CandiExpList {
