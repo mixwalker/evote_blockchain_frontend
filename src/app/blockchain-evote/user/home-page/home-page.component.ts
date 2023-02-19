@@ -54,7 +54,7 @@ export class HomePageComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.clientService.getElecByStudent(this.auth.user.studentId).subscribe({
+    this.clientService.getElecOnVoteByStudent(this.auth.user.studentId).subscribe({
       next: (res) => {
         this.election = res;
       },

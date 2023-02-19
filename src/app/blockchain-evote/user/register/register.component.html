@@ -26,7 +26,9 @@
         <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px" *ngFor="let elec of election">
             <p-card header="{{elec.elecName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
-                    <img alt="Card" src="assets/showcase/images/usercard.png">
+                    <div class="flex justify-content-center">
+                        <img alt="Card" src="api/candidate/image/{{elec.elecImages}}" [style]="{width: '350px',height: '200px'}">
+                    </div>
                 </ng-template>
                 <p>
                     {{elec.elecDetail}}

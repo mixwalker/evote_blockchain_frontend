@@ -57,16 +57,11 @@ export class VotingPageComponent implements OnInit {
       next: (res) => {
         this.elecWStdId = res[0].esId;
       },
-      complete: () => {
-        console.log(this.elecWStdId);
-        
+      complete: () => {        
         this.clientService.checkVote(this.elecWStdId).subscribe(res => {
-          console.log(res);
-          
           if (res <= 0) {
             this.voted = true;
           }
-          console.log(this.voted);
         });
       }
     })

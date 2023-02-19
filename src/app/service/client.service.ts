@@ -26,6 +26,10 @@ export class ClientService {
     return this.http.post(`api/student/`, student);
   }
 
+  uploadImageElection(formdata: any) {
+    return this.http.post<any>(`api/election/upload`, formdata);
+  }
+
   //ElectionService
   getAllElection() {
     return this.http.get<Election>(`api/election`);
@@ -48,9 +52,11 @@ export class ClientService {
     return this.http.put(`api/election/update_count`, update);
   }
 
+
+
   //electionAndStudent
-  getElecByStudent(id: string) {
-    return this.http.get<ElectionAndStudent[]>(`api/elec_student/findbystudent/${id}`);
+  getElecOnVoteByStudent(id: string) {
+    return this.http.get<ElectionAndStudent[]>(`api/elec_student/find_onvotebystudent/${id}`);
   }
 
   getStudentByElection(id: number) {
