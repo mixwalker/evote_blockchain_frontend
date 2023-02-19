@@ -16,6 +16,9 @@ export class VotingPageComponent implements OnInit {
   candidateList: any;
   imageSrc: any;
   displayModal: boolean = false;
+  elecWStdId!: number;
+  voted: boolean = false;
+  pnl:any;
   constructor(private router: Router,
     private clientService: ClientService,
     private confirmationService: ConfirmationService,
@@ -45,11 +48,27 @@ export class VotingPageComponent implements OnInit {
       complete: () => {
         for (let candidate of this.candidateList) {
           this.clientService.getStudentbyCandidate(candidate.candidate.candiId).subscribe(res => {
-              candidate.candidate['name'] = `${res[0].student.prefix}${res[0].student.firstName} ${res[0].student.lastName}`
+            candidate.candidate['name'] = `${res[0].student.prefix}${res[0].student.firstName} ${res[0].student.lastName}`
           })
         }
       }
-
+    })
+    this.clientService.getEWSByStdIdAndElecId(this.auth.user.studentId, id).subscribe({
+      next: (res) => {
+        this.elecWStdId = res[0].esId;
+      },
+      complete: () => {
+        console.log(this.elecWStdId);
+        
+        this.clientService.checkVote(this.elecWStdId).subscribe(res => {
+          console.log(res);
+          
+          if (res <= 0) {
+            this.voted = true;
+          }
+          console.log(this.voted);
+        });
+      }
     })
   }
 
@@ -71,7 +90,7 @@ export class VotingPageComponent implements OnInit {
       accept: () => {
         let data = {}
         this.clientService.getStudentById(this.auth.user.studentId).subscribe({
-          next: (res) =>{
+          next: (res) => {
             data = {
               elecId: this.election.elecId,
               candidate: {
@@ -85,18 +104,22 @@ export class VotingPageComponent implements OnInit {
               }
             }
           },
-          complete: () =>{
+          complete: () => {
             this.blockchainService.mining(data).subscribe({
               complete: () => {
-                this.displayModal = true;
-                setTimeout(() => {
-                  this.router.navigateByUrl("/blockchain-evote/homepage");
-                }, 1500)
+                const vote = { voted: true }
+                this.clientService.vote(this.elecWStdId, vote).subscribe({
+                  complete: () => {
+                    this.displayModal = true;
+                    setTimeout(() => {
+                      this.router.navigateByUrl("/blockchain-evote/homepage");
+                    }, 1500)
+                  }
+                })
               }
             })
           }
         })
-        
       }
     })
   }

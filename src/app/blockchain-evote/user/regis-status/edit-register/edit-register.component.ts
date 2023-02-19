@@ -35,14 +35,13 @@ export class EditRegisterComponent implements OnInit {
   constructor(private auth: AuthService,
     private router: Router,
     private clientService: ClientService,
-    private confirmationService: ConfirmationService,
-    private messageService: MessageService) { }
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     const url = this.router.url.split('/').at(-1);
     this.candidateId = parseInt(url!);
-    this.clientService.getCandidateById(this.candidateId).subscribe(res=>{
-      this.candidateData = res      
+    this.clientService.getCandidateById(this.candidateId).subscribe(res => {
+      this.candidateData = res
     })
     this.clientService.getStudentById(this.auth.user.studentId).subscribe(res => {
       this.studentData = res;
@@ -63,28 +62,25 @@ export class EditRegisterComponent implements OnInit {
       acceptLabel: 'ลงทะเบียน',
       rejectLabel: 'ยกเลิก',
       accept: () => {
-        const now = new Date();
-        const candiImage = this.studentData.studentCode + now.getTime().toString();
-
-        let candiObj = {
-          candiNo: this.regisForm.value.candidateNo,
-          candiImage: `${candiImage}.png`,
-          regisDate: now,
-          candiExpList: [
-            {
-              position: this.regisForm.value.position1,
-              years: new Date(this.regisForm.value.pYear1).getFullYear() + 543
-            },
-            {
-              position: this.regisForm.value.position2,
-              years: new Date(this.regisForm.value.pYear2).getFullYear() + 543
-            },
-            {
-              position: this.regisForm.value.position3,
-              years: new Date(this.regisForm.value.pYear3).getFullYear() + 543
-            },
-          ]
-        }
+        this.candidateData.candiExpList.map(items => {
+          items.years = new Date(items.years).getFullYear().toString()
+        })
+        this.clientService.editCandidateById(this.candidateId, this.candidateData).subscribe({
+          next: (res) => {
+            if(this.files){
+              const formData = new FormData();
+              formData.append('files', this.files)
+              formData.append('fileName', this.candidateData.candiImage);
+              this.clientService.uploadImageCandidate(formData).subscribe();
+            }
+          },
+          complete: () => {
+            this.displayModal = true;
+            setTimeout(() => {
+              this.router.navigateByUrl('/blockchain-evote/reg_status');
+            }, 2000);
+          }
+        })
       }
     });
   }

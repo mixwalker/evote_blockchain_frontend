@@ -16,6 +16,8 @@ export class RegCandidateComponent implements OnInit {
   regisForm: FormGroup = new FormGroup({
     candidatePhone: new FormControl(),
     candidateNo: new FormControl(),
+  })
+  regisExpForm: FormGroup = new FormGroup({
     position1: new FormControl(),
     position2: new FormControl(),
     position3: new FormControl(),
@@ -39,13 +41,7 @@ export class RegCandidateComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.clientService.getCandidatebyStudent(this.auth.user.studentId).subscribe(res => {
-      // this.clientService.getElecByCandidate(res[0].candidate.candiId).subscribe(res => {
-      //   if(res.length > 0){
-      //     this.router.navigateByUrl('/blockchain-admin/homepage');
-      //   }
-      // })
-    })
+
     const url = this.router.url.split('/').at(-1);
     this.electionId = parseInt(url!);
     this.clientService.getElectionById(this.electionId).subscribe(res => {
@@ -72,6 +68,23 @@ export class RegCandidateComponent implements OnInit {
         const now = new Date();
         const candiImage = this.studentData.studentCode + now.getTime().toString();
 
+        let pyear1;
+        let pyear2;
+        let pyear3;
+
+        if(this.regisExpForm.value.pYear1 !== null){
+          pyear1 = new Date(this.regisExpForm.value.pYear1).getFullYear().toString()
+        }
+
+        if(this.regisExpForm.value.pYear2 !== null){
+          pyear2 = new Date(this.regisExpForm.value.pYear2).getFullYear().toString()
+        }
+
+        if(this.regisExpForm.value.pYear3 !== null){
+          pyear3 = new Date(this.regisExpForm.value.pYear3).getFullYear().toString()
+        }
+        
+
         let candiObj = {
           candiNo: this.regisForm.value.candidateNo,
           candiPhone: this.regisForm.value.candidatePhone,
@@ -79,19 +92,22 @@ export class RegCandidateComponent implements OnInit {
           regisDate: now,
           candiExpList: [
             {
-              position: this.regisForm.value.position1,
-              years: new Date(this.regisForm.value.pYear1).getFullYear() + 543
+              position: this.regisExpForm.value.position1,
+              years: pyear1
             },
             {
-              position: this.regisForm.value.position2,
-              years: new Date(this.regisForm.value.pYear2).getFullYear() + 543
+              position: this.regisExpForm.value.position2,
+              years: pyear2
             },
             {
-              position: this.regisForm.value.position3,
-              years: new Date(this.regisForm.value.pYear3).getFullYear() + 543
+              position: this.regisExpForm.value.position3,
+              years: pyear3
             },
           ]
         }
+
+        console.log(candiObj);
+        
 
         this.clientService.createCandidate(candiObj).subscribe({
           next: (res) => {
@@ -123,7 +139,7 @@ export class RegCandidateComponent implements OnInit {
                   complete: () => {
                     this.displayModal = true;
                     setTimeout(() => {
-                      this.router.navigateByUrl('/blockchain-admin/homepage');
+                      this.router.navigateByUrl('/blockchain-evote/homepage');
                     }, 2000);
                   },
                   error: () => {

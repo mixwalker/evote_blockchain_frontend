@@ -12,6 +12,7 @@ import { ClientService } from 'src/app/service/client.service';
 export class MenuBarComponent implements OnInit {
 
   items: any;
+  itemUser:any;
   students: any;
   constructor(private auth: AuthService, private clientService: ClientService) { }
 

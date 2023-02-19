@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Student } from '../interface/Student';
 import { Election } from '../interface/Election';
 import { ElectionAndStudent } from '../interface/ElectionAndStudent';
+import { Candidate } from '../interface/Candidate';
 
 
 @Injectable({
@@ -49,11 +50,15 @@ export class ClientService {
 
   //electionAndStudent
   getElecByStudent(id: string) {
-    return this.http.get<ElectionAndStudent>(`api/elec_student/findbystudent/${id}`);
+    return this.http.get<ElectionAndStudent[]>(`api/elec_student/findbystudent/${id}`);
   }
 
   getStudentByElection(id: number) {
-    return this.http.get<ElectionAndStudent>(`api/elec_student/findbyelection/${id}`);
+    return this.http.get<ElectionAndStudent[]>(`api/elec_student/findbyelection/${id}`);
+  }
+
+  getEWSByStdIdAndElecId(stdId:number,elecId:number){
+    return this.http.get<ElectionAndStudent[]>(`api/elec_student/findByStdIdAndElecId/${stdId}/${elecId}`);
   }
 
   //electionAndCandidate
@@ -78,6 +83,10 @@ export class ClientService {
     return this.http.get<any>(`api/candidate/${candiId}`);
   }
 
+  editCandidateById(candiId:number,candiObj:Candidate){
+    return this.http.put<any>(`api/candidate/${candiId}`,candiObj);
+  }
+
   createCandidate(candidateObj: any) {
     return this.http.post<any>(`api/candidate`, candidateObj);
   }
@@ -97,5 +106,13 @@ export class ClientService {
     return this.http.get<any>(`api/student_candidate/findbycandidate/${id}`);
   }
 
+  //voteAndCheckVote
+  vote(id:number,vote:any){
+    return this.http.put<any>(`api/elec_student/vote/${id}`,vote);
+  }
+
+  checkVote(id:number){
+    return this.http.get<any>(`api/elec_student/check_voted/${id}`);
+  }
 
 }
