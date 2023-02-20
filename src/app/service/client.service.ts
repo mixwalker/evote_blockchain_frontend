@@ -22,6 +22,7 @@ export class ClientService {
     return this.http.get<Student>(`api/student/${id}`);
   }
 
+ 
   addStudent(student: Student) {
     return this.http.post(`api/student/`, student);
   }
@@ -37,8 +38,12 @@ export class ClientService {
 
   getElectionByRegisOn() {
     return this.http.get<Election>(`api/election/regis_on`);
-
   }
+
+  getElectionOnVote(){
+    return this.http.get<Election>(`api/election/on_vote`);
+  }
+
 
   getElectionById(id: number) {
     return this.http.get<Election>(`api/election/${id}`);

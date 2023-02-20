@@ -65,10 +65,19 @@
                                 </div>
                             </div>
                             <div class="flex flex-wrap card-container blue-container justify-content-center" style="max-width: 100% ">
-                                <div class="flex align-items-center justify-content-start border-round mt-2 " style="min-width: 200px; min-height: 75px ">
+                                <div class="flex align-items-center justify-content-start border-round mt-2 " style="min-width: 200px; min-height: 50px ">
                                     <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
-                                    <label for="Number " class="block text-xl "><b>เปิดให้ลงทะเบียน : </b></label>
-                                    <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 " style="min-width: 20px; min-height: 75px ">
+                                    <label for="Number " class="block text-xl "><b>เปิดให้ลงคะแนน : </b></label>
+                                    <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 " style="min-width: 20px; min-height: 50px ">
+                                        <p-inputSwitch (ngModel)="checked"></p-inputSwitch>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap justify-content-center" style="max-width: 100% ">
+                                <div class="flex align-items-center justify-content-start border-round" style="min-width: 200px; min-height: 10px ">
+                                    <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
+                                    <label for="Number " class="block text-xl "><b>ลงสมัครเลือกตั้ง : </b></label>
+                                    <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 " style="min-width: 20px; min-height: 10px ">
                                         <p-inputSwitch (ngModel)="checked"></p-inputSwitch>
                                     </div>
                                 </div>
@@ -81,9 +90,22 @@
     </div>
     <div class="card-container overflow-hidden " style="max-width: 100% ">
         <div class="flex flex-wrap border-round m-2 justify-content-center ">
-            <p-panel header="อัพโหลดรูปภาพ">
-                <img [src]="imageSrc" id="photo" [style]="{width: '180px',height: '200px'}">
+            <p-panel header="รายชื่อผู้ลงสมัคร ">
                 <div class="flex flex-wrap card-container align-items-center justify-content-start ">
+                    <div class="flex m-2 ">
+                        <p-card header="Advanced Card " subheader="Card Subheader " [style]="{width: '340px'} " styleClass="p-card-shadow ">
+                            <ng-template pTemplate="header ">
+                                <img alt="Card " src="assets/showcase/images/usercard.png ">
+                            </ng-template>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+                                quas!
+                            </p>
+                            <ng-template pTemplate="footer ">
+                                <p-button label="Save " icon="pi pi-check "></p-button>
+                                <p-button label="Cancel " icon="pi pi-times " styleClass="p-button-secondary " [style]="{ 'margin-left': '.5em'} "></p-button>
+                            </ng-template>
+                        </p-card>
+                    </div>
                     <label for="buttonClick">
                     <div class="flex m-2 blockCandidate align-items-center justify-content-center" style="width: 340px;height: 374.8px;cursor: pointer;">
                        <div class="flex-row">
@@ -91,19 +113,22 @@
                             <i class="pi pi-plus" style="font-size: 2rem"></i>
                         </div>
                         <div class="card flex align-items-center justify-content-center m-2">
-                            เพิ่มรูปปกการเลือกตั้ง
+                            เพิ่มผู้ลงสมัคร
                         </div>
                        </div> 
                     </div>
                 </label>
-                    <input type="file" id="buttonClick" style="display: none;visibility: hidden;" accept="image/*" (change)="selectImage($event)">
+                    <button type="button" id="buttonClick" style="display: none;visibility: hidden;" (click)="addCandidate()"></button>
                 </div>
             </p-panel>
         </div>
     </div>
     <div class="flex m-2 align-items-center justify-content-center">
-        <button pButton type="button" class="p-button buttonColor" label="สร้างการเลือกตั้ง" style="width: 20%;"></button>
+        <button pButton type="button" class="p-button buttonColor" label="แก้ไขการเลือกตั้ง" style="width: 20%;"></button>
     </div>
 </div>
 <div style="margin-top:2%; "></div>
 <app-footer></app-footer>
+<div *ngIf="getAddCandidate">
+    <app-add-candidate (unBlock)="unActivate($event)"></app-add-candidate>
+</div>

@@ -20,7 +20,7 @@
                                 <img src="assets\img\icon\createvote.png" height="70" width="70" class="mr-2">
                             </div>
                             <div class="flex align-items-center justify-content-center" style="min-width:100%;cursor: pointer;">
-                                สร้างการเลือกตั้ง
+                                จัดการการเลือกตั้ง
                         </div>
                         </label>
                         <button type="button" id="buttonCreate" style="display: none;visibility: hidden;" (click)="goToCreateElection()"></button>
@@ -64,17 +64,33 @@
     </div>
 </div>
 <div class="card">
-    <div class="flex flex-wrap card-container" style="max-width: 100%">
-        <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px">
-            <p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <div class="flex flex-wrap card-container align-items-center m-2" style="max-width: 100%">
+        <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round" style="min-width: 200px; min-height: 100px" *ngFor="let elec of electionOnVoteList;let indexOfelement=index;">
+            <p-card header="{{elec.elecName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
-                    <img alt="Card" src="assets/showcase/images/usercard.png">
+                    <div class="flex justify-content-center">
+                        <img alt="Card" src="api/candidate/image/{{elec.elecImages}}" [style]="{width: '350px',height: '200px'}">
+                    </div>
                 </ng-template>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+                <p>
+                    {{elec.elecDetail}}
                 </p>
+                <div style="margin-top: 1rem">
+                    <b>
+                        <p>
+                            เริ่มต้น : {{elec.elecStartdate | formatDate}}
+                        </p>
+                        <p>
+                            สิ้นสุด : {{elec.elecEnddate | formatDate}}
+                        </p>
+                        <p>
+                            ผู้ลงสมัครทั้งหมด : {{elec.countCandi}} คน
+                        </p>
+                    </b>
+                </div>
+
                 <ng-template pTemplate="footer">
-                    <p-button label="Save" icon="pi pi-check" (click)="goToManageElection()"></p-button>
-                    <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"></p-button>
+                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" (click)="goToElectionDetail(elec.elecId)" [style]="{width: '100%'}"></button>
                 </ng-template>
             </p-card>
         </div>

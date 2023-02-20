@@ -54,9 +54,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getCandidatebyStudent(this.auth.user.studentCode).subscribe(res => {
-    })
-
     this.clientService.getElectionByRegisOn().subscribe({
       next: (res) => {
         this.election = res;

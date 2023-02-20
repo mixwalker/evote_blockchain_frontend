@@ -33,7 +33,7 @@ import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-election-admin/create-election-admin.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { AddCandidateComponent } from './blockchain-evote/admin/create-election-admin/add-candidate/add-candidate.component';
+import { AddCandidateComponent } from './blockchain-evote/admin/manage-election/add-candidate/add-candidate.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
@@ -50,6 +50,9 @@ import { FormatDatePipe } from './pipe/format-date.pipe';
 import { DialogModule } from 'primeng/dialog';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit-register/edit-register.component';
+import { EditElectionComponent } from './blockchain-evote/admin/manage-election/edit-election/edit-election.component';
+import { ManageElectionComponent } from './blockchain-evote/admin/manage-election/manage-election.component';
+import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/election-detail-onvote.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,10 @@ import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit
     MenuBarAdminComponent,
     RegisterComponent,
     FormatDatePipe,
-    EditRegisterComponent
+    EditRegisterComponent,
+    EditElectionComponent,
+    ManageElectionComponent,
+    ElectionDetailOnvoteComponent,
   ],
   imports: [
     BrowserModule,

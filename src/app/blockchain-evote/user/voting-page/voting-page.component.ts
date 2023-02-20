@@ -95,7 +95,7 @@ export class VotingPageComponent implements OnInit {
               student: {
                 studentId: res.studentId,
                 studentCode: res.studentCode,
-                studenName: `${res.prefix}${res.firstName} ${res.lastName}`
+                studentName: `${res.prefix}${res.firstName} ${res.lastName}`
               }
             }
           },

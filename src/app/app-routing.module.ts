@@ -18,6 +18,9 @@ import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
 import { HasAdminloginGuard } from './blockchain-evote/guard/has-adminlogin.guard';
 import { RegisterComponent } from './blockchain-evote/user/register/register.component';
 import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit-register/edit-register.component';
+import { EditElectionComponent } from './blockchain-evote/admin/manage-election/edit-election/edit-election.component';
+import { ManageElectionComponent } from './blockchain-evote/admin/manage-election/manage-election.component';
+import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/election-detail-onvote.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -79,7 +82,7 @@ const routes: Routes = [
         component: HomepageAdminComponent
       },
       {
-        path: 'score',
+        path: 'score/:id',
         component: VotingscoreAdminComponent
       },
       {
@@ -87,16 +90,24 @@ const routes: Routes = [
         component: CreateElectionAdminComponent
       },
       {
+        path: 'election_detail/:id',
+        component: ElectionDetailOnvoteComponent
+      },
+      {
         path: 'managevoter',
         component: ManagevoterAdminComponent
+      },
+      {
+        path: 'manage_election',
+        component: ManageElectionComponent
       },
       {
         path: 'candidatelist',
         component: CandidatelistAdminComponent
       },
       {
-        path: 'manage_election',
-        component: ManageElectionAdminComponent
+        path: 'edit_election',
+        component: EditElectionComponent
       }
     ]
   }

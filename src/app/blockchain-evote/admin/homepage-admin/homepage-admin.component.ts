@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Election } from 'src/app/interface/Election';
 import { ClientService } from 'src/app/service/client.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { ClientService } from 'src/app/service/client.service';
   styleUrls: ['./homepage-admin.component.scss']
 })
 export class HomepageAdminComponent implements OnInit {
-  student: any;
   items: any;
-  options:any;
+  options: any;
+  electionOnVoteList:any;
   images: any[] = [
     {
       "previewImageSrc": "assets\\img\\homepage_img.png",
@@ -51,18 +52,28 @@ export class HomepageAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getAllStudent().subscribe(res => {
-      this.student = res;
-    })
-
     this.options = {
-      center: {lat: 36.890257, lng: 30.707417},
+      center: { lat: 36.890257, lng: 30.707417 },
       zoom: 12
-  };
+    };
+
+    this.clientService.getElectionOnVote().subscribe({
+      next: (res) =>{
+        this.electionOnVoteList = res
+      },
+      complete: () => {
+        for (let electionList of this.electionOnVoteList) {
+          const startDateSplit = electionList.elecStartdate.split('[UTC]');
+          const endDateSplit = electionList.elecEnddate.split('[UTC]');
+          electionList.elecStartdate = startDateSplit[0];
+          electionList.elecEnddate = endDateSplit[0];
+        }
+      }
+    })
   }
 
   goToCreateElection() {
-    this.router.navigateByUrl("/blockchain-admin/create_election");
+    this.router.navigateByUrl("/blockchain-admin/manage_election");
   }
 
   goToManageVoter() {
@@ -73,8 +84,8 @@ export class HomepageAdminComponent implements OnInit {
     this.router.navigateByUrl("/blockchain-admin/candidatelist");
   }
 
-  goToManageElection(){
-    this.router.navigateByUrl("/blockchain-admin/manage_election");
-
+  goToElectionDetail(id:number) {
+    this.router.navigate(['blockchain-admin/election_detail/', id])
   }
+
 }

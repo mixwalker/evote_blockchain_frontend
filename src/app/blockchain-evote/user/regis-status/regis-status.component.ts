@@ -33,7 +33,7 @@ export class RegisStatusComponent implements OnInit {
           })
         })
       }
-    })
+    })    
   }
 
   checkstatus(candidateId: number) {

@@ -21,7 +21,7 @@ export interface ChainData {
 interface Student {
   studentId: number;
   studentCode: string;
-  studenName: string;
+  studentName: string;
 }
 
 interface Candidate {

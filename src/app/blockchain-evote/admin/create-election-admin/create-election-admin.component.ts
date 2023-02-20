@@ -7,19 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateElectionAdminComponent implements OnInit {
 
+  files:any;
   checked: boolean = true;
+  imageSrc:any;
   getAddCandidate: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addCandidate(){
-    this.getAddCandidate = true;
-  }
-
-  unActivate(unActivate: boolean) {
-    this.getAddCandidate = unActivate;
+  selectImage(event: any) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+    };
+    console.log(event);
+    
   }
 
 }
