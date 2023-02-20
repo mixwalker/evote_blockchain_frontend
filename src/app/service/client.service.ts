@@ -27,9 +27,6 @@ export class ClientService {
     return this.http.post(`api/student/`, student);
   }
 
-  uploadImageElection(formdata: any) {
-    return this.http.post<any>(`api/election/upload`, formdata);
-  }
 
   //ElectionService
   getAllElection() {
@@ -42,6 +39,14 @@ export class ClientService {
 
   getElectionOnVote(){
     return this.http.get<Election>(`api/election/on_vote`);
+  }
+
+  createElection(election:Election){
+    return this.http.post<Election>(`api/election/`,election);
+  }
+
+  uploadImageElection(formdata: any) {
+    return this.http.post<any>(`api/election/upload`, formdata);
   }
 
 

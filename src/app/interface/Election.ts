@@ -6,4 +6,5 @@ export interface Election {
     elecName: string;
     elecRegister: boolean;
     elecStartdate: string;
+    elecImages:string
   }
