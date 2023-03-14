@@ -30,15 +30,15 @@ export class ClientService {
 
   //ElectionService
   getAllElection() {
-    return this.http.get<Election>(`api/election`);
+    return this.http.get<any>(`api/election`);
   }
 
   getElectionByRegisOn() {
-    return this.http.get<Election>(`api/election/regis_on`);
+    return this.http.get<any>(`api/election/regis_on`);
   }
 
   getElectionOnVote(){
-    return this.http.get<Election>(`api/election/on_vote`);
+    return this.http.get<any>(`api/election/on_vote`);
   }
 
   createElection(election:Election){

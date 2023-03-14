@@ -12,7 +12,8 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL [value]="student" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL [value]="electionOnVoteList" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['elecId','elecName','elecStartdate','elecEnddate']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                                        currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่เปิดให้ลงคะแนน
@@ -28,32 +29,38 @@
                                                 <th>ชื่อรายการ</th>
                                                 <th>วันที่เริ่มต้น</th>
                                                 <th>วันสิ้นเริ่มต้น</th>
+                                                <th>จำนวนผู้ลงสมัคร</th>
                                                 <th style="width: 25vh;text-align: center;">
                                                 </th>
                                             </tr>
                                         </ng-template>
-                                        <ng-template pTemplate="body" let-students>
+                                        <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td>
-                                                    {{students.studentId}}
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecId}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecName}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecStartdate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecEnddate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    <div class="flex justify-content-center">
+                                                        {{electionDetail.countCandi}}
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    {{students.name}}
-                                                </td>
-                                                <td>
-                                                    {{students.faculty}}
-                                                </td>
-                                                <td>
-                                                    {{students.faculty}}
-                                                </td>
-                                                <td>
-                                                    <button pButton type="button" class="p-button buttonColor" label="จัดการผู้มีสิทธิ์" style="width: 100%;" (click)="addRemoveVoter()"></button>
+                                                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;" (click)="goToElectionDetail(electionDetail.elecId)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด รายการ
+                                                จำนวนรายการทั้งหมด {{electionOnVoteList ? electionOnVoteList.length : 0 }} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -67,7 +74,7 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL [value]="student" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL [value]="allElection" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่กำลังจะมาถึง
@@ -83,32 +90,38 @@
                                                 <th>ชื่อรายการ</th>
                                                 <th>วันที่เริ่มต้น</th>
                                                 <th>วันสิ้นเริ่มต้น</th>
+                                                <th>จำนวนผู้ลงสมัคร</th>
                                                 <th></th>
                                             </tr>
                                         </ng-template>
-                                        <ng-template pTemplate="body" let-students>
+                                        <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td>
-                                                    {{students.studentId}}
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecId}}
                                                 </td>
-                                                <td>
-                                                    {{students.name}}
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecName}}
                                                 </td>
-                                                <td>
-                                                    {{students.faculty}}
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecStartdate | formatDate}}
                                                 </td>
-                                                <td>
-                                                    {{students.faculty}}
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecEnddate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    <div class="flex justify-content-center">
+                                                        {{electionDetail.countCandi}}
+                                                    </div>
                                                 </td>
                                                 <td class="flex justify-content-center">
-                                                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editElection()"></button>
+                                                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editElection(electionDetail.elecId)"></button>
                                                     <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด รายการ
+                                                จำนวนรายการทั้งหมด {{allElection ? allElection.length: 0}} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -122,7 +135,7 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL [value]="student" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่เสร็จสิ้นแล้ว
@@ -145,16 +158,16 @@
                                         <ng-template pTemplate="body" let-students>
                                             <tr>
                                                 <td>
-                                                    {{students.studentId}}
+
                                                 </td>
                                                 <td>
-                                                    {{students.name}}
+
                                                 </td>
                                                 <td>
-                                                    {{students.faculty}}
+
                                                 </td>
                                                 <td>
-                                                    {{students.faculty}}
+
                                                 </td>
                                                 <td>
                                                     <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;"></button>

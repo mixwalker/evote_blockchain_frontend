@@ -13,7 +13,6 @@ import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-
 import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-election-admin/create-election-admin.component';
 import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
-import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { HasLoginGuard } from './blockchain-evote/guard/has-login.guard';
 import { HasAdminloginGuard } from './blockchain-evote/guard/has-adminlogin.guard';
 import { RegisterComponent } from './blockchain-evote/user/register/register.component';
@@ -106,7 +105,7 @@ const routes: Routes = [
         component: CandidatelistAdminComponent
       },
       {
-        path: 'edit_election',
+        path: 'edit_election/:id',
         component: EditElectionComponent
       }
     ]

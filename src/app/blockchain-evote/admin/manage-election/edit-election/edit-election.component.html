@@ -11,7 +11,7 @@
                                     <label for="Number" class="block text-xl"><b>ชื่อหัวข้อการเลือกตั้ง : </b></label>
                                 </div>
                                 <div class="flex align-items-center justify-content-start border-round" style="min-width: 100%px; min-height: 50px">
-                                    <input type="text" pInputText [style]="{width: '100%'}" />
+                                    <input type="text" pInputText [style]="{width: '100%'}" [(ngModel)]="election.elecName"/>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +21,7 @@
                                     <label for="Number" class="block text-xl"><b>รายละเอียดการเลือกตั้ง : </b></label>
                                 </div>
                                 <div class="flex align-items-center justify-content-start border-round" style="min-width: 100%px; min-height: 50px">
-                                    <textarea id="float-input" rows="5" cols="30" pInputTextarea [style]="{width: '100%'}"></textarea>
+                                    <textarea id="float-input" rows="5" cols="30" pInputTextarea [style]="{width: '100%'}" [(ngModel)]="election.elecDetail"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                         <label for="Number" class="block"><b>เริ่มต้น : </b></label>
                                     </div>
                                     <div style="width: 100%">
-                                        <p-calendar [showIcon]="true" inputId="icon" [style]="{width: '100%'}" appendTo="body"></p-calendar>
+                                        <p-calendar [showIcon]="true" inputId="icon" [style]="{width: '100%'}" appendTo="body" [(ngModel)]="election.elecStartdate"></p-calendar>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                         <label for="Number " class="block"><b>สิ้นสุด : </b></label>
                                     </div>
                                     <div style="width: 100%">
-                                        <p-calendar [showIcon]="true " inputId="test" [style]="{width: '100%'}" appendTo="body"></p-calendar>
+                                        <p-calendar [showIcon]="true " inputId="test" [style]="{width: '100%'}" appendTo="body" [(ngModel)]="election.elecStartdate"></p-calendar>
                                     </div>
                                 </div>
                             </div>
@@ -69,16 +69,16 @@
                                     <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
                                     <label for="Number " class="block text-xl "><b>เปิดให้ลงคะแนน : </b></label>
                                     <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 " style="min-width: 20px; min-height: 50px ">
-                                        <p-inputSwitch (ngModel)="checked"></p-inputSwitch>
+                                        <p-inputSwitch [(ngModel)]="election.elecOnVote"></p-inputSwitch>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-content-center" style="max-width: 100% ">
                                 <div class="flex align-items-center justify-content-start border-round" style="min-width: 200px; min-height: 10px ">
                                     <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
-                                    <label for="Number " class="block text-xl "><b>ลงสมัครเลือกตั้ง : </b></label>
+                                    <label for="Number " class="block text-xl "><b>เปิดให้ลงสมัคร : </b></label>
                                     <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 " style="min-width: 20px; min-height: 10px ">
-                                        <p-inputSwitch (ngModel)="checked"></p-inputSwitch>
+                                        <p-inputSwitch [(ngModel)]="election.elecRegister"></p-inputSwitch>
                                     </div>
                                 </div>
                             </div>

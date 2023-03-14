@@ -39,7 +39,6 @@ import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 import { TabViewModule } from 'primeng/tabview';
 import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
-import { ManageElectionAdminComponent } from './blockchain-evote/admin/manage-election-admin/manage-election-admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
 import { PasswordModule } from 'primeng/password';
@@ -74,7 +73,6 @@ import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage
     ManagevoterAdminComponent,
     CandidatelistAdminComponent,
     AddremoveVoterComponent,
-    ManageElectionAdminComponent,
     MenuBarAdminComponent,
     RegisterComponent,
     FormatDatePipe,
