@@ -27,7 +27,7 @@
             <p-card header="{{elec.election.elecName}}" [style]="{width: '350px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
                     <div class="flex justify-content-center">
-                        <img alt="Card" src="api/candidate/image/{{elec.election.elecImages}}" [style]="{width: '350px',height: '200px'}">
+                        <img alt="Card" src="api/candidate/image/{{elec.election.elecImages}}" [style]="{width: '350px',height: '200px'}" (error)="defaultImage($event)">
                     </div>
                 </ng-template>
                 <div class="fixblock">

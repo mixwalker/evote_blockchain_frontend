@@ -73,4 +73,9 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['blockchain-evote/voting/', id])
   }
 
+  
+  defaultImage(event: Event) {
+    return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
+  }
+
 }

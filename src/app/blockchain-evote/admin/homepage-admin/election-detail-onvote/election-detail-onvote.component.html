@@ -85,7 +85,7 @@
                         <p-card [style]="{width: '340px'}" styleClass="p-card-shadow">
                             <ng-template pTemplate="header">
                                 <div class="flex justify-content-center">
-                                    <img src="api/candidate/image/" id="photo" [style]="{width: '80%',height: '280px'}" (error)="defaultImage($event)">
+                                    <img src="api/candidate/image/{{candidate.candidate.candiImage}}" id="photo" [style]="{width: '80%',height: '280px'}" (error)="defaultImage($event)">
                                 </div>
                             </ng-template>
                             <div class="flex justify-content-center">

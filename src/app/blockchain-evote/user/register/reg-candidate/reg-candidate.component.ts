@@ -106,9 +106,6 @@ export class RegCandidateComponent implements OnInit {
           ]
         }
 
-        console.log(candiObj);
-        
-
         this.clientService.createCandidate(candiObj).subscribe({
           next: (res) => {
             const formData = new FormData();

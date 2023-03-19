@@ -41,14 +41,26 @@ export class ClientService {
     return this.http.get<any>(`api/election/on_vote`);
   }
 
+  getElectionComingSoon(){
+    return this.http.get<any>(`api/election/coming_soon`);
+  }
+  
+  getElectionVoteComplete(){
+    return this.http.get<any>(`api/election/vote_complete`);
+  }
+
+
   createElection(election:Election){
     return this.http.post<Election>(`api/election/`,election);
+  }
+
+  editElection(election:Election){
+    return this.http.put<Election>(`api/election/update/${election.elecId}`,election);
   }
 
   uploadImageElection(formdata: any) {
     return this.http.post<any>(`api/election/upload`, formdata);
   }
-
 
   getElectionById(id: number) {
     return this.http.get<Election>(`api/election/${id}`);
@@ -58,8 +70,12 @@ export class ClientService {
     return this.http.post(`api/election/`, election);
   }
 
-  countCandidate(update: number) {
-    return this.http.put(`api/election/update_count`, update);
+  checkElectionTime(){
+    return this.http.get<any>(`api/election/check_time`);
+  }
+
+  countCandidate() {
+    return this.http.get(`api/election/update_count`);
   }
 
 

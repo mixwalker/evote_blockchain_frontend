@@ -27,8 +27,8 @@
                                             <tr>
                                                 <th>รหัสรายการ</th>
                                                 <th>ชื่อรายการ</th>
-                                                <th>วันที่เริ่มต้น</th>
-                                                <th>วันสิ้นเริ่มต้น</th>
+                                                <th>เริ่มต้นลงคะแนน</th>
+                                                <th>สิ้นลงคะแนน</th>
                                                 <th>จำนวนผู้ลงสมัคร</th>
                                                 <th style="width: 25vh;text-align: center;">
                                                 </th>
@@ -74,13 +74,13 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL [value]="allElection" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL2 [value]="allElection" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['elecId','elecName']" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่กำลังจะมาถึง
                                                 <span class="p-input-icon-left">
                                             <i class="pi pi-search"></i>
-                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL, $event)"/>
+                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL2, $event)"/>
                                         </span>
                                             </div>
                                         </ng-template>
@@ -88,8 +88,10 @@
                                             <tr>
                                                 <th>รหัสรายการ</th>
                                                 <th>ชื่อรายการ</th>
-                                                <th>วันที่เริ่มต้น</th>
-                                                <th>วันสิ้นเริ่มต้น</th>
+                                                <th>เริ่มต้นลงคะแนน</th>
+                                                <th>สิ้นลงคะแนน</th>
+                                                <th>เริ่มต้นลงสมัคร</th>
+                                                <th>สิ้นสุดลงสมัคร</th>
                                                 <th>จำนวนผู้ลงสมัคร</th>
                                                 <th></th>
                                             </tr>
@@ -107,6 +109,12 @@
                                                 </td>
                                                 <td (click)="goToElectionDetail(electionDetail.elecId)">
                                                     {{electionDetail.elecEnddate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecRegisStartdate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecRegisEnddate | formatDate}}
                                                 </td>
                                                 <td (click)="goToElectionDetail(electionDetail.elecId)">
                                                     <div class="flex justify-content-center">
@@ -135,42 +143,48 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL3 [value]="electionVoteCompleteList" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่เสร็จสิ้นแล้ว
                                                 <span class="p-input-icon-left">
                                             <i class="pi pi-search"></i>
-                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL, $event)"/>
+                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL3, $event)"/>
                                         </span>
                                             </div>
                                         </ng-template>
                                         <ng-template pTemplate="header">
                                             <tr>
                                                 <th>รหัสรายการ</th>
-                                                <th>ชื่อรายการ</th>
-                                                <th>วันที่เริ่มต้น</th>
-                                                <th>วันสิ้นเริ่มต้น</th>
-                                                <th style="width: 25vh;text-align: center;">
+                                                <th style="width: 20rem;">ชื่อรายการ</th>
+                                                <th style="width: 10rem;">เริ่มต้นลงคะแนน</th>
+                                                <th style="width: 10rem;">สิ้นลงคะแนน</th>
+                                                <th>จำนวนผู้ลงสมัคร</th>
+                                                <th style="width: 10rem;text-align: center;">
                                                 </th>
                                             </tr>
                                         </ng-template>
-                                        <ng-template pTemplate="body" let-students>
+                                        <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td>
-
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecId}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecName}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecStartdate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    {{electionDetail.elecEnddate | formatDate}}
+                                                </td>
+                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                    <div class="flex justify-content-center">
+                                                        {{electionDetail.countCandi}}
+                                                    </div>
                                                 </td>
                                                 <td>
-
-                                                </td>
-                                                <td>
-
-                                                </td>
-                                                <td>
-
-                                                </td>
-                                                <td>
-                                                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;"></button>
+                                                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;" (click)="goToElectionDetail(electionDetail.elecId)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>

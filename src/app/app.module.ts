@@ -52,6 +52,8 @@ import { EditRegisterComponent } from './blockchain-evote/user/regis-status/edit
 import { EditElectionComponent } from './blockchain-evote/admin/manage-election/edit-election/edit-election.component';
 import { ManageElectionComponent } from './blockchain-evote/admin/manage-election/manage-election.component';
 import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/election-detail-onvote.component';
+import { ElectionCompleteComponent } from './blockchain-evote/admin/managevoter-admin/election-complete/election-complete.component';
+import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-admin/election-onvote/election-onvote.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage
     EditElectionComponent,
     ManageElectionComponent,
     ElectionDetailOnvoteComponent,
+    ElectionCompleteComponent,
+    ElectionOnvoteComponent,
   ],
   imports: [
     BrowserModule,

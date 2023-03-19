@@ -12,6 +12,7 @@ export class ManageElectionComponent implements OnInit {
 
   allElection:any;
   electionOnVoteList: any;
+  electionVoteCompleteList: any;
   getAddRemoveVoter: boolean = false;
   constructor(private router: Router, private clientService: ClientService) { }
 
@@ -27,13 +28,27 @@ export class ManageElectionComponent implements OnInit {
       this.electionOnVoteList = res
     })
 
-    this.clientService.getAllElection().subscribe(res =>{
+    this.clientService.getElectionVoteComplete().subscribe(res => {
+      res.map((items: any) => {
+        const startDateSplit = items.elecStartdate.split('[UTC]');
+        const endDateSplit = items.elecEnddate.split('[UTC]');
+        items.elecStartdate = startDateSplit[0];
+        items.elecEnddate = endDateSplit[0];
+      })
+      this.electionVoteCompleteList = res
+    })
+
+    this.clientService.getElectionComingSoon().subscribe(res =>{
       res.map((items: any) => {
         if(items.elecStartdate && items.elecEnddate){
           const startDateSplit = items.elecStartdate.split('[UTC]');
           const endDateSplit = items.elecEnddate.split('[UTC]');
+          const regisStartDateSplit = items.elecRegisStartdate.split('[UTC]');
+          const regisEndDateSplit = items.elecRegisEnddate.split('[UTC]');
           items.elecStartdate = startDateSplit[0];
           items.elecEnddate = endDateSplit[0];
+          items.elecRegisStartdate = regisStartDateSplit[0];
+          items.elecRegisEnddate = regisEndDateSplit[0];
         }
       })
       this.allElection = res
@@ -41,6 +56,14 @@ export class ManageElectionComponent implements OnInit {
   }
 
   inputSearch(inputEL: any, event: any) {
+    inputEL.filterGlobal(event.target.value, 'contains')
+  }
+
+  inputSearchI(inputEL: any, event: any) {
+    inputEL.filterGlobal(event.target.value, 'contains')
+  }
+
+  inputSearchII(inputEL: any, event: any) {
     inputEL.filterGlobal(event.target.value, 'contains')
   }
 

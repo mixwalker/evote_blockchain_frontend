@@ -16,11 +16,16 @@ export class CreateElectionAdminComponent implements OnInit {
     elecDetail: new FormControl(null, Validators.required),
     elecStartdate: new FormControl(null, Validators.required),
     elecEnddate: new FormControl(null, Validators.required),
+    elecRegisStartdate: new FormControl(null, Validators.required),
+    elecRegisEnddate: new FormControl(null, Validators.required),
     elecImages: new FormControl(),
     elecRegister: new FormControl(false),
+    elecOnVote: new FormControl(false),
   })
   startDate!: Date
   endDate!: Date
+  regisStartdate!: Date
+  regisEnddate!: Date
   files: any;
   imageSrc: any;
   getAddCandidate: boolean = false;
@@ -40,13 +45,14 @@ export class CreateElectionAdminComponent implements OnInit {
   }
 
   create() {
-    console.log('hello');
-    
     this.createForm.value.elecStartdate = new Date(this.startDate);
     this.createForm.value.elecEnddate = new Date(this.endDate);
+    this.createForm.value.elecRegisStartdate = new Date(this.regisStartdate);
+    this.createForm.value.elecRegisEnddate = new Date(this.regisEnddate);
     this.createForm.value.elecImages = new Date().getTime().toString() + `.png`
     this.clientServie.createElection(this.createForm.value).subscribe({
       complete: () => {
+        this.clientServie.checkElectionTime().subscribe();
         const formData = new FormData();
         formData.append('files', this.files)
         formData.append('fileName', this.createForm.value.elecImages);

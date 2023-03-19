@@ -14,8 +14,7 @@
                                 </div>
                                 <div class="flex align-items-center justify-content-start border-round"
                                     style="min-width: 100%px; min-height: 50px">
-                                    <input type="text" pInputText [style]="{width: '100%'}"
-                                        [(ngModel)]="election.elecName" />
+                                    {{election.elecName}}
                                 </div>
                             </div>
                         </div>
@@ -28,8 +27,7 @@
                                 </div>
                                 <div class="flex align-items-center justify-content-start border-round"
                                     style="min-width: 100%px; min-height: 50px">
-                                    <textarea id="float-input" rows="5" cols="30" pInputTextarea
-                                        [style]="{width: '100%'}" [(ngModel)]="election.elecDetail"></textarea>
+                                    {{election.elecDetail}}
                                 </div>
                             </div>
                         </div>
@@ -63,11 +61,10 @@
                                         <div class="flex-row align-items-center justify-content-center border-round"
                                             style="min-width: 100%; min-height: 20px">
                                             <div class="flex">
-                                                <label for="Number" class="block"><b>เริ่มต้น : </b></label>
+                                                <label for="Number" class="block text-xl"><b>เริ่มต้น : </b></label>
                                             </div>
-                                            <div style="width: 100%">
-                                                <p-calendar [showIcon]="true" inputId="icon" [style]="{width: '100%'}"
-                                                    appendTo="body" [(ngModel)]="election.elecStartdate"></p-calendar>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecStartdate | formatDate}}
                                             </div>
                                         </div>
                                     </div>
@@ -76,11 +73,10 @@
                                         <div class="flex-row align-items-center justify-content-center border-round "
                                             style="min-width: 100%; min-height: 50px ">
                                             <div class="flex">
-                                                <label for="Number " class="block"><b>สิ้นสุด : </b></label>
+                                                <label for="Number " class="block text-xl"><b>สิ้นสุด : </b></label>
                                             </div>
-                                            <div style="width: 100%">
-                                                <p-calendar [showIcon]="true " inputId="test" [style]="{width: '100%'}"
-                                                    appendTo="body" [(ngModel)]="election.elecEnddate"></p-calendar>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecEnddate | formatDate}}
                                             </div>
                                         </div>
                                     </div>
@@ -98,12 +94,10 @@
                                         <div class="flex-row align-items-center justify-content-center border-round"
                                             style="min-width: 100%; min-height: 20px">
                                             <div class="flex">
-                                                <label for="Number" class="block"><b>เริ่มต้น : </b></label>
+                                                <label for="Number" class="block text-xl"><b>เริ่มต้น : </b></label>
                                             </div>
-                                            <div style="width: 100%">
-                                                <p-calendar [showIcon]="true" inputId="icon" [style]="{width: '100%'}"
-                                                    appendTo="body"
-                                                    [(ngModel)]="election.elecRegisStartdate"></p-calendar>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecRegisStartdate | formatDate}}
                                             </div>
                                         </div>
                                     </div>
@@ -112,37 +106,12 @@
                                         <div class="flex-row align-items-center justify-content-center border-round "
                                             style="min-width: 100%; min-height: 50px ">
                                             <div class="flex">
-                                                <label for="Number " class="block"><b>สิ้นสุด : </b></label>
+                                                <label for="Number " class="block text-xl"><b>สิ้นสุด : </b></label>
                                             </div>
-                                            <div style="width: 100%">
-                                                <p-calendar [showIcon]="true " inputId="test" [style]="{width: '100%'}"
-                                                    appendTo="body"
-                                                    [(ngModel)]="election.elecRegisEnddate"></p-calendar>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecRegisEnddate | formatDate}}
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap card-container blue-container justify-content-center"
-                                style="max-width: 100% ">
-                                <div class="flex align-items-center justify-content-start border-round mt-2 "
-                                    style="min-width: 200px; min-height: 50px ">
-                                    <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
-                                    <label for="Number " class="block text-xl "><b>เปิดให้ลงคะแนน : </b></label>
-                                    <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 "
-                                        style="min-width: 20px; min-height: 50px ">
-                                        <p-inputSwitch [(ngModel)]="election.elecOnVote"></p-inputSwitch>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap justify-content-center" style="max-width: 100% ">
-                                <div class="flex align-items-center justify-content-start border-round"
-                                    style="min-width: 200px; min-height: 10px ">
-                                    <i class="pi pi-check-circle " style="font-size: 1rem;margin-right: 5px; "></i>
-                                    <label for="Number " class="block text-xl "><b>เปิดให้ลงสมัคร : </b></label>
-                                    <div class="flex align-items-center justify-content-start border-round mt-2 ml-2 "
-                                        style="min-width: 20px; min-height: 10px ">
-                                        <p-inputSwitch [(ngModel)]="election.elecRegister"></p-inputSwitch>
                                     </div>
                                 </div>
                             </div>
@@ -154,66 +123,79 @@
     </div>
     <div class="card-container overflow-hidden " style="max-width: 100% ">
         <div class="flex flex-wrap border-round m-2 justify-content-center ">
-            <p-panel header="รายชื่อผู้ลงสมัคร ">
+            <p-panel header="รายชื่อผู้มีสิทธิ์ลงคะแนน ">
+                <div class="flex flex-wrap card-container align-items-center justify-content-center m-5">
+                    <p-chart type="pie" [data]="data"  [style]="{'width': '40%'}"></p-chart>
+                </div>
                 <div class="flex flex-wrap card-container align-items-center justify-content-start ">
                     <div class="flex m-2 ">
-                        <div class="flex m-2" *ngFor="let candidate of electionAndCandiList">
-                            <p-card [style]="{width: '340px'}" styleClass="p-card-shadow">
-                                <ng-template pTemplate="header">
-                                    <div class="flex justify-content-center">
-                                        <img src="api/candidate/image/{{candidate.candidate.candiImage}}" id="photo"
-                                            [style]="{width: '80%',height: '280px'}" (error)="defaultImage($event)">
+                        <div class="flex m-2">
+                            <p-table #inputEL [value]="studentList" responsiveLayout="scroll" selectionMode="single"
+                                [globalFilterFields]="['student.studentCode','student.firstName','student.lastName','student.studentMajor']"
+                                dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                                currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-end">
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input type="text" pInputText placeholder="กรุณากรอกรหัสหรือชื่อนักศึกษา"
+                                                (input)="inputSearch(inputEL, $event)" />
+                                        </span>
                                     </div>
                                 </ng-template>
-                                <div class="flex justify-content-center">
-                                    <b> ชื่อผู้ลงสมัคร : </b>&nbsp; {{candidate.candidate.name}}
-                                </div>
-                                <div class="flex justify-content-center">
-                                    <b> เบอร์ : </b>&nbsp; {{candidate.candidate.candiNo}}
-                                </div>
-                                <div class="flex justify-content-center">
-                                    <b> พรรค : </b>&nbsp; {{candidate.candidate.candiParty}}
-                                </div>
-                                <ng-template pTemplate="footer">
-                                    <button pButton type="button" class="p-button buttonCheckColor m-2"
-                                        label="ตรวจสอบข้อมูล" [style]="{width: '100%'}"></button>
-                                    <button pButton type="button" class="p-button-danger m-2" label="ลบผู้ลงสมัคร"
-                                        [style]="{width: '100%'}"></button>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>รหัสนักศึกษา</th>
+                                        <th style="width: 10rem;">ชื่อ</th>
+                                        <th style="width: 10rem;">นามสกุล</th>
+                                        <th style="width: 15rem;">สาขาวิชา</th>
+                                        <th style="width: 15rem;">คณะ</th>
+                                        <th>
+                                            <div class="flex justify-content-center">
+                                                ลงคะแนน
+                                            </div>
+                                        </th>
+                                    </tr>
                                 </ng-template>
-                            </p-card>
+                                <ng-template pTemplate="body" let-studentDetail>
+                                    <tr>
+                                        <td>
+                                            {{studentDetail.student.studentCode}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.student.firstName}}
+                                        </td>
+                                        <td >
+                                            {{studentDetail.student.lastName}}
+                                        </td>
+                                        <td >
+                                            {{studentDetail.student.studentMajor}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.student.studentFaculty}}
+                                        </td>
+                                        <td style="width: 10rem;">
+                                            <div class="flex justify-content-center">
+                                                <img src="assets\img\icon\status_yes.png" height="20" width="20"
+                                                    *ngIf="studentDetail.voted === true">
+                                                <img src="assets\img\icon\status_no.png" height="20" width="20"
+                                                    *ngIf="studentDetail.voted === false">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        จำนวนนักศึกษาทั้งหมด {{ studentList ? studentList.length : 0}} คน
+                                    </div>
+                                </ng-template>
+                            </p-table>
                         </div>
                     </div>
                 </div>
             </p-panel>
         </div>
     </div>
-    <div class="flex m-2 align-items-center justify-content-center">
-        <button pButton type="button" class="p-button buttonColor" label="แก้ไขการเลือกตั้ง" style="width: 20%;"
-            (click)="editElection(election)"></button>
-    </div>
 </div>
 <div style="margin-top:2%; "></div>
 <app-footer></app-footer>
-<!-- confirm -->
-<p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}" [style]="{width: '50vw'}" [baseZIndex]="10000"
-    acceptButtonStyleClass="p-button-success" rejectButtonStyleClass="p-button-danger p-button-text"></p-confirmDialog>
-<p-dialog [(visible)]="displaySuccessModal" [modal]="true" [style]="{width: '30vw'}"
-    [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
-    [transitionOptions]="'280ms'">
-    <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
-        <img src="assets\img\icon\status_yes.png" height="65" width="65">
-    </div>
-    <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
-        <H1>แก้ไขข้อมูลสำเร็จ</H1>
-    </div>
-</p-dialog>
-<p-dialog [(visible)]="displayErrorModal" [modal]="true" [style]="{width: '30vw'}"
-    [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
-    [transitionOptions]="'280ms'">
-    <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
-        <img src="assets\img\icon\status_no.png" height="65" width="65">
-    </div>
-    <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
-        <H1>แก้ไขไม่สำเร็จสำเร็จ</H1>
-    </div>
-</p-dialog>

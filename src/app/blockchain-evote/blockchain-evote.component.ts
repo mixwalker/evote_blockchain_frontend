@@ -10,6 +10,5 @@ export class BlockchainEvoteComponent implements OnInit {
   constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
-    this.clientService.countCandidate(0).subscribe();
   }
 }
