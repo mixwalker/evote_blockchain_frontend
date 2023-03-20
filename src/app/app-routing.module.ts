@@ -22,6 +22,7 @@ import { ManageElectionComponent } from './blockchain-evote/admin/manage-electio
 import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/election-detail-onvote.component';
 import { ElectionCompleteComponent } from './blockchain-evote/admin/managevoter-admin/election-complete/election-complete.component';
 import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-admin/election-onvote/election-onvote.component';
+import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/managevoter-admin/election1-comingsoon-voter/election1-comingsoon-voter.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -105,6 +106,10 @@ const routes: Routes = [
       {
         path: 'managevoter/onvote/:id',
         component: ElectionOnvoteComponent
+      },
+      {
+        path: 'managevoter/coming_soon/:id',
+        component: Election1ComingsoonVoterComponent
       },
       {
         path: 'manage_election',

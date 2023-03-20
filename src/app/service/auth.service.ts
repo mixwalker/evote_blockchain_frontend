@@ -10,6 +10,7 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   private readonly TOKENNAME = 'token';
   user: any;
+  std:any;
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   
   get token() {
@@ -20,24 +21,40 @@ export class AuthService {
     this.user = this.getStudent(this.token!);
   }
 
-  login(studentCode: string, password: string) {
-    return this.http.post('api/student/login',
+  checkLogin(studentCode: string, password: string) {
+    return this.http.post('api/student/check_login',
       {
         studentCode: studentCode,
         password: password
       }).pipe(
         tap((res: any) => {
-          this._isLoggedIn$.next(true);
-          const std = {
-            studentId: res.studentId,
+          this.std = {
             studentCode: res.studentCode,
-            role: res.role
+            password: password,
           }
-          const stdEncode = btoa(JSON.stringify(std));
-          localStorage.setItem(this.TOKENNAME, stdEncode);
-          this.user = this.getStudent(stdEncode);
         })
       );
+  }
+
+  login(studentCode:string,password:string,otp:string){
+    return this.http.post('api/student/login',
+    {
+      studentCode: studentCode,
+      password: password,
+      otpAccess: otp
+    }).pipe(
+      tap((res: any) => {
+        this._isLoggedIn$.next(true);
+        const stdData = {
+          studentId: res.studentId,
+          studentCode: res.studentCode,
+          role: res.role
+        }
+        const stdEncode = btoa(JSON.stringify(stdData));
+        localStorage.setItem(this.TOKENNAME, stdEncode);
+        this.user = this.getStudent(stdEncode);
+      })
+    );
   }
 
   logout() {

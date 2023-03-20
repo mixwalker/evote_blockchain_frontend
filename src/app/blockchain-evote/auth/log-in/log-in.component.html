@@ -25,3 +25,6 @@
     </p-card>
 </div>
 <p-toast></p-toast>
+<div *ngIf="activate">
+    <app-otp (unBlock)="unActivate($event)"></app-otp>
+</div>

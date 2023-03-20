@@ -1,5 +1,11 @@
 <app-menu-bar-admin></app-menu-bar-admin>
 <div class="card">
+    <div class="flex">
+        <div
+            class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round headerFont">
+            จัดการผู้มีสิทธิ์เลือกตั้ง
+        </div>
+    </div>
     <div class="card-container overflow-hidden">
         <div class="flex">
             <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
@@ -26,12 +32,11 @@
                                         <ng-template pTemplate="header">
                                             <tr>
                                                 <th>รหัสรายการ</th>
-                                                <th>ชื่อรายการ</th>
-                                                <th>เริ่มต้นลงคะแนน</th>
-                                                <th>สิ้นลงคะแนน</th>
-                                                <th>จำนวนผู้ลงสมัคร</th>
-                                                <th style="width: 25vh;text-align: center;">
-                                                </th>
+                                                <th style="width: 20rem;">ชื่อรายการ</th>
+                                                <th style="width: 10rem;">เริ่มต้นลงคะแนน</th>
+                                                <th style="width: 10rem;">สิ้นสุดลงคะแนน</th>
+                                                <th>จำนวนผู้มีสิทธิ์ลงคะแนน</th>
+                                                <th style="width: 10rem;text-align: center;"></th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
@@ -92,37 +97,37 @@
                                                 <th>สิ้นลงคะแนน</th>
                                                 <th>เริ่มต้นลงสมัคร</th>
                                                 <th>สิ้นสุดลงสมัคร</th>
-                                                <th>จำนวนผู้ลงสมัคร</th>
+                                                <th>จำนวนผู้มีสิทธิ์ลงคะแนน</th>
                                                 <th></th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecId}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecName}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToEditVoter(electionDetail.elecId)">
                                                     <div class="flex justify-content-center">
                                                         {{electionDetail.countCandi}}
                                                     </div>
                                                 </td>
                                                 <td class="flex justify-content-center">
-                                                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editElection(electionDetail.elecId)"></button>
+                                                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="goToEditVoter(electionDetail.elecId)"></button>
                                                     <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                                                 </td>
                                             </tr>
@@ -159,7 +164,7 @@
                                                 <th>ชื่อรายการ</th>
                                                 <th>เริ่มต้นลงคะแนน</th>
                                                 <th>สิ้นลงคะแนน</th>
-                                                <th>จำนวนผู้ลงสมัคร</th>
+                                                <th>จำนวนผู้มีสิทธิ์ลงคะแนน</th>
                                                 <th style="width: 25vh;text-align: center;">
                                                 </th>
                                             </tr>

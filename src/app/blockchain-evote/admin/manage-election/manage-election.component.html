@@ -1,5 +1,11 @@
 <app-menu-bar-admin></app-menu-bar-admin>
 <div class="card">
+    <div class="flex">
+        <div
+            class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round headerFont">
+            จัดการการเลือกตั้ง
+        </div>
+    </div>
     <div class="card-container overflow-hidden">
         <div class="flex">
             <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
@@ -7,31 +13,37 @@
                     <p-tabView styleClass="tabview-custom">
                         <p-tabPanel>
                             <ng-template pTemplate="header">
-                                <img src="assets\img\icon\voting-box.png" height="20" width="20" style="margin-right:10px;">
+                                <img src="assets\img\icon\voting-box.png" height="20" width="20"
+                                    style="margin-right:10px;">
                                 <span>รายการที่เปิดให้ลงคะแนน</span>
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL [value]="electionOnVoteList" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['elecId','elecName','elecStartdate','elecEnddate']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                                    <p-table #inputEL [value]="electionOnVoteList" responsiveLayout="scroll"
+                                        selectionMode="single"
+                                        [globalFilterFields]="['elecId','elecName','elecStartdate','elecEnddate']"
+                                        dataKey="projectCode" [paginator]="true" [rows]="5"
+                                        [showCurrentPageReport]="true"
                                         currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่เปิดให้ลงคะแนน
                                                 <span class="p-input-icon-left">
-                                            <i class="pi pi-search"></i>
-                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL, $event)"/>
-                                        </span>
+                                                    <i class="pi pi-search"></i>
+                                                    <input type="text" pInputText
+                                                        placeholder="กรุณากรอกรหัสหรือชื่อรายการ"
+                                                        (input)="inputSearch(inputEL, $event)" />
+                                                </span>
                                             </div>
                                         </ng-template>
                                         <ng-template pTemplate="header">
                                             <tr>
                                                 <th>รหัสรายการ</th>
-                                                <th>ชื่อรายการ</th>
-                                                <th>เริ่มต้นลงคะแนน</th>
-                                                <th>สิ้นลงคะแนน</th>
+                                                <th style="width: 20rem;">ชื่อรายการ</th>
+                                                <th style="width: 10rem;">เริ่มต้นลงคะแนน</th>
+                                                <th style="width: 10rem;">สิ้นสุดลงคะแนน</th>
                                                 <th>จำนวนผู้ลงสมัคร</th>
-                                                <th style="width: 25vh;text-align: center;">
-                                                </th>
+                                                <th style="width: 10rem;text-align: center;"></th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
@@ -54,13 +66,16 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;" (click)="goToElectionDetail(electionDetail.elecId)"></button>
+                                                    <button pButton type="button" class="p-button buttonColor"
+                                                        label="ตรวจสอบ" style="width: 100%;"
+                                                        (click)="goToElectionDetail(electionDetail.elecId)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด {{electionOnVoteList ? electionOnVoteList.length : 0 }} รายการ
+                                                จำนวนรายการทั้งหมด {{electionOnVoteList ? electionOnVoteList.length : 0
+                                                }} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -69,19 +84,25 @@
                         </p-tabPanel>
                         <p-tabPanel header="Header II">
                             <ng-template pTemplate="header">
-                                <img src="assets\img\icon\coming-soon.png" height="20" width="20" style="margin-right:10px;">
+                                <img src="assets\img\icon\coming-soon.png" height="20" width="20"
+                                    style="margin-right:10px;">
                                 <span>รายการที่กำลังจะมาถึง</span>
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL2 [value]="allElection" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['elecId','elecName']" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL2 [value]="allElection" responsiveLayout="scroll"
+                                        selectionMode="single" [globalFilterFields]="['elecId','elecName']"
+                                        [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                                        currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่กำลังจะมาถึง
                                                 <span class="p-input-icon-left">
-                                            <i class="pi pi-search"></i>
-                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL2, $event)"/>
-                                        </span>
+                                                    <i class="pi pi-search"></i>
+                                                    <input type="text" pInputText
+                                                        placeholder="กรุณากรอกรหัสหรือชื่อรายการ"
+                                                        (input)="inputSearch(inputEL2, $event)" />
+                                                </span>
                                             </div>
                                         </ng-template>
                                         <ng-template pTemplate="header">
@@ -98,32 +119,35 @@
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecId}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecName}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editElection(electionDetail.elecId)">
                                                     <div class="flex justify-content-center">
                                                         {{electionDetail.countCandi}}
                                                     </div>
                                                 </td>
                                                 <td class="flex justify-content-center">
-                                                    <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning mr-2" (click)="editElection(electionDetail.elecId)"></button>
-                                                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                                                    <button pButton pRipple type="button" icon="pi pi-pencil"
+                                                        class="p-button-rounded p-button-warning mr-2"
+                                                        (click)="editElection(electionDetail.elecId)"></button>
+                                                    <button pButton pRipple type="button" icon="pi pi-trash"
+                                                        class="p-button-rounded p-button-danger"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>
@@ -138,19 +162,27 @@
                         </p-tabPanel>
                         <p-tabPanel header="Header III">
                             <ng-template pTemplate="header">
-                                <img src="assets\img\icon\success.png" height="20" width="20" style="margin-right:10px;">
+                                <img src="assets\img\icon\success.png" height="20" width="20"
+                                    style="margin-right:10px;">
                                 <span>รายการที่เสร็จสิ้นแล้ว</span>
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL3 [value]="electionVoteCompleteList" responsiveLayout="scroll" selectionMode="single" [globalFilterFields]="['projCode','projName','customerCode']" dataKey="projectCode" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                    <p-table #inputEL3 [value]="electionVoteCompleteList" responsiveLayout="scroll"
+                                        selectionMode="single"
+                                        [globalFilterFields]="['projCode','projName','customerCode']"
+                                        dataKey="projectCode" [paginator]="true" [rows]="5"
+                                        [showCurrentPageReport]="true"
+                                        currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                         <ng-template pTemplate="caption">
                                             <div class="flex align-items-center justify-content-between">
                                                 รายการที่เสร็จสิ้นแล้ว
                                                 <span class="p-input-icon-left">
-                                            <i class="pi pi-search"></i>
-                                            <input type="text"  pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ" (input)="inputSearch(inputEL3, $event)"/>
-                                        </span>
+                                                    <i class="pi pi-search"></i>
+                                                    <input type="text" pInputText
+                                                        placeholder="กรุณากรอกรหัสหรือชื่อรายการ"
+                                                        (input)="inputSearch(inputEL3, $event)" />
+                                                </span>
                                             </div>
                                         </ng-template>
                                         <ng-template pTemplate="header">
@@ -158,7 +190,7 @@
                                                 <th>รหัสรายการ</th>
                                                 <th style="width: 20rem;">ชื่อรายการ</th>
                                                 <th style="width: 10rem;">เริ่มต้นลงคะแนน</th>
-                                                <th style="width: 10rem;">สิ้นลงคะแนน</th>
+                                                <th style="width: 10rem;">สิ้นสุดลงคะแนน</th>
                                                 <th>จำนวนผู้ลงสมัคร</th>
                                                 <th style="width: 10rem;text-align: center;">
                                                 </th>
@@ -184,7 +216,9 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ" style="width: 100%;" (click)="goToElectionDetail(electionDetail.elecId)"></button>
+                                                    <button pButton type="button" class="p-button buttonColor"
+                                                        label="ตรวจสอบ" style="width: 100%;"
+                                                        (click)="goToElectionDetail(electionDetail.elecId)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>

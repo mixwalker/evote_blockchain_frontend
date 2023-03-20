@@ -124,18 +124,19 @@
     <div class="card-container overflow-hidden " style="max-width: 100% ">
         <div class="flex flex-wrap border-round m-2 justify-content-center ">
             <p-panel header="รายชื่อผู้มีสิทธิ์ลงคะแนน ">
-                <div class="flex flex-wrap card-container align-items-center justify-content-center m-5">
+                <!-- <div class="flex flex-wrap card-container align-items-center justify-content-center m-5">
                     <p-chart type="pie" [data]="data"  [style]="{'width': '40%'}"></p-chart>
-                </div>
+                </div> -->
                 <div class="flex flex-wrap card-container align-items-center justify-content-start ">
                     <div class="flex m-2 ">
                         <div class="flex m-2">
-                            <p-table #inputEL [value]="studentList" responsiveLayout="scroll" selectionMode="single"
-                                [globalFilterFields]="['student.studentCode','student.firstName','student.lastName','student.studentMajor']"
+                            <p-table #inputEL [value]="studentcanVoteList" responsiveLayout="scroll" selectionMode="single"
+                                [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
                                 dataKey="projectCode" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
                                 currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
                                 <ng-template pTemplate="caption">
-                                    <div class="flex align-items-center justify-content-end">
+                                    <div class="flex align-items-center justify-content-between">
+                                        ผู้มีสิทธิ์ลงคะแนนเลือกตั้ง
                                         <span class="p-input-icon-left">
                                             <i class="pi pi-search"></i>
                                             <input type="text" pInputText placeholder="กรุณากรอกรหัสหรือชื่อนักศึกษา"
@@ -150,43 +151,88 @@
                                         <th style="width: 10rem;">นามสกุล</th>
                                         <th style="width: 15rem;">สาขาวิชา</th>
                                         <th style="width: 15rem;">คณะ</th>
-                                        <th>
-                                            <div class="flex justify-content-center">
-                                                ลงคะแนน
-                                            </div>
-                                        </th>
+                                        <th  style="width: 5rem;"></th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-studentDetail>
                                     <tr>
                                         <td>
-                                            {{studentDetail.student.studentCode}}
+                                            {{studentDetail.studentCode}}
                                         </td>
                                         <td>
-                                            {{studentDetail.student.firstName}}
+                                            {{studentDetail.firstName}}
                                         </td>
                                         <td >
-                                            {{studentDetail.student.lastName}}
+                                            {{studentDetail.lastName}}
                                         </td>
                                         <td >
-                                            {{studentDetail.student.studentMajor}}
+                                            {{studentDetail.studentMajor}}
                                         </td>
                                         <td>
-                                            {{studentDetail.student.studentFaculty}}
+                                            {{studentDetail.studentFaculty}}
                                         </td>
-                                        <td style="width: 10rem;">
-                                            <div class="flex justify-content-center">
-                                                <img src="assets\img\icon\status_yes.png" height="20" width="20"
-                                                    *ngIf="studentDetail.voted === true">
-                                                <img src="assets\img\icon\status_no.png" height="20" width="20"
-                                                    *ngIf="studentDetail.voted === false">
-                                            </div>
+                                        <td>
+                                            <button pButton type="button" class="p-button-danger" label="ลบ" style="width: 100%;" (click)="remove(studentDetail.studentId)"></button>
                                         </td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="summary">
                                     <div class="flex align-items-center justify-content-between">
-                                        จำนวนนักศึกษาทั้งหมด {{ studentList ? studentList.length : 0}} คน
+                                        จำนวนนักศึกษาทั้งหมด {{ studentcanVoteList ? studentcanVoteList.length : 0}} คน
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                        <div class="flex m-2">
+                            <p-table #inputEL2 [value]="studentcantVoteList" responsiveLayout="scroll" selectionMode="single"
+                                [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
+                                dataKey="projectCode" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                                currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        ผู้ไม่มีสิทธิ์ลงคะแนนเลือกตั้ง
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input type="text" pInputText placeholder="กรุณากรอกรหัสหรือชื่อนักศึกษา"
+                                                (input)="inputSearch2(inputEL2, $event)" />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>รหัสนักศึกษา</th>
+                                        <th style="width: 10rem;">ชื่อ</th>
+                                        <th style="width: 10rem;">นามสกุล</th>
+                                        <th style="width: 15rem;">สาขาวิชา</th>
+                                        <th style="width: 15rem;">คณะ</th>
+                                        <th style="width: 5rem;"></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-studentDetail>
+                                    <tr>
+                                        <td>
+                                            {{studentDetail.studentCode}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.firstName}}
+                                        </td>
+                                        <td >
+                                            {{studentDetail.lastName}}
+                                        </td>
+                                        <td >
+                                            {{studentDetail.studentMajor}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.studentFaculty}}
+                                        </td>
+                                        <td>
+                                            <button pButton type="button" class="p-button-success" label="เพิ่ม" style="width: 100%;" (click)="add(studentDetail.studentId)"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        จำนวนนักศึกษาทั้งหมด {{ studentcantVoteList ? studentcantVoteList.length : 0}} คน
                                     </div>
                                 </ng-template>
                             </p-table>

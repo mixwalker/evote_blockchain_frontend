@@ -13,6 +13,7 @@ export class LogInComponent implements OnInit {
 
   studentCode!: string;
   password!: string;
+  activate: boolean = false;
   constructor(private auth: AuthService, private router: Router,private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -26,16 +27,21 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
-    this.auth.login(this.studentCode, this.password).subscribe({
+    this.auth.checkLogin(this.studentCode, this.password).subscribe({
       complete:()=>{
-        this.messageService.add({severity:'success', summary: 'เข้าสู่ระบบ', detail: 'เข้าสู่ระบบสำเร็จ'});
-        setTimeout(() => {
-          this.ngOnInit();
-        }, 1000);
+        this.activate = true;
       },
       error:()=>{
         this.messageService.add({severity:'error', summary: 'ไม่สามารถเข้าสู่ระบบได้', detail: 'รหัสนักศึกษาหรือรหัสผ่านไม่ถูกต้อง'});
       }
     });
+  }
+
+  onActivate() {
+    this.activate = true;
+  }
+
+  unActivate(unActivate: boolean) {
+    this.activate = unActivate;
   }
 }

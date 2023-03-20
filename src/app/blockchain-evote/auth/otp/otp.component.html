@@ -1,0 +1,19 @@
+<p-blockUI [blocked]="blockedUI">
+    <p-card [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <div class="flex justify-content-center">
+            <H2>กรุณากรอก OTP</H2>
+        </div>
+        <div class="flex m-3">
+            <input style="width:360px" type="text" pInputText [(ngModel)]="otp"/>
+        </div>
+        <div class="flex mt-3 ml-3 mr-3">
+            <button pButton type="button" class="p-button buttonColor" label="ยืนยัน" style="width: 200px;" (click)="cofirme()" [style]="{'width': '100%'}"></button>
+        </div>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-center">
+                <a class="request" id="requestOTP" role="button" style="cursor: pointer;" (click)="requestNewOTP()">ขอรหัส OTP ใหม่</a>
+            </div>
+        </ng-template>
+        <p-toast></p-toast>
+    </p-card>
+</p-blockUI>

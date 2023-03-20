@@ -11,7 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
 import { HomePageComponent } from './blockchain-evote/user/home-page/home-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { MenuBarComponent } from './blockchain-evote/user/menu-bar/menu-bar.component';
 import { GalleriaModule } from 'primeng/galleria';
@@ -54,6 +54,10 @@ import { ManageElectionComponent } from './blockchain-evote/admin/manage-electio
 import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/election-detail-onvote.component';
 import { ElectionCompleteComponent } from './blockchain-evote/admin/managevoter-admin/election-complete/election-complete.component';
 import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-admin/election-onvote/election-onvote.component';
+import { OtpComponent } from './blockchain-evote/auth/otp/otp.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
+import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/managevoter-admin/election1-comingsoon-voter/election1-comingsoon-voter.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +88,9 @@ import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-ad
     ElectionDetailOnvoteComponent,
     ElectionCompleteComponent,
     ElectionOnvoteComponent,
+    OtpComponent,
+    SpinnerComponent,
+    Election1ComingsoonVoterComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +122,11 @@ import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-ad
     DialogModule,
     ScrollPanelModule
   ],
-  providers: [MessageService, ConfirmationService],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
