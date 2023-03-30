@@ -11,11 +11,11 @@ import { ClientService } from 'src/app/service/client.service';
 })
 export class VotingscoreAdminComponent implements OnInit {
 
-  options:any;
+  options: any;
   chartData: any;
   blockchain!: BlockChain;
-  election:any;
-  candidateList:any;
+  election: any;
+  candidateList: any;
   constructor(private router: Router,
     private clientService: ClientService,
     private blockchainService: BlockchainApiService) { }
@@ -27,23 +27,17 @@ export class VotingscoreAdminComponent implements OnInit {
       this.election = res
     });
 
-    this.clientService.getCandidateByElectionWithApprove(id).subscribe(res => {
-      this.candidateList
-      console.log(res);
-      
-    });
-
-    const elecId = { elecId: id }
-    this.blockchainService.getChain(elecId).subscribe({
+    this.clientService.getCandidateByElectionWithApprove(id).subscribe({
       next: (res) => {
-        this.blockchain = res
+        this.candidateList = res;
       },
-      complete: () => {
+      complete:()=>{
+        console.log(this.candidateList);
         this.chartData = {
-          labels: [],
+          labels: ['test'],
           datasets: [
             {
-              data: [],
+              data: [1],
               backgroundColor: [
                 "#42A5F5",
                 "#66BB6A",
@@ -57,38 +51,66 @@ export class VotingscoreAdminComponent implements OnInit {
             }
           ]
         }
-
-        let candidateNameArr: any[] = [];
-        for (let chain of this.blockchain.chain) {
-          if (chain.data) {
-            candidateNameArr.push(chain.data.candidate.candiName)
-          }
-        }
-
-        const candidateNameList = candidateNameArr.filter((name, index) => {
-          return index === candidateNameArr.findIndex(indexname => name === indexname);
-        });
-
-        const tempCandidateScoreList = candidateNameArr.map(name => {
-          const IsDuplicate = candidateNameArr.findIndex(indexname => name === indexname)
-          return IsDuplicate;
-        });
-
-        let candidateScoreList: any[] = [];
-        tempCandidateScoreList.forEach(item => {
-          candidateScoreList[item] = (candidateScoreList[item] || 0) + 1;
-        })
-
-        candidateNameList.forEach(name => {
-          this.chartData.labels.push(name);
-        })
-
-        candidateScoreList.forEach(score => {
-          this.chartData.datasets[0].data.push(score)
-        })
-
+        
       }
-    })
+    });
+
+    // const elecId = { elecId: id }
+    // this.blockchainService.getChain(elecId).subscribe({
+    //   next: (res) => {
+    //     this.blockchain = res
+    //   },
+    //   complete: () => {
+    //     this.chartData = {
+    //       labels: [],
+    //       datasets: [
+    //         {
+    //           data: [],
+    //           backgroundColor: [
+    //             "#42A5F5",
+    //             "#66BB6A",
+    //             "#FFA726"
+    //           ],
+    //           hoverBackgroundColor: [
+    //             "#64B5F6",
+    //             "#81C784",
+    //             "#FFB74D"
+    //           ]
+    //         }
+    //       ]
+    //     }
+
+    //     let candidateNameArr: any[] = [];
+    //     for (let chain of this.blockchain.chain) {
+    //       if (chain.data) {
+    //         candidateNameArr.push(chain.data.candidate.candiName)
+    //       }
+    //     }
+
+    //     const candidateNameList = candidateNameArr.filter((name, index) => {
+    //       return index === candidateNameArr.findIndex(indexname => name === indexname);
+    //     });
+
+    //     const tempCandidateScoreList = candidateNameArr.map(name => {
+    //       const IsDuplicate = candidateNameArr.findIndex(indexname => name === indexname)
+    //       return IsDuplicate;
+    //     });
+
+    //     let candidateScoreList: any[] = [];
+    //     tempCandidateScoreList.forEach(item => {
+    //       candidateScoreList[item] = (candidateScoreList[item] || 0) + 1;
+    //     })
+
+    //     candidateNameList.forEach(name => {
+    //       this.chartData.labels.push(name);
+    //     })
+
+    //     candidateScoreList.forEach(score => {
+    //       this.chartData.datasets[0].data.push(score)
+    //     })
+
+    //   }
+    // })
     this.applyOption();
     this.applyDarkTheme();
   }
@@ -116,7 +138,7 @@ export class VotingscoreAdminComponent implements OnInit {
     this.options = {
       plugins: {
         legend: {
-           display: false,
+          display: false,
           labels: {
             color: '#ebedef'
           }

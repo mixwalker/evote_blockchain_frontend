@@ -1,0 +1,78 @@
+<app-menu-bar-admin></app-menu-bar-admin>
+<div class="card">
+    <div class="flex">
+        <div
+            class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round headerFont">
+            ระบบจัดการนักศึกษา
+        </div>
+    </div>
+    <div class="card-container overflow-hidden">
+        <div class="flex">
+            <div class="flex-1 flex align-items-center justify-content-center m-2">
+                <p-panel header="รายชื่อนักศึกษา">
+                    <div class="flex m-2">
+                        <div class="card" style="min-width: 900px;">
+                            <p-table #inputEL2 [value]="allStudent" responsiveLayout="scroll" selectionMode="single"
+                                [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
+                                [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                                currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        รายชื่อนักศึกษา
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input type="text" pInputText placeholder="กรุณากรอกรหัสหรือชื่อรายการ"
+                                                (input)="inputSearch(inputEL2, $event)" />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>รหัสนักศึกษา</th>
+                                        <th style="width: 10rem;">ชื่อ</th>
+                                        <th style="width: 10rem;">นามสกุล</th>
+                                        <th style="width: 15rem;">สาขาวิชา</th>
+                                        <th style="width: 15rem;">คณะ</th>
+                                        <th style="width: 5rem;"></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-studentDetail>
+                                    <tr>
+                                        <td>
+                                            {{studentDetail.studentCode}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.firstName}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.lastName}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.studentMajor}}
+                                        </td>
+                                        <td>
+                                            {{studentDetail.studentFaculty}}
+                                        </td>
+                                        <td class="flex justify-content-center">
+                                            <button pButton pRipple type="button" icon="pi pi-pencil"
+                                                class="p-button-rounded p-button-warning mr-2" (click)="editStudent(studentDetail.studentId)"></button>
+                                            <button pButton pRipple type="button" icon="pi pi-trash"
+                                                class="p-button-rounded p-button-danger"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        จำนวนนักศึกษาทั้งหมด {{allStudent ? allStudent.length: 0}} คน
+                                        <button pButton pRipple type="button" icon="pi pi-plus" label="เพิ่มนักศึกษา"
+                                            class="p-button-rounded p-button-success mr-2" (click)="addStudent()"></button>
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>

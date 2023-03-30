@@ -1,0 +1,297 @@
+<app-menu-bar-admin></app-menu-bar-admin>
+<div class="card">
+    <div class="card-container overflow-hidden">
+        <div class="flex">
+            <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
+                <p-panel header="รายละเอียดการเลือกตั้ง">
+                    <div class="card">
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex-row align-items-start justify-content-start border-round"
+                                style="min-width: 100%; min-height: 100px">
+                                <div class="flex align-items-start justify-content-start border-round mb-2"
+                                    style="min-width: 100%; min-height: 10px">
+                                    <label for="Number" class="block text-xl"><b>ชื่อหัวข้อการเลือกตั้ง : </b></label>
+                                </div>
+                                <div class="flex align-items-center justify-content-start border-round"
+                                    style="min-width: 100%px; min-height: 50px">
+                                    {{election.elecName}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex-row align-items-start justify-content-start border-round"
+                                style="min-width: 100%; min-height: 100px">
+                                <div class="flex align-items-start justify-content-start border-round mb-2"
+                                    style="min-width: 100%; min-height: 10px">
+                                    <label for="Number" class="block text-xl"><b>รายละเอียดการเลือกตั้ง : </b></label>
+                                </div>
+                                <div class="flex align-items-center justify-content-start border-round"
+                                    style="min-width: 100%px; min-height: 50px">
+                                    {{election.elecDetail}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 10px">
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 10px">
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 10px">
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+                <div class="flex m-3">
+                    <p-panel header="ระยะเวลาและสถานะ">
+                        <div class="card">
+                            <div class="flex flex-row flex-wrap card-container blue-container">
+                                <div class="m-2">
+                                    <div class="flex flex-wrap card-container blue-container " style="max-width: 100%">
+                                        <div class="flex align-items-center justify-content-start border-round"
+                                            style="min-width: 200px;">
+                                            <i class="pi pi-clock" style="font-size: 1rem;margin-right: 5px;"></i>
+                                            <label for="Number" class="block text-xl"><b>ระยะเวลาลงคะแนน : </b></label>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap card-container blue-container border-round mt-2 border-300"
+                                        style="max-width: 100%">
+                                        <div class="flex-row align-items-center justify-content-center border-round"
+                                            style="min-width: 100%; min-height: 20px">
+                                            <div class="flex">
+                                                <label for="Number" class="block text-xl"><b>เริ่มต้น : </b></label>
+                                            </div>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecStartdate | formatDate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap card-container blue-container border-round mt-2 border-300 "
+                                        style="max-width: 100% ">
+                                        <div class="flex-row align-items-center justify-content-center border-round "
+                                            style="min-width: 100%; min-height: 50px ">
+                                            <div class="flex">
+                                                <label for="Number " class="block text-xl"><b>สิ้นสุด : </b></label>
+                                            </div>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecEnddate | formatDate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-2">
+                                    <div class="flex flex-wrap card-container blue-container " style="max-width: 100%">
+                                        <div class="flex align-items-center justify-content-start border-round"
+                                            style="min-width: 200px;">
+                                            <i class="pi pi-clock" style="font-size: 1rem;margin-right: 5px;"></i>
+                                            <label for="Number" class="block text-xl"><b>ระยะเวลาลงสมัคร : </b></label>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap card-container blue-container border-round mt-2 border-300"
+                                        style="max-width: 100%">
+                                        <div class="flex-row align-items-center justify-content-center border-round"
+                                            style="min-width: 100%; min-height: 20px">
+                                            <div class="flex">
+                                                <label for="Number" class="block text-xl"><b>เริ่มต้น : </b></label>
+                                            </div>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecRegisStartdate | formatDate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-wrap card-container blue-container border-round mt-2 border-300 "
+                                        style="max-width: 100% ">
+                                        <div class="flex-row align-items-center justify-content-center border-round "
+                                            style="min-width: 100%; min-height: 50px ">
+                                            <div class="flex">
+                                                <label for="Number " class="block text-xl"><b>สิ้นสุด : </b></label>
+                                            </div>
+                                            <div class="text-l" style="width: 100%">
+                                                {{election.elecRegisEnddate | formatDate}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </p-panel>
+                </div>
+            </div>
+        </div>
+        <div class="card-container overflow-hidden " style="max-width: 100% ">
+            <div class="flex flex-wrap border-round m-2 justify-content-center ">
+                <p-panel header="รายชื่อผู้ลงสมัครเลือกตั้ง ">
+                    <div class="flex  m-2 flex-wrap card-container align-items-center justify-content-center    ">
+                        <div class="flex">
+                            <div class="flex m-2">
+                                <p-table #inputEL [value]="candidateApproveList" responsiveLayout="scroll"
+                                    selectionMode="single"
+                                    [globalFilterFields]="['student.studentCode','student.firstName','student.lastName','student.studentMajor','student.studentClassyearS']"
+                                    [paginator]="true" [rows]="10">
+                                    <ng-template pTemplate="caption">
+                                        <div class="flex align-items-center justify-content-between">
+                                            ผู้ที่ได้รับการอนุมัติ
+                                            <span class="p-input-icon-left">
+                                                <i class="pi pi-search"></i>
+                                                <input type="text" pInputText
+                                                    placeholder="กรุณากรอกรหัสหรือชื่อนักศึกษา"
+                                                    (input)="inputSearch(inputEL, $event)" />
+                                            </span>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>รหัสนักศึกษา</th>
+                                            <th style="width: 10rem;">ชื่อ</th>
+                                            <th style="width: 10rem;">นามสกุล</th>
+                                            <th class="justify-content-center" style="width: 6rem">ชั้นปี</th>
+                                            <th style="width: 15rem;">สาขาวิชา</th>
+                                            <th style="width: 5rem;">สถานะ</th>
+                                            <th class="justify-content-center" style="width: 11rem;"></th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-studentDetail let-i="rowIndex">
+                                        <tr>
+                                            <td>
+                                                {{studentDetail.student.studentCode}}
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.firstName}}
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.lastName}}
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    {{studentDetail.student.studentClassyear}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.studentMajor}}
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    <img src="assets\img\icon\status_yes.png" height="20" width="20"
+                                                        *ngIf="studentDetail.candidate.candiStatus == 1">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    <button pButton type="button" icon="pi pi-search"
+                                                        class="p-button-rounded p-button-info mr-2"
+                                                        style="width: 2rem;height: 2rem;" (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
+                                                    <button pButton type="button" icon="pi pi-trash"
+                                                        class="p-button-rounded p-button-danger"
+                                                        style="width: 2rem;height: 2rem;" (click)="unApprove(studentDetail,i)"></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="summary">
+                                        <div class="flex align-items-center justify-content-between">
+                                            <div class="flex">
+                                                จำนวนผู้ลงสมัครทั้งหมด {{candidateApproveList ?
+                                                candidateApproveList.lenght : 0}} คน
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                            <div class="flex m-2">
+                                <p-table #inputEL [value]="candidateNotApproveList" responsiveLayout="scroll"
+                                    selectionMode="single"
+                                    [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
+                                    dataKey="projectCode" [paginator]="true" [rows]="10">
+                                    <ng-template pTemplate="caption">
+                                        <div class="flex align-items-center justify-content-between">
+                                            ผู้ที่รอการอนุมัติและไม่อนุมัติ
+                                            <span class="p-input-icon-left">
+                                                <i class="pi pi-search"></i>
+                                                <input type="text" pInputText
+                                                    placeholder="กรุณากรอกรหัสหรือชื่อนักศึกษา"
+                                                    (input)="inputSearch(inputEL, $event)" />
+                                            </span>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>รหัสนักศึกษา</th>
+                                            <th style="width: 10rem;">ชื่อ</th>
+                                            <th style="width: 10rem;">นามสกุล</th>
+                                            <th class="justify-content-center" style="width: 6rem">ชั้นปี</th>
+                                            <th style="width: 15rem;">สาขาวิชา</th>
+                                            <th style="width: 5rem;">สถานะ</th>
+                                            <th class="justify-content-center" style="width: 11rem;"></th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-studentDetail let-i="rowIndex">
+                                        <tr>
+                                            <td>
+                                                {{studentDetail.student.studentCode}}
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.firstName}}
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.lastName}}
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    {{studentDetail.student.studentClassyear}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{studentDetail.student.studentMajor}}
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    <img src="assets\img\icon\status_wait.png" height="20" width="20"
+                                                        *ngIf="studentDetail.candidate.candiStatus == 0">
+                                                    <img src="assets\img\icon\status_no.png" height="20" width="20"
+                                                        *ngIf="studentDetail.candidate.candiStatus == 2">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="flex justify-content-center">
+                                                    <button pButton type="button" icon="pi pi-search"
+                                                        class="p-button-rounded p-button-info mr-2"
+                                                        style="width: 2rem;height: 2rem;" (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
+                                                    <button pButton type="button" icon="pi pi-plus"
+                                                        class="p-button-rounded p-button-success mr-2"
+                                                        style="width: 2rem;height: 2rem;" (click)="Approve(studentDetail,i)"></button>
+                                                    <div
+                                                        *ngIf="studentDetail.candidate.candiStatus != 2;else notDisable">
+                                                        <button pButton type="button" icon="pi pi-times"
+                                                            class="p-button-rounded p-button-danger "
+                                                            style="width: 2rem;height: 2rem;" (click)="notApprove(studentDetail,i)"></button>
+                                                    </div>
+                                                    <ng-template #notDisable>
+                                                        <button pButton type="button" icon="pi pi-times"
+                                                            class="p-button-rounded p-button-danger "
+                                                            style="width: 2rem;height: 2rem;" [disabled]="true"></button>
+                                                    </ng-template>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="summary">
+                                        <div class="flex align-items-center justify-content-between">
+                                            <div class="flex">
+                                                จำนวนผู้ลงสมัครทั้งหมด {{candidateApproveList ?
+                                                candidateApproveList.lenght : 0}} คน
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </div>
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:2%; "></div>
+    <app-footer></app-footer>

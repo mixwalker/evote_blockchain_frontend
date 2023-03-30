@@ -23,6 +23,11 @@ import { ElectionDetailOnvoteComponent } from './blockchain-evote/admin/homepage
 import { ElectionCompleteComponent } from './blockchain-evote/admin/managevoter-admin/election-complete/election-complete.component';
 import { ElectionOnvoteComponent } from './blockchain-evote/admin/managevoter-admin/election-onvote/election-onvote.component';
 import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/managevoter-admin/election1-comingsoon-voter/election1-comingsoon-voter.component';
+import { EditCandidatelistComponent } from './blockchain-evote/admin/candidatelist-admin/edit-candidatelist/edit-candidatelist.component';
+import { CandidateDetailComponent } from './blockchain-evote/admin/candidatelist-admin/candidate-detail/candidate-detail.component';
+import { AddUserManualComponent } from './blockchain-evote/admin/manage-student/add-user-manual/add-user-manual.component';
+import { ManageStudentComponent } from './blockchain-evote/admin/manage-student/manage-student.component';
+import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -84,6 +89,18 @@ const routes: Routes = [
         component: HomepageAdminComponent
       },
       {
+        path: 'manage_student',
+        component: ManageStudentComponent
+      },
+      {
+        path: 'manage_student/adduser',
+        component: AddUserManualComponent
+      },
+      {
+        path: 'manage_student/edituser/:id',
+        component: EditUserComponent
+      },
+      {
         path: 'score/:id',
         component: VotingscoreAdminComponent
       },
@@ -118,6 +135,14 @@ const routes: Routes = [
       {
         path: 'candidatelist',
         component: CandidatelistAdminComponent
+      },
+      {
+        path: 'candidatelist/edit_candidate/:id',
+        component: EditCandidatelistComponent
+      },
+      {
+        path: 'candidatelist/candidate_detail/:id',
+        component: CandidateDetailComponent
       },
       {
         path: 'edit_election/:id',

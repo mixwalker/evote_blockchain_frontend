@@ -59,7 +59,6 @@ export class ElectionCompleteComponent implements OnInit {
         this.election.elecRegisEnddate = new Date(regisEndDateSplit[0]);
       }
     });
-
     this.clientService.getStudentByElection(id).subscribe(res => this.studentList = res);
   }
 

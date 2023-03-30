@@ -224,7 +224,8 @@
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด รายการ
+                                                จำนวนรายการทั้งหมด {{electionVoteCompleteList ?
+                                                electionVoteCompleteList.length: 0}} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -239,6 +240,3 @@
 </div>
 <div style="margin-top:2%;"></div>
 <app-footer></app-footer>
-<div *ngIf="getAddRemoveVoter">
-    <app-addremove-voter (unBlock)="unActivate($event)"></app-addremove-voter>
-</div>

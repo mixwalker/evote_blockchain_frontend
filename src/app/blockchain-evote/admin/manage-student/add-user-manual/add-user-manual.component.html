@@ -1,0 +1,255 @@
+<app-menu-bar-admin></app-menu-bar-admin>
+<div class="card">
+    <div class="card-container overflow-hidden">
+        <div class="flex">
+            <div class="flex-1 flex align-items-center justify-content-center m-2">
+                <p-panel header="เพิ่มข้อมูลนักศึกษา">
+                    <div class="card">
+                        <!-- ข้อมูลส่วนตัว -->
+                        <div class="flex flex-wrap card-container blue-container mb-2" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="perInfo" class="block"><b>เพิ่มนักศึกษา</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%"
+                        [formGroup]="studentDataForm">
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="prefix" class="block">อีเมลล์</label>
+                                <input id="firstname" type="text" formControlName="email" pInputText />
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="firstname" class="block">รหัสผ่าน</label>
+                                <input id="firstname" type="password" formControlName="password" pInputText />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%"
+                        [formGroup]="studentDataForm">
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="prefix" class="block">คำนำหน้าชื่อ</label>
+                                <p-dropdown [options]="prefix" optionLabel="prefix" [style]="{'min-width': '205px'}"
+                                    placeholder="กรุณาเลือกคำนำหน้า" formControlName="prefix"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="firstname" class="block">ชื่อ</label>
+                                <input id="firstname" type="text" formControlName="firstName" pInputText />
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="lastname" class="block">นามสกุล</label>
+                                <input id="lastname" type="text" formControlName="lastName" pInputText />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%"
+                        [formGroup]="studentDataForm">
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="birthday" class="block">วันเดือนปีเกิด</label>
+                                <p-calendar inputId="birthday" formControlName="birthday"></p-calendar>
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="national" class="block">สัญชาติ</label>
+                                <input id="national" type="text" pInputText formControlName="nationality" />
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="religion" class="block">ศาสนา</label>
+                                <input id="religion" type="text" pInputText formControlName="religion" />
+                            </div>
+                        </div>
+                    </div>
+                    <div [formGroup]="studentAddressForm">
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 95px; min-height: 100px">
+                                <div class="field">
+                                    <label for="housenumber" class="block">บ้านเลขที่</label>
+                                    <input id="housenumber" type="text" pInputText style="width: 90px;"
+                                        formControlName="addHouse" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 95px; min-height: 100px">
+                                <div class="field">
+                                    <label for="mu" class="block">หมู่ที่</label>
+                                    <input id="mu" type="text" pInputText style="width: 90px;"
+                                        formControlName="addVillage" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="street" class="block">ถนน</label>
+                                    <input id="street" type="text" pInputText formControlName="addStreet" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="township" class="block">แขวง/ตำบล</label>
+                                    <input id="township" type="text" pInputText formControlName="addSubDis" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="districts" class="block">เขต/อำเภอ</label>
+                                    <input id="districts" type="text" pInputText formControlName="addDistrict" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="province" class="block">จังหวัด</label>
+                                    <input id="province" type="text" pInputText formControlName="addProvince" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="post" class="block">รหัสไปรษณีย์</label>
+                                    <input id="post" type="text" pInputText formControlName="addPostCode" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field" [formGroup]="studentDataForm">
+                                    <label for="phone" class="block">หมายเลขโทรศัพท์</label>
+                                    <input id="phone" type="text" pInputText formControlName="phoneNo" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="oriProvince" class="block">ภูมิลำเนาเดิมจังหวัด</label>
+                                    <input id="oriProvince" type="text" pInputText formControlName="addOriprovince" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+
+                    <!-- ข้อมูลด้านการศึกษา -->
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                        <div class="flex align-items-baseline justify-content-left">
+                            <label for="perEd" class="block"><b>ข้อมูลด้านการศึกษา</b></label>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                        <div class="flex align-items-center justify-content-center m-2 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="faculty" class="block">คณะ</label>
+                                <input id="faculty" type="text" pInputText [(ngModel)]="faculty" [disabled]="true" />
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field" [formGroup]="studentDataForm">
+                                <label for="studentID" class="block">รหัสนักศึกษา</label>
+                                <input id="studentID" type="text" pInputText formControlName="studentCode" />
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field" [formGroup]="studentDataForm">
+                                <label for="classYear" class="block">ชั้นปี</label>
+                                <input id="classYear" type="text" pInputText formControlName="studentClassyear" />
+                            </div>
+                        </div>
+                    </div>
+                    <div [formGroup]="studentDataForm">
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="faculty" class="block">สาขาวิชา</label>
+                                    <p-dropdown [options]="Major" optionLabel="major" [style]="{'min-width': '205px'}"
+                                        placeholder="กรุณาเลือกสาขาวิชา" formControlName="studentMajor"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">ขึ้นทะเบียนนักศึกษาเมื่อปี</label>
+                                    <input id="studentID" type="text" pInputText formControlName="studentRegisYear" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="gpa" class="block">คะแนนเฉลี่ยสะสม</label>
+                                    <input id="gpa" type="text" pInputText formControlName="studentGpa" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                    <!-- Button -->
+                    <div class=" card ">
+                        <div class="flex flex-wrap card-container blue-container " style="max-width: 100% ">
+                            <div class="flex align-items-center justify-content-center border-round "
+                                style="min-width: 100%; min-height: 50px ">
+                                <div style="margin-right: 1rem; ">
+                                    <p-confirmDialog [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+                                        [style]="{width: '50vw'}" [baseZIndex]="10000"
+                                        acceptButtonStyleClass="p-button-success"
+                                        rejectButtonStyleClass="p-button-danger p-button-text"></p-confirmDialog>
+                                    <button pButton pRipple type="button" icon="pi pi-check" label="เพิ่มข้อมูลนักศึกษา"
+                                        class="p-button-raised p-button-success" (click)="addStudent()"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---->
+                </p-panel>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+    <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_yes.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>เพิ่มข้อมูลสำเร็จ</H1>
+        </div>
+    </p-dialog>
+    <p-dialog [(visible)]="displayModalFail" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_no.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>เพิ่มข้อมูลไม่สำเร็จ</H1>
+        </div>
+    </p-dialog>

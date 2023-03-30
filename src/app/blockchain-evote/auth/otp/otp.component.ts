@@ -24,9 +24,9 @@ export class OtpComponent implements OnInit {
     this.auth.login(this.studentCode,this.password,this.otp).subscribe({
       complete:()=>{                
         this.messageService.add({severity:'success', summary: 'เข้าสู่ระบบ', detail: 'เข้าสู่ระบบสำเร็จ'});
-        // setTimeout(() => {
-        //   this.ngOnInit();
-        // }, 1000);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       },
       error: ()=>{
         this.messageService.add({severity:'error', summary: 'รหัส OTP ไม่ถูกต้อง', detail: 'เข้าสู่ระบบไม่สำเร็จสำเร็จ'});

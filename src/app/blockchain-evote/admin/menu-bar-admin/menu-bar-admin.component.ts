@@ -31,6 +31,11 @@ export class MenuBarAdminComponent implements OnInit {
           routerLink: ['/blockchain-admin/create_election']
         },
         {
+          label: 'ระบบจัดการนักศึกษา',
+          icon: 'pi pi-fw pi-id-card',
+          routerLink: ['/blockchain-admin/manage_student']
+        },
+        {
           label: `${this.admin.firstName} ${this.admin.lastName}`,
           icon: 'pi pi-fw pi-user',
           items: [

@@ -1,35 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { Candidate } from 'src/app/interface/Candidate';
+import { ConfirmationService } from 'primeng/api';
 import { AuthService } from 'src/app/service/auth.service';
 import { ClientService } from 'src/app/service/client.service';
 
 @Component({
-  selector: 'app-edit-register',
-  templateUrl: './edit-register.component.html',
-  styleUrls: ['./edit-register.component.scss']
+  selector: 'app-candidate-detail',
+  templateUrl: './candidate-detail.component.html',
+  styleUrls: ['./candidate-detail.component.scss']
 })
-export class EditRegisterComponent implements OnInit {
-
-  regisForm: FormGroup = new FormGroup({
-    candidateNo: new FormControl(),
-    position1: new FormControl(),
-    position2: new FormControl(),
-    position3: new FormControl(),
-    pYear1: new FormControl(),
-    pYear2: new FormControl(),
-    pYear3: new FormControl()
-  })
+export class CandidateDetailComponent implements OnInit {
   maxFileSize: string = "1000000";
   files: any;
   fileName!: string;
   imageSrc: any;
   displayPic: boolean = false;
-  studentData: any;
+  studentData: any = {};
   studentAge!: number;
-  candidateData!: Candidate;
+  candidateData!: any;
   candidateId!: number;
   displayModal: boolean = false;
   constructor(private auth: AuthService,
@@ -41,9 +30,17 @@ export class EditRegisterComponent implements OnInit {
     const url = this.router.url.split('/').at(-1);
     this.candidateId = parseInt(url!);
     this.clientService.getCandidateById(this.candidateId).subscribe(res => {
+      for(let i=res.candiExpList.length;i<3;i++){
+        res.candiExpList.push(
+          {
+            position: "",
+            years: ""
+          }
+        )
+      }
       this.candidateData = res
     })
-    this.clientService.getStudentById(this.auth.user.studentId).subscribe(res => {
+    this.clientService.getStudentDataByCandidateId(this.candidateId).subscribe(res => {
       this.studentData = res;
       let dateSplit = this.studentData.birthday.toString().split('[UTC]');
       const brithDay = new Date(dateSplit[0]);
@@ -54,7 +51,7 @@ export class EditRegisterComponent implements OnInit {
     });
   }
 
-  register() {
+  edit() {
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขข้อมูลหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่กรอก',
@@ -62,12 +59,14 @@ export class EditRegisterComponent implements OnInit {
       acceptLabel: 'แก้ไข',
       rejectLabel: 'ยกเลิก',
       accept: () => {
-        this.candidateData.candiExpList.map(items => {
-          items.years = new Date(items.years).getFullYear().toString()
+        this.candidateData.candiExpList.map((items: any) => {
+          if(items.years){
+            items.years = new Date(items.years).getFullYear().toString()
+          }
         })
         this.clientService.editCandidateById(this.candidateId, this.candidateData).subscribe({
           next: (res) => {
-            if(this.files){
+            if (this.files) {
               const formData = new FormData();
               formData.append('files', this.files)
               formData.append('fileName', this.candidateData.candiImage);
@@ -77,7 +76,7 @@ export class EditRegisterComponent implements OnInit {
           complete: () => {
             this.displayModal = true;
             setTimeout(() => {
-              this.router.navigateByUrl('/blockchain-evote/reg_status');
+              this.router.navigateByUrl('/blockchain-admin/candidatelist');
             }, 2000);
           }
         })
@@ -100,7 +99,5 @@ export class EditRegisterComponent implements OnInit {
     this.files = null;
     this.imageSrc = null;
     this.displayPic = false;
-    this.regisForm.reset();
   }
-
 }

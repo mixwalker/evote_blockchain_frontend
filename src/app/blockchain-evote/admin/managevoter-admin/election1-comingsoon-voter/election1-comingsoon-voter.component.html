@@ -124,16 +124,13 @@
     <div class="card-container overflow-hidden " style="max-width: 100% ">
         <div class="flex flex-wrap border-round m-2 justify-content-center ">
             <p-panel header="รายชื่อผู้มีสิทธิ์ลงคะแนน ">
-                <!-- <div class="flex flex-wrap card-container align-items-center justify-content-center m-5">
-                    <p-chart type="pie" [data]="data"  [style]="{'width': '40%'}"></p-chart>
-                </div> -->
                 <div class="flex flex-wrap card-container align-items-center justify-content-start ">
                     <div class="flex m-2 ">
                         <div class="flex m-2">
-                            <p-table #inputEL [value]="studentcanVoteList" responsiveLayout="scroll" selectionMode="single"
+                            <p-table #inputEL [value]="studentcanVoteList" responsiveLayout="scroll"
+                                selectionMode="single"
                                 [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
-                                dataKey="projectCode" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                                currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                dataKey="projectCode" [paginator]="true" [rows]="10">
                                 <ng-template pTemplate="caption">
                                     <div class="flex align-items-center justify-content-between">
                                         ผู้มีสิทธิ์ลงคะแนนเลือกตั้ง
@@ -151,10 +148,10 @@
                                         <th style="width: 10rem;">นามสกุล</th>
                                         <th style="width: 15rem;">สาขาวิชา</th>
                                         <th style="width: 15rem;">คณะ</th>
-                                        <th  style="width: 5rem;"></th>
+                                        <th style="width: 5rem;"></th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-studentDetail>
+                                <ng-template pTemplate="body" let-studentDetail let-i="rowIndex">
                                     <tr>
                                         <td>
                                             {{studentDetail.studentCode}}
@@ -162,32 +159,39 @@
                                         <td>
                                             {{studentDetail.firstName}}
                                         </td>
-                                        <td >
+                                        <td>
                                             {{studentDetail.lastName}}
                                         </td>
-                                        <td >
+                                        <td>
                                             {{studentDetail.studentMajor}}
                                         </td>
                                         <td>
                                             {{studentDetail.studentFaculty}}
                                         </td>
                                         <td>
-                                            <button pButton type="button" class="p-button-danger" label="ลบ" style="width: 100%;" (click)="remove(studentDetail.studentId)"></button>
+                                            <button pButton type="button" class="p-button-danger" label="ลบ"
+                                                style="width: 100%;height: 2.5rem;" (click)="remove(studentDetail,i)"></button>
                                         </td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="summary">
                                     <div class="flex align-items-center justify-content-between">
-                                        จำนวนนักศึกษาทั้งหมด {{ studentcanVoteList ? studentcanVoteList.length : 0}} คน
+                                        <div class="flex">
+                                            จำนวนนักศึกษาทั้งหมด {{ studentcanVoteList ? studentcanVoteList.length : 0 }} คน
+                                        </div>
+                                        <div class="flex">
+                                            <button pButton type="button" class="p-button-danger" label="ลบทั้งหมด"
+                                            style="width: 100%;height: 2.5rem;" (click)="removeAll()"></button>
+                                        </div>
                                     </div>
                                 </ng-template>
                             </p-table>
                         </div>
                         <div class="flex m-2">
-                            <p-table #inputEL2 [value]="studentcantVoteList" responsiveLayout="scroll" selectionMode="single"
+                            <p-table #inputEL2 [value]="studentcantVoteList" responsiveLayout="scroll"
+                                selectionMode="single"
                                 [globalFilterFields]="['studentCode','firstName','lastName','studentMajor']"
-                                dataKey="projectCode" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
-                                currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
+                                dataKey="projectCode" [paginator]="true" [rows]="10">
                                 <ng-template pTemplate="caption">
                                     <div class="flex align-items-center justify-content-between">
                                         ผู้ไม่มีสิทธิ์ลงคะแนนเลือกตั้ง
@@ -208,7 +212,7 @@
                                         <th style="width: 5rem;"></th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-studentDetail>
+                                <ng-template pTemplate="body" let-studentDetail let-i="rowIndex">
                                     <tr>
                                         <td>
                                             {{studentDetail.studentCode}}
@@ -216,23 +220,30 @@
                                         <td>
                                             {{studentDetail.firstName}}
                                         </td>
-                                        <td >
+                                        <td>
                                             {{studentDetail.lastName}}
                                         </td>
-                                        <td >
+                                        <td>
                                             {{studentDetail.studentMajor}}
                                         </td>
                                         <td>
                                             {{studentDetail.studentFaculty}}
                                         </td>
                                         <td>
-                                            <button pButton type="button" class="p-button-success" label="เพิ่ม" style="width: 100%;" (click)="add(studentDetail.studentId)"></button>
+                                            <button pButton type="button" class="p-button-success" label="เพิ่ม"
+                                                style="width: 100%;height: 2.5rem;" (click)="add(studentDetail,i)"></button>
                                         </td>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="summary">
                                     <div class="flex align-items-center justify-content-between">
-                                        จำนวนนักศึกษาทั้งหมด {{ studentcantVoteList ? studentcantVoteList.length : 0}} คน
+                                        <div class="flex">
+                                            จำนวนนักศึกษาทั้งหมด {{ studentcantVoteList ? studentcantVoteList.length : 0 }} คน
+                                        </div>
+                                        <div class="flex">
+                                            <button pButton type="button" class="p-button-success" label="เพิ่มทั้งหมด"
+                                            style="width: 100%;height: 2.5rem;" (click)="addAll()"></button>
+                                        </div>
                                     </div>
                                 </ng-template>
                             </p-table>

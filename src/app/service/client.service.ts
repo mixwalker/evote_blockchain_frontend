@@ -21,17 +21,25 @@ export class ClientService {
   getStudentById(id: number) {
     return this.http.get<Student>(`api/student/${id}`);
   }
- 
+
   addStudent(student: Student) {
     return this.http.post(`api/student/`, student);
   }
 
-  getStudentInElection(id: number){
+  editStudent(student:Student){
+    return this.http.put(`api/student/`,student);
+  }
+
+  getStudentInElection(id: number) {
     return this.http.get(`api/student/std_have_elec/${id}`)
   }
 
-  getStudentNotInElection(id: number){
+  getStudentNotInElection(id: number) {
     return this.http.get(`api/student/std_no_elec/${id}`)
+  }
+
+  getStudentDataByCandidateId(id:number){
+    return this.http.get<any>(`api/student/std_by_candi/${id}`)
   }
 
 
@@ -44,25 +52,25 @@ export class ClientService {
     return this.http.get<any>(`api/election/regis_on`);
   }
 
-  getElectionOnVote(){
+  getElectionOnVote() {
     return this.http.get<any>(`api/election/on_vote`);
   }
 
-  getElectionComingSoon(){
+  getElectionComingSoon() {
     return this.http.get<any>(`api/election/coming_soon`);
   }
-  
-  getElectionVoteComplete(){
+
+  getElectionVoteComplete() {
     return this.http.get<any>(`api/election/vote_complete`);
   }
 
 
-  createElection(election:Election){
-    return this.http.post<Election>(`api/election/`,election);
+  createElection(election: Election) {
+    return this.http.post<Election>(`api/election/`, election);
   }
 
-  editElection(election:Election){
-    return this.http.put<Election>(`api/election/update/${election.elecId}`,election);
+  editElection(election: Election) {
+    return this.http.put<Election>(`api/election/update/${election.elecId}`, election);
   }
 
   uploadImageElection(formdata: any) {
@@ -77,7 +85,7 @@ export class ClientService {
     return this.http.post(`api/election/`, election);
   }
 
-  checkElectionTime(){
+  checkElectionTime() {
     return this.http.get<any>(`api/election/check_time`);
   }
 
@@ -96,15 +104,15 @@ export class ClientService {
     return this.http.get<ElectionAndStudent[]>(`api/elec_student/findbyelection/${id}`);
   }
 
-  getEWSByStdIdAndElecId(stdId:number,elecId:number){
+  getEWSByStdIdAndElecId(stdId: number, elecId: number) {
     return this.http.get<ElectionAndStudent[]>(`api/elec_student/findByStdIdAndElecId/${stdId}/${elecId}`);
   }
 
-  createEs(es:any){
-    return this.http.post<any>(`api/elec_student`,es);
+  createEs(es: any) {
+    return this.http.post<any>(`api/elec_student`, es);
   }
-  
-  deleteEsByStudent(id:number){
+
+  deleteEsByStudent(id: number) {
     return this.http.delete<any>(`api/elec_student/delby_student/${id}`)
   }
 
@@ -117,7 +125,7 @@ export class ClientService {
     return this.http.get<any>(`api/elec_candidate/findbyelection/${id}`);
   }
 
-  getCandidateByElectionWithApprove(id: number){
+  getCandidateByElectionWithApprove(id: number) {
     return this.http.get<any>(`api/elec_candidate/findbyelectionwith_approve/${id}`);
   }
 
@@ -126,12 +134,12 @@ export class ClientService {
   }
 
   //Candidate
-  getCandidateById(candiId:number){
+  getCandidateById(candiId: number) {
     return this.http.get<any>(`api/candidate/${candiId}`);
   }
 
-  editCandidateById(candiId:number,candiObj:Candidate){
-    return this.http.put<any>(`api/candidate/${candiId}`,candiObj);
+  editCandidateById(candiId: number, candiObj: Candidate) {
+    return this.http.put<any>(`api/candidate/${candiId}`, candiObj);
   }
 
   createCandidate(candidateObj: any) {
@@ -140,6 +148,18 @@ export class ClientService {
 
   uploadImageCandidate(formdata: any) {
     return this.http.post<any>(`api/candidate/upload`, formdata);
+  }
+
+  unApprove(candiId:number){
+    return this.http.get<any>(`api/candidate/candidate_unapprove/${candiId}`);
+  }
+
+  Approve(candiId:number){
+    return this.http.get<any>(`api/candidate/candidate_approve/${candiId}`);
+  }
+
+  notApprove(candiId:number){
+    return this.http.get<any>(`api/candidate/candidate_notapprove/${candiId}`);
   }
 
   //studentBeCandidate
@@ -153,12 +173,22 @@ export class ClientService {
     return this.http.get<any>(`api/student_candidate/findbycandidate/${id}`);
   }
 
-  //voteAndCheckVote
-  vote(id:number,vote:any){
-    return this.http.put<any>(`api/elec_student/vote/${id}`,vote);
+  getCandidateApprove(id: number) {
+    return this.http.get<any>(`api/student_candidate/candidate_aprrove_elec/${id}`)
   }
 
-  checkVote(id:number){
+  getCandidateNotApprove(id: number) {
+    return this.http.get<any>(`api/student_candidate/candidate_notaprrove_elec/${id}`)
+  }
+
+
+
+  //voteAndCheckVote
+  vote(id: number, vote: any) {
+    return this.http.put<any>(`api/elec_student/vote/${id}`, vote);
+  }
+
+  checkVote(id: number) {
     return this.http.get<any>(`api/elec_student/check_voted/${id}`);
   }
 

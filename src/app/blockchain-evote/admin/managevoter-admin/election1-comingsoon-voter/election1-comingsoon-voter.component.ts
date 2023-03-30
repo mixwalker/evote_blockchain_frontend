@@ -9,11 +9,12 @@ import { ClientService } from 'src/app/service/client.service';
 })
 export class Election1ComingsoonVoterComponent implements OnInit {
 
-  data:any;
+  data: any;
   election: any;
-  studentcanVoteList:any;
-  studentcantVoteList:any;
+  studentcanVoteList: any;
+  studentcantVoteList: any;
   studentList: any;
+  studentData: any;
   checked: boolean = true;
   displaySuccessModal = false;
   displayErrorModal = false;
@@ -25,25 +26,6 @@ export class Election1ComingsoonVoterComponent implements OnInit {
   ngOnInit(): void {
     const url = this.router.url.split('/');
     const id = parseInt(url[url.length - 1]);
-
-    this.data = {
-      labels: ['A','B','C'],
-      datasets: [
-          {
-              data: [300, 50, 100],
-              backgroundColor: [
-                  "#42A5F5",
-                  "#66BB6A",
-                  "#FFA726"
-              ],
-              hoverBackgroundColor: [
-                  "#64B5F6",
-                  "#81C784",
-                  "#FFB74D"
-              ]
-          }
-      ]
-  };
 
     this.clientService.getElectionById(id).subscribe({
       next: (res) => {
@@ -61,11 +43,10 @@ export class Election1ComingsoonVoterComponent implements OnInit {
       }
     });
 
-    this.clientService.getStudentNotInElection(id).subscribe(res=>{
-      this.studentcantVoteList = res;
-    })
-
     this.clientService.getStudentInElection(id).subscribe(res => this.studentcanVoteList = res);
+
+    this.clientService.getStudentNotInElection(id).subscribe(res => this.studentcantVoteList = res);
+
   }
 
   inputSearch(inputEL: any, event: any) {
@@ -80,20 +61,72 @@ export class Election1ComingsoonVoterComponent implements OnInit {
     return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
   }
 
-  add(studentId:number){
+  add(studentDetail: any, index: number) {
     const ElecWStudent = {
       election: {
         elecId: this.election.elecId
       },
       student: {
-        studentId: studentId
+        studentId: studentDetail.studentId
       }
     }
 
-    this.clientService.createEs(ElecWStudent).subscribe(res=> console.log(res));
+    this.clientService.createEs(ElecWStudent).subscribe({
+      complete: () => {
+        this.studentcanVoteList.push(studentDetail);
+        this.studentcantVoteList.splice(index, 1);
+      }
+    });
   }
 
-  remove(id:number){
-    this.clientService.deleteEsByStudent(id).subscribe();
+  remove(studentDetail: any, index: number) {
+    this.clientService.deleteEsByStudent(studentDetail.studentId).subscribe({
+      complete: () => {
+        this.studentcantVoteList.push(studentDetail);
+        this.studentcanVoteList.splice(index, 1);
+      }
+    });
+  }
+
+  removeAll() {
+    this.clientService.getStudentInElection(this.election.elecId).subscribe({
+      next: (res) => {
+        this.studentData = res;
+        this.studentData.forEach((items: any, index: number) => {
+          this.clientService.deleteEsByStudent(items.studentId).subscribe({
+          });
+        });
+      },
+      complete:() =>{
+        window.location.reload();
+      }
+    });
+  }
+
+  addAll() {
+    this.clientService.getStudentNotInElection(this.election.elecId).subscribe({
+      next: (res) => {
+        this.studentData = res;
+        this.studentData.forEach((items: any, index: number) => {
+          const ElecWStudent = {
+            election: {
+              elecId: this.election.elecId
+            },
+            student: {
+              studentId: items.studentId
+            }
+          }
+          this.clientService.createEs(ElecWStudent).subscribe({
+             complete: () => {
+              this.studentcanVoteList.push(items);
+              this.studentcantVoteList.splice(index, 1);
+            }
+          });
+        });
+      },
+      complete:() =>{
+        window.location.reload();
+      }
+    });
   }
 }

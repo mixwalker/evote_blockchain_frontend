@@ -33,12 +33,10 @@ import { VotingscoreAdminComponent } from './blockchain-evote/admin/votingscore-
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CreateElectionAdminComponent } from './blockchain-evote/admin/create-election-admin/create-election-admin.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { AddCandidateComponent } from './blockchain-evote/admin/manage-election/add-candidate/add-candidate.component';
 import { BlockUIModule } from 'primeng/blockui';
 import { ManagevoterAdminComponent } from './blockchain-evote/admin/managevoter-admin/managevoter-admin.component';
 import { CandidatelistAdminComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-admin.component';
 import { TabViewModule } from 'primeng/tabview';
-import { AddremoveVoterComponent } from './blockchain-evote/admin/managevoter-admin/addremove-voter/addremove-voter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuBarAdminComponent } from './blockchain-evote/admin/menu-bar-admin/menu-bar-admin.component';
 import { PasswordModule } from 'primeng/password';
@@ -58,6 +56,13 @@ import { OtpComponent } from './blockchain-evote/auth/otp/otp.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/managevoter-admin/election1-comingsoon-voter/election1-comingsoon-voter.component';
+import { EditCandidatelistComponent } from './blockchain-evote/admin/candidatelist-admin/edit-candidatelist/edit-candidatelist.component';
+import { CandidateDetailComponent } from './blockchain-evote/admin/candidatelist-admin/candidate-detail/candidate-detail.component';
+import { AddUserManualComponent } from './blockchain-evote/admin/manage-student/add-user-manual/add-user-manual.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { ManageStudentComponent } from './blockchain-evote/admin/manage-student/manage-student.component';
+import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-user/edit-user.component';
+
 
 @NgModule({
   declarations: [
@@ -75,10 +80,8 @@ import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/mana
     HomepageAdminComponent,
     VotingscoreAdminComponent,
     CreateElectionAdminComponent,
-    AddCandidateComponent,
     ManagevoterAdminComponent,
     CandidatelistAdminComponent,
-    AddremoveVoterComponent,
     MenuBarAdminComponent,
     RegisterComponent,
     FormatDatePipe,
@@ -91,6 +94,11 @@ import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/mana
     OtpComponent,
     SpinnerComponent,
     Election1ComingsoonVoterComponent,
+    EditCandidatelistComponent,
+    CandidateDetailComponent,
+    AddUserManualComponent,
+    ManageStudentComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +128,8 @@ import { Election1ComingsoonVoterComponent } from './blockchain-evote/admin/mana
     ReactiveFormsModule,
     ConfirmDialogModule,
     DialogModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    DropdownModule
   ],
   providers: [
     MessageService,

@@ -76,8 +76,8 @@ export class CandidatelistAdminComponent implements OnInit {
     this.getAddRemoveVoter = unActivate;
   }
 
-  editElection(id: number) {
-    this.router.navigate(['blockchain-admin', 'edit_election', id])
+  editCandidateList(id: number) {
+    this.router.navigate(['blockchain-admin','candidatelist', 'edit_candidate', id])
   }
 
   goToElectionDetail(id: number) {

@@ -1,14 +1,21 @@
 <app-menu-bar></app-menu-bar>
-<p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false">
-    <ng-template pTemplate="item" let-item>
-        <img [src]="item.previewImageSrc" style="width: 70%; display: block;" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-        <div class="grid grid-nogutter justify-content-center">
-            <img [src]="item.thumbnailImageSrc" style="display: block;" />
-        </div>
-    </ng-template>
-</p-galleria>
+<div class="card" style="background-color: white;">
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="5" [circular]="true"
+        [showItemNavigators]="true" [showThumbnails]="false" [autoPlay]="true">
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.previewImageSrc" style="width: 80%;height: 100%; display: block;" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            </div>
+        </ng-template>
+        <ng-template pTemplate="caption" let-item>
+            <h4 style="margin-bottom: .5rem; color: #ffffff;">{{ item.title }}</h4>
+            <p>{{ item.alt }}</p>
+        </ng-template>
+    </p-galleria>
+</div>
 <div class="card">
     <div class="card-container yellow-container overflow-hidden">
         <div class="flex">

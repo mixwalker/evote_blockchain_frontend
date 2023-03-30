@@ -119,25 +119,25 @@
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecId}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecName}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     {{electionDetail.elecRegisEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="editCandidateList(electionDetail.elecId)">
                                                     <div class="flex justify-content-center">
                                                         {{electionDetail.countCandi}}
                                                     </div>
@@ -145,7 +145,7 @@
                                                 <td class="flex justify-content-center">
                                                     <button pButton pRipple type="button" icon="pi pi-pencil"
                                                         class="p-button-rounded p-button-warning mr-2"
-                                                        (click)="editElection(electionDetail.elecId)"></button>
+                                                        (click)="editCandidateList(electionDetail.elecId)"></button>
                                                     <button pButton pRipple type="button" icon="pi pi-trash"
                                                         class="p-button-rounded p-button-danger"></button>
                                                 </td>
@@ -224,7 +224,8 @@
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด รายการ
+                                                จำนวนรายการทั้งหมด {{electionVoteCompleteList ?
+                                                electionVoteCompleteList.lenght : 0}} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -238,7 +239,3 @@
     </div>
 </div>
 <div style="margin-top:2%;"></div>
-<app-footer></app-footer>
-<div *ngIf="getAddRemoveVoter">
-    <app-addremove-voter (unBlock)="unActivate($event)"></app-addremove-voter>
-</div>
