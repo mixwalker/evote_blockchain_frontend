@@ -3,7 +3,7 @@
     <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [numVisible]="5" [circular]="true"
         [showItemNavigators]="true" [showThumbnails]="false" [autoPlay]="true">
         <ng-template pTemplate="item" let-item>
-            <img [src]="item.previewImageSrc" style="width: 80%;height: 100%; display: block;" />
+            <img [src]="item.previewImageSrc" style="width: 80%;max-height: 450px; display: block;" />
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
             <div class="grid grid-nogutter justify-content-center">
@@ -16,8 +16,8 @@
                     <h4 style="margin-bottom: .5rem; color: #ffffff;">{{ item.title }}</h4>
                     <p>{{ item.alt }}</p>
                 </div>
-                <button pButton type="button" class="p-button buttonColor" label="อัพเดทข่าวสาร"
-                    style="width: 10%;"></button>
+                <button pButton type="button" class="p-button buttonColor" label="อัพเดทข่าวสาร" style="width: 10%;"
+                    (click)="onActivate()"></button>
             </div>
         </ng-template>
     </p-galleria>
@@ -94,14 +94,19 @@
         <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round"
             style="min-width: 200px; min-height: 100px"
             *ngFor="let elec of electionOnVoteList;let indexOfelement=index;">
-            <p-card header="{{elec.elecName}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+            <p-card [style]="{width: '360px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
                     <div class="flex justify-content-center">
                         <img alt="Card" src="api/candidate/image/{{elec.elecImages}}"
                             [style]="{width: '350px',height: '200px'}">
                     </div>
+                    <div class="flex justify-content-left font-bold text-xl m-3">
+                        <p style="width:340px;height:auto;word-wrap: break-word;">
+                            {{elec.elecName}}
+                        </p>
+                    </div>
                 </ng-template>
-                <p>
+                <p style="height: 72px;">
                     {{elec.elecDetail}}
                 </p>
                 <div style="margin-top: 1rem">
@@ -112,11 +117,9 @@
                         <p>
                             สิ้นสุด : {{elec.elecEnddate | formatDate}}
                         </p>
-                        <p>
-                            ผู้ลงสมัครทั้งหมด : {{elec.countCandi}} คน
-                        </p>
                     </b>
                 </div>
+
 
                 <ng-template pTemplate="footer">
                     <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบ"
@@ -128,4 +131,7 @@
 </div>
 <div style="margin-top:2%;">
     <app-footer></app-footer>
+</div>
+<div *ngIf="activate">
+    <app-announcement (unBlock)="unActivate($event)"></app-announcement>
 </div>

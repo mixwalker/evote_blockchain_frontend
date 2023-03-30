@@ -64,7 +64,6 @@ export class ClientService {
     return this.http.get<any>(`api/election/vote_complete`);
   }
 
-
   createElection(election: Election) {
     return this.http.post<Election>(`api/election/`, election);
   }
@@ -190,6 +189,34 @@ export class ClientService {
 
   checkVote(id: number) {
     return this.http.get<any>(`api/elec_student/check_voted/${id}`);
+  }
+
+  //Annoucement
+  getAllAnnoucementList(){
+    return this.http.get<any>(`api/annoucement`);
+  }
+
+  getStatusOnAnnoucementList(){
+    return this.http.get<any>(`api/annoucement/get_status_on`);
+  }
+
+  deleteAnnoucement(id:number){
+    return this.http.delete<any>(`api/annoucement/${id}`);
+  }
+
+  setStatusAnnoucement(id:number,status:boolean){
+    const annoucement = {
+      announcementStatus: status
+    }
+    return this.http.put<any>(`api/annoucement/set_status/${id}`,annoucement);
+  }
+  
+  createAnnounce(announce:any){
+    return this.http.post<any>(`api/annoucement/`,announce);
+  }
+
+  uploadImageAnnounce(formdata: any){
+    return this.http.post<any>(`api/annoucement/upload`,formdata);
   }
 
 }

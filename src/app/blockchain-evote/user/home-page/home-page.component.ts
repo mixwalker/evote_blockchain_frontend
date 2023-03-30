@@ -16,23 +16,11 @@ export class HomePageComponent implements OnInit {
   candidateList: any[] = [];
   images: any[] = [
     {
-      "previewImageSrc": "assets\\img\\homepage_img.png",
-      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
-    },
-    {
       "previewImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
       "thumbnailImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
+      "alt": "ระบบการเลือกตั้งสโมสรนักศึกษาด้วยเทคโนโลยีบล็อกเชนสำหรับคณะวิทยาศาสตร์และเทคโนโลยี",
+      "title": "ระบบการเลือกตั้งสโมสรนักศึกษาด้วยเทคโนโลยีบล็อกเชน"
     },
-    {
-      "previewImageSrc": "assets\\img\\homepage_img.png",
-      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
-    }
   ];
 
   responsiveOptions: any[] = [
@@ -66,7 +54,19 @@ export class HomePageComponent implements OnInit {
           electionList.election.elecEnddate = endDateSplit[0];
         }
       }
-    })
+    });
+
+    this.clientService.getStatusOnAnnoucementList().subscribe(res => {
+      res.map((items: any) => {
+        let imageData = {
+          previewImageSrc: `api/annoucement/image/${items.announcementImage}`,
+          thumbnailImageSrc: `api/annoucement/image/${items.announcementImage}`,
+          alt: items.announcementDetail,
+          title: items.announcementTitle
+        }
+        this.images.push(imageData)
+      });
+    });
   }
 
   goToElectionById(id: string) {

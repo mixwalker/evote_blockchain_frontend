@@ -1,0 +1,77 @@
+<p-blockUI [blocked]="blockedImport">
+    <p-card header="เพิ่มข่าวสาร" subheader="เพิ่มข่าวสารและรายละเอียดข่าวสาร" [style]="{width: '1050px'}"
+        styleClass="p-card-shadow">
+        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+            <div class="flex align-items-baseline justify-content-left">
+                <label for="perInfo" class="block"><b>ข้อมูลข่าวสาร</b></label>
+            </div>
+        </div>
+        <div class="card">
+            <div class="flex card-container">
+                <div class="flex-1" style="height: 100%;">
+                    <div class="flex-column" [formGroup]="announceForm">
+                        <div class="flex flex-wrap card-container blue-container" style="min-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field" style="width: 100%;">
+                                    <label for="text" class="block">หัวข้อข่าวสาร</label>
+                                    <input id="text" type="text" pInputText [style]="{ width: '264px'}" formControlName="announcementTitle"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="text" class="block">รายละเอียดข่าวสาร</label>
+                                    <textarea [rows]="5" [cols]="30" pInputTextarea [autoResize]="true" formControlName="announcementDetail"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <div class="flex flex-wrap card-container blue-container mt-2" style="max-width: 100%">
+                        <div class="flex align-items-baseline justify-content-left">
+                            <label for="exp" class="block"><b>รูปภาพ</b></label>
+                        </div>
+                    </div>
+                    <label for="buttonClick">
+                        <div *ngIf="displayPic" class="flex flex-wrap card-container blue-container"
+                            style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-left m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <img [src]="imageSrc" id="photo" [style]="{width: '700px',height: '400px'}">
+                            </div>
+                        </div>
+                        <div *ngIf="displayPic === false" class="flex flex-wrap card-container blue-container"
+                            style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-left m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="flex card-container align-items-center justify-content-center border-200 surface-overlay border-3 border-round"
+                                    style="width: 700px;height: 400px;">
+                                    <i class="pi pi-image" style="font-size: 10rem"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <input type="file" id="buttonClick" style="display: none;visibility: hidden;" accept="image/*"
+                (change)="selectImage($event)">
+        </div>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-end" style="text-align: center;padding: 2vh;">
+                <div class="flex mr-2">
+                    <button pButton pRipple type="button" label="สร้างข่าวสาร" class="p-button-success"
+                        (click)="addAnnounce()"></button>
+                </div>
+                <div class="flex" style="width: 120px;">
+                    <button pButton pRipple type="button" label="ปิด" class="p-button-danger"
+                        (click)="closeAdd()" style="width: 120px;"></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-card>
+</p-blockUI>
+<p-toast></p-toast>

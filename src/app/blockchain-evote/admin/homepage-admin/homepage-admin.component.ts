@@ -11,25 +11,14 @@ import { ClientService } from 'src/app/service/client.service';
 export class HomepageAdminComponent implements OnInit {
   items: any;
   options: any;
-  electionOnVoteList:any;
+  electionOnVoteList: any;
+  activate: boolean = false;
   images: any[] = [
-    {
-      "previewImageSrc": "assets\\img\\homepage_img.png",
-      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
-    },
     {
       "previewImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
       "thumbnailImageSrc": "assets\\img\\RMUTT-menubar-logo.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
-    },
-    {
-      "previewImageSrc": "assets\\img\\homepage_img.png",
-      "thumbnailImageSrc": "assets\\img\\homepage_img.png",
-      "alt": "Description for Image 1",
-      "title": "Title 1"
+      "alt": "ระบบการเลือกตั้งสโมสรนักศึกษาด้วยเทคโนโลยีบล็อกเชนสำหรับคณะวิทยาศาสตร์และเทคโนโลยี",
+      "title": "ระบบการเลือกตั้งสโมสรนักศึกษาด้วยเทคโนโลยีบล็อกเชน"
     }
   ];
 
@@ -57,8 +46,21 @@ export class HomepageAdminComponent implements OnInit {
       zoom: 12
     };
 
+    this.clientService.getStatusOnAnnoucementList().subscribe(res => {
+      res.map((items: any) => {
+        let imageData = {
+          previewImageSrc: `api/annoucement/image/${items.announcementImage}`,
+          thumbnailImageSrc: `api/annoucement/image/${items.announcementImage}`,
+          alt: items.announcementDetail,
+          title: items.announcementTitle
+        }
+        this.images.push(imageData)
+      });
+    });
+
+
     this.clientService.getElectionOnVote().subscribe({
-      next: (res) =>{
+      next: (res) => {
         this.electionOnVoteList = res
       },
       complete: () => {
@@ -70,6 +72,8 @@ export class HomepageAdminComponent implements OnInit {
         }
       }
     })
+
+
   }
 
   goToCreateElection() {
@@ -84,8 +88,17 @@ export class HomepageAdminComponent implements OnInit {
     this.router.navigateByUrl("/blockchain-admin/candidatelist");
   }
 
-  goToElectionDetail(id:number) {
+  goToElectionDetail(id: number) {
     this.router.navigate(['blockchain-admin/election_detail/', id])
+  }
+
+  onActivate() {
+    this.activate = true;
+  }
+
+  unActivate(unActivate: boolean) {
+    this.activate = unActivate;
+    window.location.reload();
   }
 
 }

@@ -62,6 +62,9 @@ import { AddUserManualComponent } from './blockchain-evote/admin/manage-student/
 import { DropdownModule } from 'primeng/dropdown';
 import { ManageStudentComponent } from './blockchain-evote/admin/manage-student/manage-student.component';
 import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-user/edit-user.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AnnouncementComponent } from './blockchain-evote/admin/homepage-admin/announcement/announcement.component';
+import { AddAnnounceComponent } from './blockchain-evote/admin/homepage-admin/announcement/add-announce/add-announce.component';
 
 
 @NgModule({
@@ -99,6 +102,8 @@ import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-
     AddUserManualComponent,
     ManageStudentComponent,
     EditUserComponent,
+    AnnouncementComponent,
+    AddAnnounceComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,7 +139,8 @@ import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-
   providers: [
     MessageService,
     ConfirmationService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

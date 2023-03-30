@@ -56,7 +56,7 @@ export class CreateElectionAdminComponent implements OnInit {
         const formData = new FormData();
         formData.append('files', this.files)
         formData.append('fileName', this.createForm.value.elecImages);
-
+        
         this.clientServie.uploadImageElection(formData).subscribe({
           complete:()=>{
             this.displayModal = true;
