@@ -12,45 +12,53 @@
     <div class="card-container overflow-hidden">
         <div class="flex">
             <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
-                <div class="flex-row align-items-center justify-content-center m-2 border-round" style="min-width: 80%; min-height: 700px">
-                    <div class="flex align-items-start justify-content-center m-2 border-round" style="min-width: 80%; min-height: 500px">
+                <div class="flex-row align-items-center justify-content-center m-2 border-round"
+                    style="min-width: 80%; min-height: 700px">
+                    <div class="flex align-items-start justify-content-center m-2 border-round"
+                        style="min-width: 80%; min-height: 500px">
                         <p-chart type="bar" [data]="chartData" [options]="options" width="40vw" height="60vh"></p-chart>
                     </div>
-                    <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 100%; min-height: 200px" *ngFor="let block of blockchain.chain">
+                    <div class="flex align-items-center justify-content-center m-2 border-round"
+                        style="min-width: 100%; min-height: 200px" *ngFor="let block of blockchain.chain;let i = index;">
                         <div class="flex-row m-2 border-round" style="min-width: 55%; min-height: 200px">
-                            <div class="flex-row font-bold m-2 border-round blockBg" style="min-width: 100%; min-height: 200px">
-                                <div class="flex align-items-center justify-content-center font-bold m-2 border-round" style="min-width: 55%; min-height: 150px">
+                            <div class="flex-row font-bold m-2 border-round blockBg"
+                                style="min-width: 100%; min-height: 200px">
+                                <div class="flex align-items-center justify-content-center font-bold m-2 border-round"
+                                    style="min-width: 55%; min-height: 150px">
                                     ข้อมูล :
-                                    <div class="flex align-items-center justify-content-start font-bold m-3 border-round bg-white" style="min-width: 85%; min-height: 150px">
-                                        <div *ngIf="block.data !== null" class="text-lg" style="margin-left: 1rem;">
+                                    <div class="flex align-items-center justify-content-start font-bold m-3 border-round bg-white"
+                                        style="min-width: 85%; min-height: 150px">
+                                        <div *ngIf="block.data" class="text-lg" style="margin-left: 1rem;">
                                             ผู้ลงคะแนน : {{block.data.student.studentName}}
                                             <br> ผู้ลงสมัคร : {{block.data.candidate.candiName}}
                                             <br>เบอร์พรรค :
                                         </div>
-                                        <div *ngIf="block.data === null" class="text-lg" style="margin-left: 1rem;">
+                                        <div *ngIf="!block.data" class="text-lg" style="margin-left: 1rem;">
                                             ไม่มีข้อมูล
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex-row align-items-start justify-content-start font-bold m-2 border-round" style="min-width: 80%; min-height: 220px">
+                                <div class="flex-row align-items-start justify-content-start font-bold m-2 border-round"
+                                    style="min-width: 80%; min-height: 220px">
                                     <div style="margin: 1rem;">
                                         Nonce &nbsp;
-                                        <input type="text" pInputText value="{{block.nonce}}" [style]="{width: '100%'}" disabled/>
+                                        <input type="text" pInputText value="{{block.nonce}}" [style]="{width: '100%'}" disabled />
                                     </div>
                                     <div style="margin: 1rem;">
                                         Previous Hash &nbsp;
-                                        <input type="text" pInputText value="{{block.previous_hash}}" [style]="{width: '100%'}" disabled/>
+                                        <input type="text" pInputText value="{{block.previous_hash}}" [style]="{width: '100%'}" disabled />
                                     </div>
                                     <div style="margin: 1rem;">
                                         Current Hash &nbsp;
-                                        <input type="text" pInputText value="{{block.hash}}" [style]="{width: '100%'}" disabled/>
+                                        <input type="text" pInputText value="{{block.hash}}" [style]="{width: '100%'}" disabled />
                                     </div>
                                     <div class="" style="margin: 1rem;">
-                                        BLOCK#{{block.index}} {{block.timestemp}}
+                                        BLOCK#{{block.index}} {{block.timestemp | dateTime}}
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex align-items-center justify-content-center border-round" style="min-width: 55%; min-height: 50px">
+                            <div class="flex align-items-center justify-content-center border-round"
+                                style="min-width: 55%; min-height: 50px">
                                 <img src="assets\img\icon\chain.png" height="35" width="35" class="mr-2">
                             </div>
                         </div>

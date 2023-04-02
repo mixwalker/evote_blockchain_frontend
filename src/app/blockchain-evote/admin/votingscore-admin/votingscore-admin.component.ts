@@ -13,9 +13,10 @@ export class VotingscoreAdminComponent implements OnInit {
 
   options: any;
   chartData: any;
-  blockchain!: BlockChain;
+  blockchain!: any;
   election: any;
   candidateList: any;
+  blockchainSort!: any;
   constructor(private router: Router,
     private clientService: ClientService,
     private blockchainService: BlockchainApiService) { }
@@ -23,94 +24,73 @@ export class VotingscoreAdminComponent implements OnInit {
   ngOnInit(): void {
     const url = this.router.url.split('/');
     const id = parseInt(url[url.length - 1]);
+    const elecId = { elecId: id }
+
     this.clientService.getElectionById(id).subscribe(res => {
       this.election = res
     });
 
-    this.clientService.getCandidateByElectionWithApprove(id).subscribe({
+    const candidateNameArr: any[] = [];
+    const candidateIdArr: any[] = [];
+    this.clientService.getCandidateApprove(id).subscribe({
       next: (res) => {
-        this.candidateList = res;
+        res.map((res: any) => {
+          const name = `${res.student.prefix}${res.student.firstName} ${res.student.lastName}`
+          candidateNameArr.push(name);
+          candidateIdArr.push(res.candidate.candiId)
+        })
+
       },
-      complete:()=>{
-        console.log(this.candidateList);
-        this.chartData = {
-          labels: ['test'],
-          datasets: [
-            {
-              data: [1],
-              backgroundColor: [
-                "#42A5F5",
-                "#66BB6A",
-                "#FFA726"
-              ],
-              hoverBackgroundColor: [
-                "#64B5F6",
-                "#81C784",
-                "#FFB74D"
+      complete: () => {
+        this.blockchainService.getChainSort(elecId).subscribe({
+          next: (res) => {
+            this.blockchainSort = res
+          },
+          complete: () => {
+            const dataArr: any[] = []
+            this.blockchainSort.chain.map((items: any) => {
+              if (items.data) {
+                dataArr.push(items.data.candidate.candiId);
+              }
+            })
+
+            let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), []);
+
+            this.chartData = {
+              labels: [],
+              datasets: [
+                {
+                  data: [],
+                  backgroundColor: [
+                    "#42A5F5",
+                    "#66BB6A",
+                    "#FFA726"
+                  ],
+                  hoverBackgroundColor: [
+                    "#64B5F6",
+                    "#81C784",
+                    "#FFB74D"
+                  ]
+                }
               ]
             }
-          ]
-        }
-        
+
+            scoreList.map((items: any) => {
+              this.chartData.datasets[0].data.push(items);
+            })
+
+            for (let name of candidateNameArr) {
+              this.chartData.labels.push(name)
+            }
+          }
+        })
       }
     });
 
-    // const elecId = { elecId: id }
-    // this.blockchainService.getChain(elecId).subscribe({
-    //   next: (res) => {
-    //     this.blockchain = res
-    //   },
-    //   complete: () => {
-    //     this.chartData = {
-    //       labels: [],
-    //       datasets: [
-    //         {
-    //           data: [],
-    //           backgroundColor: [
-    //             "#42A5F5",
-    //             "#66BB6A",
-    //             "#FFA726"
-    //           ],
-    //           hoverBackgroundColor: [
-    //             "#64B5F6",
-    //             "#81C784",
-    //             "#FFB74D"
-    //           ]
-    //         }
-    //       ]
-    //     }
+    this.blockchainService.getChain(elecId).subscribe(res => {this.blockchain = res
+    console.log(res);
+    })
 
-    //     let candidateNameArr: any[] = [];
-    //     for (let chain of this.blockchain.chain) {
-    //       if (chain.data) {
-    //         candidateNameArr.push(chain.data.candidate.candiName)
-    //       }
-    //     }
-
-    //     const candidateNameList = candidateNameArr.filter((name, index) => {
-    //       return index === candidateNameArr.findIndex(indexname => name === indexname);
-    //     });
-
-    //     const tempCandidateScoreList = candidateNameArr.map(name => {
-    //       const IsDuplicate = candidateNameArr.findIndex(indexname => name === indexname)
-    //       return IsDuplicate;
-    //     });
-
-    //     let candidateScoreList: any[] = [];
-    //     tempCandidateScoreList.forEach(item => {
-    //       candidateScoreList[item] = (candidateScoreList[item] || 0) + 1;
-    //     })
-
-    //     candidateNameList.forEach(name => {
-    //       this.chartData.labels.push(name);
-    //     })
-
-    //     candidateScoreList.forEach(score => {
-    //       this.chartData.datasets[0].data.push(score)
-    //     })
-
-    //   }
-    // })
     this.applyOption();
     this.applyDarkTheme();
   }

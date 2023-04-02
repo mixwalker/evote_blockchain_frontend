@@ -12,6 +12,10 @@ export class BlockchainApiService {
     return this.http.post<any>(`chain_api/get_chain`,elecId);
   }
 
+  getChainSort(elecId:any) {
+    return this.http.post<any>(`chain_api/get_chain_sort`,elecId);
+  }
+
   mining(data:any) {
     return this.http.post<any>(`chain_api/mining`,data);
   }

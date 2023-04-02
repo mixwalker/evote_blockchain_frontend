@@ -65,6 +65,7 @@ import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AnnouncementComponent } from './blockchain-evote/admin/homepage-admin/announcement/announcement.component';
 import { AddAnnounceComponent } from './blockchain-evote/admin/homepage-admin/announcement/add-announce/add-announce.component';
+import { DateTimePipe } from './pipe/date-time.pipe';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { AddAnnounceComponent } from './blockchain-evote/admin/homepage-admin/an
     EditUserComponent,
     AnnouncementComponent,
     AddAnnounceComponent,
+    DateTimePipe,
   ],
   imports: [
     BrowserModule,
