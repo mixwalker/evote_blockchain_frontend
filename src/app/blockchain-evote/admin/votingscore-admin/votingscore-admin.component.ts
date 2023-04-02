@@ -88,7 +88,6 @@ export class VotingscoreAdminComponent implements OnInit {
     });
 
     this.blockchainService.getChain(elecId).subscribe(res => {this.blockchain = res
-    console.log(res);
     })
 
     this.applyOption();

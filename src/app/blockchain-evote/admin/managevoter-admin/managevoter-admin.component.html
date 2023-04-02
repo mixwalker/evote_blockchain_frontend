@@ -48,19 +48,19 @@
                                         </ng-template>
                                         <ng-template pTemplate="body" let-electionDetail>
                                             <tr>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToOnVoteDetal(electionDetail.elecId)">
                                                     {{electionDetail.elecId}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToOnVoteDetal(electionDetail.elecId)">
                                                     {{electionDetail.elecName}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToOnVoteDetal(electionDetail.elecId)">
                                                     {{electionDetail.elecStartdate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToOnVoteDetal(electionDetail.elecId)">
                                                     {{electionDetail.elecEnddate | formatDate}}
                                                 </td>
-                                                <td (click)="goToElectionDetail(electionDetail.elecId)">
+                                                <td (click)="goToOnVoteDetal(electionDetail.elecId)">
                                                     <div class="flex justify-content-center">
                                                         {{electionDetail.countCandi}}
                                                     </div>
@@ -68,7 +68,7 @@
                                                 <td>
                                                     <button pButton type="button" class="p-button buttonColor"
                                                         label="ตรวจสอบ" style="width: 100%;"
-                                                        (click)="goToElectionDetail(electionDetail.elecId)"></button>
+                                                        (click)="goToOnVoteDetal(electionDetail.elecId)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>

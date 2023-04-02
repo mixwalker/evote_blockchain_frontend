@@ -15,7 +15,7 @@ export class ManagevoterAdminComponent implements OnInit {
   constructor(
     private router: Router,
     private clientService: ClientService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
@@ -80,8 +80,8 @@ export class ManagevoterAdminComponent implements OnInit {
     this.router.navigate(['blockchain-admin', 'edit_election', id])
   }
 
-  goToElectionDetail(id: number) {
-    this.router.navigate(['blockchain-admin', 'election_detail', id])
+  goToOnVoteDetal(id: number) {
+    this.router.navigate(['blockchain-admin', 'managevoter', 'complete_vote', id])
   }
 
   goToEditVoter(id: number) {
