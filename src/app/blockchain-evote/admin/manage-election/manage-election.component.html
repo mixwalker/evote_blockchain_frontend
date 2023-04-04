@@ -90,7 +90,7 @@
                             </ng-template>
                             <div class="flex m-2">
                                 <div class="card" style="min-width: 900px;">
-                                    <p-table #inputEL2 [value]="allElection" responsiveLayout="scroll"
+                                    <p-table #inputEL2 [value]="electionComing" responsiveLayout="scroll"
                                         selectionMode="single" [globalFilterFields]="['elecId','elecName']"
                                         [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
                                         currentPageReportTemplate="แสดงข้อมูล {first} ถึง {last} จาก {totalRecords} รายการทั้งหมด">
@@ -117,7 +117,7 @@
                                                 <th></th>
                                             </tr>
                                         </ng-template>
-                                        <ng-template pTemplate="body" let-electionDetail>
+                                        <ng-template pTemplate="body" let-electionDetail let-i="rowIndex">
                                             <tr>
                                                 <td (click)="editElection(electionDetail.elecId)">
                                                     {{electionDetail.elecId}}
@@ -147,13 +147,13 @@
                                                         class="p-button-rounded p-button-warning mr-2"
                                                         (click)="editElection(electionDetail.elecId)"></button>
                                                     <button pButton pRipple type="button" icon="pi pi-trash"
-                                                        class="p-button-rounded p-button-danger"></button>
+                                                        class="p-button-rounded p-button-danger" (click)="deleteElection(electionDetail.elecId,i)"></button>
                                                 </td>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="summary">
                                             <div class="flex align-items-center justify-content-between">
-                                                จำนวนรายการทั้งหมด {{allElection ? allElection.length: 0}} รายการ
+                                                จำนวนรายการทั้งหมด {{electionComing ? electionComing.length: 0}} รายการ
                                             </div>
                                         </ng-template>
                                     </p-table>
@@ -240,3 +240,23 @@
 </div>
 <div style="margin-top:2%;"></div>
 <app-footer></app-footer>
+    <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_yes.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>ลบข้อมูลการเลือกตั้งสำเร็จ</H1>
+        </div>
+    </p-dialog>
+    <p-dialog [(visible)]="displayModalFail" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_no.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>ลบข้อมูลการเลือกตั้งไม่สำเร็จ</H1>
+        </div>
+    </p-dialog>

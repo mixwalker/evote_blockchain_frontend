@@ -28,6 +28,7 @@ import { CandidateDetailComponent } from './blockchain-evote/admin/candidatelist
 import { AddUserManualComponent } from './blockchain-evote/admin/manage-student/add-user-manual/add-user-manual.component';
 import { ManageStudentComponent } from './blockchain-evote/admin/manage-student/manage-student.component';
 import { EditUserComponent } from './blockchain-evote/admin/manage-student/edit-user/edit-user.component';
+import { CandidateDataComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/candidate-data/candidate-data.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'blockchain-evote/login', pathMatch: 'full' },
@@ -111,6 +112,10 @@ const routes: Routes = [
       {
         path: 'election_detail/:id',
         component: ElectionDetailOnvoteComponent
+      },
+      {
+        path: 'election_detail/candidate_detail/:id',
+        component: CandidateDataComponent
       },
       {
         path: 'managevoter',

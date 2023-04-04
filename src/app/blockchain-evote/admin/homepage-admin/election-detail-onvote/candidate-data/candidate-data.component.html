@@ -1,0 +1,323 @@
+<app-menu-bar-admin></app-menu-bar-admin>
+<div class="card">
+    <div class="card-container overflow-hidden">
+        <div class="flex">
+            <div class="flex-1 flex align-items-center justify-content-center m-2">
+                <p-panel header="ข้อมูลผู้ลงสมัคร">
+                    <div class="card">
+                        <!-- ข้อมูลส่วนตัว -->
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="perInfo" class="block"><b>ข้อมูลส่วนตัว</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="Number" class="block">หมายเลข</label>
+                                    <input id="Number" type="text" pInputText [(ngModel)]="candidateData.candiNo" [disabled]="true"/>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="prefix" class="block">คำนำหน้าชื่อ</label>
+                                    <input id="prefix" type="text" pInputText [(ngModel)]="studentData.prefix"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="firstname" class="block">ชื่อ</label>
+                                    <input id="firstname" type="text" pInputText [(ngModel)]="studentData.firstName"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="lastname" class="block">นามสกุล</label>
+                                    <input id="lastname" type="text" pInputText [(ngModel)]="studentData.lastName"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="age" class="block">อายุ</label>
+                                    <input id="age" type="number" pInputText [(ngModel)]="studentAge" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="birthday" class="block">วันเดือนปีเกิด</label>
+                                    <p-calendar inputId="birthday" [(ngModel)]="studentData.birthday"
+                                        disabled="true"></p-calendar>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="national" class="block">สัญชาติ</label>
+                                    <input id="national" type="text" pInputText [(ngModel)]="studentData.nationality"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="religion" class="block">ศาสนา</label>
+                                    <input id="religion" type="text" pInputText [(ngModel)]="studentData.religion"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 90px; min-height: 100px">
+                                <div class="field">
+                                    <label for="housenumber" class="block">บ้านเลขที่</label>
+                                    <input id="housenumber" type="text" pInputText style="width: 90px;"
+                                        [(ngModel)]="studentData.studentAddress.addHouse" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 90px; min-height: 100px">
+                                <div class="field">
+                                    <label for="mu" class="block">หมู่ที่</label>
+                                    <input id="mu" type="text" pInputText style="width: 90px;"
+                                        [(ngModel)]="studentData.studentAddress.addVillage" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="street" class="block">ถนน</label>
+                                    <input id="street" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addStreet" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="township" class="block">แขวง/ตำบล</label>
+                                    <input id="township" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addSubDis" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="districts" class="block">เขต/อำเภอ</label>
+                                    <input id="districts" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addDistrict" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="province" class="block">จังหวัด</label>
+                                    <input id="province" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addProvince" disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="post" class="block">รหัสไปรษณีย์</label>
+                                    <input id="post" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addPostCode" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="phone" class="block">หมายเลขโทรศัพท์</label>
+                                    <input id="phone" type="text" pInputText [(ngModel)]="candidateData.candiPhone"  [disabled]="true"/>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="oriProvince" class="block">ภูมิลำเนาเดิมจังหวัด</label>
+                                    <input id="oriProvince" type="text" pInputText
+                                        [(ngModel)]="studentData.studentAddress.addOriprovince" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+
+                        <!-- ข้อมูลด้านการศึกษา -->
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="perEd" class="block"><b>ข้อมูลด้านการศึกษา</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="faculty" class="block">คณะ</label>
+                                    <input id="faculty" type="text" pInputText [(ngModel)]="studentData.studentFaculty"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">รหัสนักศึกษา</label>
+                                    <input id="studentID" type="text" pInputText [(ngModel)]="studentData.studentCode"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="classYear" class="block">ชั้นปี</label>
+                                    <input id="classYear" type="text" pInputText
+                                        [(ngModel)]="studentData.studentClassyear" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="faculty" class="block">สาขาวิชา</label>
+                                    <input id="faculty" type="text" pInputText [(ngModel)]="studentData.studentMajor"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">ขึ้นทะเบียนนักศึกษาเมื่อปี</label>
+                                    <input id="studentID" type="text" pInputText
+                                        [(ngModel)]="studentData.studentRegisYear" disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="gpa" class="block">คะแนนเฉลี่ยสะสม</label>
+                                    <input id="gpa" type="text" pInputText [(ngModel)]="studentData.studentGpa"
+                                        disabled="true" />
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+
+                        <!-- ประสบการณ์ -->
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left ">
+                                <label for="exp" class="block"><b>ประสบการณ์ทำงานด้านกิจกรรมนักศึกษา</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container mt-5" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="exp" class="block"><b>ลำดับที่ 1</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">รายการที่เคยดำรงตำแหน่ง</label>
+                                    <input id="studentID" type="text" pInputText
+                                        [(ngModel)]="candidateData.candiExpList[0].position"  [disabled]="true"/>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">ปี</label>
+                                    <p-calendar view="year" dateFormat="yy" inputId="yearpicker"
+                                        [(ngModel)]="candidateData.candiExpList[0].years"  [disabled]="true"></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container mt-1" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="exp" class="block"><b>ลำดับที่ 2</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">รายการที่เคยดำรงตำแหน่ง</label>
+                                    <input id="studentID" type="text" pInputText
+                                        [(ngModel)]="candidateData.candiExpList[1].position"  [disabled]="true"/>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">ปี</label>
+                                    <p-calendar view="year" dateFormat="yy" inputId="yearpicker"
+                                        [(ngModel)]="candidateData.candiExpList[1].years"  [disabled]="true"></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container mt-1" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="exp" class="block"><b>ลำดับที่ 3</b></label>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">รายการที่เคยดำรงตำแหน่ง</label>
+                                    <input id="studentID" type="text" pInputText
+                                        [(ngModel)]="candidateData.candiExpList[2].position"  [disabled]="true"/>
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field">
+                                    <label for="studentID" class="block">ปี</label>
+                                    <p-calendar view="year" dateFormat="yy" inputId="yearpicker"
+                                        [(ngModel)]="candidateData.candiExpList[2].years"  [disabled]="true"></p-calendar>
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+
+                        <!-- รูปภาพ -->
+                        <div class="flex flex-wrap card-container blue-container mt-1" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="exp" class="block"><b>รูปภาพ</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container"
+                            style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-left m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <img src="api/candidate/image/{{candidateData.candiImage}}" id="photo"
+                                    [style]="{width: '180px',height: '200px'}">
+                            </div>
+                        </div>
+                        <!---->
+
+                    </div>
+                </p-panel>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

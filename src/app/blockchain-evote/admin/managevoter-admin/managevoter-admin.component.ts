@@ -81,7 +81,7 @@ export class ManagevoterAdminComponent implements OnInit {
   }
 
   goToOnVoteDetal(id: number) {
-    this.router.navigate(['blockchain-admin', 'managevoter', 'complete_vote', id])
+    this.router.navigate(['blockchain-admin', 'managevoter', 'onvote', id])
   }
 
   goToEditVoter(id: number) {

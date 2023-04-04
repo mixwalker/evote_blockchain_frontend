@@ -10,10 +10,12 @@ import { ClientService } from 'src/app/service/client.service';
 })
 export class ManageElectionComponent implements OnInit {
 
-  allElection:any;
+  electionComing:any;
   electionOnVoteList: any;
   electionVoteCompleteList: any;
   getAddRemoveVoter: boolean = false;
+  displayModal: boolean = false;
+  displayModalFail: boolean = false;
   constructor(private router: Router, private clientService: ClientService) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class ManageElectionComponent implements OnInit {
           items.elecRegisEnddate = regisEndDateSplit[0];
         }
       })
-      this.allElection = res
+      this.electionComing = res
     })
   }
 
@@ -81,5 +83,23 @@ export class ManageElectionComponent implements OnInit {
 
   goToElectionDetail(id:number){
     this.router.navigate(['blockchain-admin', 'election_detail',id])
+  }
+
+  deleteElection(id: number,index:number) {
+    this.clientService.deleteElectionById(id).subscribe({
+      complete:()=>{
+        this.electionComing.splice(index,1)
+        this.displayModal = true;
+        setTimeout(() => {
+          this.displayModal = false;
+        }, 1000);
+      },
+      error:()=>{
+        this.displayModalFail = true;
+        setTimeout(() => {
+          this.displayModalFail = false;
+        }, 1000);
+      }
+    })
   }
 }

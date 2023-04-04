@@ -72,6 +72,7 @@ export class EditElectionComponent implements OnInit {
       accept: () => {
         this.clientService.editElection(election).subscribe({
           complete:() =>{
+            this.clientService.checkElectionTime().subscribe();
             this.displaySuccessModal = true;
             setTimeout(() => {
               this.router.navigateByUrl('/blockchain-admin/homepage');

@@ -66,6 +66,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AnnouncementComponent } from './blockchain-evote/admin/homepage-admin/announcement/announcement.component';
 import { AddAnnounceComponent } from './blockchain-evote/admin/homepage-admin/announcement/add-announce/add-announce.component';
 import { DateTimePipe } from './pipe/date-time.pipe';
+import { CandidateDataComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/candidate-data/candidate-data.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { DateTimePipe } from './pipe/date-time.pipe';
     AnnouncementComponent,
     AddAnnounceComponent,
     DateTimePipe,
+    CandidateDataComponent,
   ],
   imports: [
     BrowserModule,

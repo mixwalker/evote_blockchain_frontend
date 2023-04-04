@@ -31,12 +31,16 @@
                                         <th>รหัสนักศึกษา</th>
                                         <th style="width: 10rem;">ชื่อ</th>
                                         <th style="width: 10rem;">นามสกุล</th>
+                                        <th class="flex justify-content-center" style="width: 6rem">
+                                            <div class="justify-content-center">
+                                                ชั้นปี
+                                            </div>
+                                        </th>
                                         <th style="width: 15rem;">สาขาวิชา</th>
-                                        <th style="width: 15rem;">คณะ</th>
-                                        <th style="width: 5rem;"></th>
+                                        <th class="justify-content-center" style="width: 11rem;"></th>
                                     </tr>
                                 </ng-template>
-                                <ng-template pTemplate="body" let-studentDetail>
+                                <ng-template pTemplate="body" let-studentDetail let-i="rowIndex">
                                     <tr>
                                         <td>
                                             {{studentDetail.studentCode}}
@@ -48,16 +52,20 @@
                                             {{studentDetail.lastName}}
                                         </td>
                                         <td>
-                                            {{studentDetail.studentMajor}}
+                                            <div class="flex justify-content-center">
+                                                {{studentDetail.studentClassyear}}
+                                            </div>
                                         </td>
                                         <td>
-                                            {{studentDetail.studentFaculty}}
+                                            {{studentDetail.studentMajor}}
                                         </td>
                                         <td class="flex justify-content-center">
                                             <button pButton pRipple type="button" icon="pi pi-pencil"
-                                                class="p-button-rounded p-button-warning mr-2" (click)="editStudent(studentDetail.studentId)"></button>
+                                                class="p-button-rounded p-button-warning mr-2"
+                                                (click)="editStudent(studentDetail.studentId)"></button>
                                             <button pButton pRipple type="button" icon="pi pi-trash"
-                                                class="p-button-rounded p-button-danger"></button>
+                                                class="p-button-rounded p-button-danger"
+                                                (click)="deleteStudent(studentDetail.studentId,i)"></button>
                                         </td>
                                     </tr>
                                 </ng-template>
@@ -65,7 +73,8 @@
                                     <div class="flex align-items-center justify-content-between">
                                         จำนวนนักศึกษาทั้งหมด {{allStudent ? allStudent.length: 0}} คน
                                         <button pButton pRipple type="button" icon="pi pi-plus" label="เพิ่มนักศึกษา"
-                                            class="p-button-rounded p-button-success mr-2" (click)="addStudent()"></button>
+                                            class="p-button-rounded p-button-success mr-2"
+                                            (click)="addStudent()"></button>
                                     </div>
                                 </ng-template>
                             </p-table>
@@ -76,3 +85,24 @@
         </div>
     </div>
     <app-footer></app-footer>
+    <p-toast></p-toast>
+    <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_yes.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>ลบข้อมูลนักศึกษาสำเร็จ</H1>
+        </div>
+    </p-dialog>
+    <p-dialog [(visible)]="displayModalFail" [modal]="true" [style]="{width: '30vw'}"
+        [breakpoints]="{'960px': '75vw', '640px': '80vw'}" [draggable]="false" [resizable]="false" [closable]="false"
+        [transitionOptions]="'280ms'">
+        <div class="flex align-items-center justify-content-center" style="min-width: 100%; min-height: 50px ">
+            <img src="assets\img\icon\status_no.png" height="65" width="65">
+        </div>
+        <div class="flex align-items-center justify-content-center mt-5 " style="min-width: 100%; min-height: 50px ">
+            <H1>ลบข้อมูลนักศึกษาไม่สำเร็จ</H1>
+        </div>
+    </p-dialog>

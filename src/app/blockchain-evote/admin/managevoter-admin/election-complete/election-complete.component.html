@@ -148,8 +148,12 @@
                                         <th>รหัสนักศึกษา</th>
                                         <th style="width: 10rem;">ชื่อ</th>
                                         <th style="width: 10rem;">นามสกุล</th>
+                                        <th class="flex justify-content-center" style="width: 6rem">
+                                            <div class="justify-content-center">
+                                                ชั้นปี
+                                            </div>
+                                        </th>
                                         <th style="width: 15rem;">สาขาวิชา</th>
-                                        <th style="width: 15rem;">คณะ</th>
                                         <th>
                                             <div class="flex justify-content-center">
                                                 ลงคะแนน
@@ -168,11 +172,13 @@
                                         <td >
                                             {{studentDetail.student.lastName}}
                                         </td>
+                                        <td>
+                                            <div class="flex justify-content-center">
+                                                {{studentDetail.student.studentClassyear}}
+                                            </div>
+                                        </td>
                                         <td >
                                             {{studentDetail.student.studentMajor}}
-                                        </td>
-                                        <td>
-                                            {{studentDetail.student.studentFaculty}}
                                         </td>
                                         <td style="width: 10rem;">
                                             <div class="flex justify-content-center">

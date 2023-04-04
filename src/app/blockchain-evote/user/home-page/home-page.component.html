@@ -32,7 +32,7 @@
     <div class="flex flex-wrap card-container align-items-center m-2" style="max-width: 100%">
         <div class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 ml-2 border-round"
             style="min-width: 200px; min-height: 100px" *ngFor="let elec of election;let indexOfelement=index;">
-            <p-card header="{{elec.election.elecName}}" [style]="{width: '350px'}" styleClass="p-card-shadow">
+            <p-card [style]="{width: '350px'}" styleClass="p-card-shadow">
                 <ng-template pTemplate="header">
                     <div class="flex justify-content-center">
                         <img alt="Card" src="api/candidate/image/{{elec.election.elecImages}}"

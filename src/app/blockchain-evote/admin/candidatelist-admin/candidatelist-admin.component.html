@@ -11,7 +11,7 @@
             <div class="flex-1 flex flex-wrap align-items-center justify-content-center m-2 px-5 py-3 border-round">
                 <div class="card">
                     <p-tabView styleClass="tabview-custom">
-                        <p-tabPanel>
+                        <!-- <p-tabPanel>
                             <ng-template pTemplate="header">
                                 <img src="assets\img\icon\voting-box.png" height="20" width="20"
                                     style="margin-right:10px;">
@@ -81,7 +81,7 @@
                                     </p-table>
                                 </div>
                             </div>
-                        </p-tabPanel>
+                        </p-tabPanel> -->
                         <p-tabPanel header="Header II">
                             <ng-template pTemplate="header">
                                 <img src="assets\img\icon\coming-soon.png" height="20" width="20"
@@ -143,11 +143,9 @@
                                                     </div>
                                                 </td>
                                                 <td class="flex justify-content-center">
-                                                    <button pButton pRipple type="button" icon="pi pi-pencil"
-                                                        class="p-button-rounded p-button-warning mr-2"
-                                                        (click)="editCandidateList(electionDetail.elecId)"></button>
-                                                    <button pButton pRipple type="button" icon="pi pi-trash"
-                                                        class="p-button-rounded p-button-danger"></button>
+                                                    <button pButton pRipple type="button" label="จัดการผู้ลงสมัคร"
+                                                        class="p-button p-button-warning mr-2"
+                                                        (click)="editCandidateList(electionDetail.elecId)"></button> 
                                                 </td>
                                             </tr>
                                         </ng-template>
@@ -160,7 +158,7 @@
                                 </div>
                             </div>
                         </p-tabPanel>
-                        <p-tabPanel header="Header III">
+                        <!-- <p-tabPanel header="Header III">
                             <ng-template pTemplate="header">
                                 <img src="assets\img\icon\success.png" height="20" width="20"
                                     style="margin-right:10px;">
@@ -231,7 +229,7 @@
                                     </p-table>
                                 </div>
                             </div>
-                        </p-tabPanel>
+                        </p-tabPanel> -->
                     </p-tabView>
                 </div>
             </div>
@@ -239,3 +237,4 @@
     </div>
 </div>
 <div style="margin-top:2%;"></div>
+<app-footer></app-footer>

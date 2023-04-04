@@ -98,7 +98,7 @@
                                 <b> พรรค : </b>&nbsp; {{candidate.candidate.candiParty}}
                             </div>
                             <ng-template pTemplate="footer">
-                                <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบข้อมูล" [style]="{width: '100%'}"></button>
+                                <button pButton type="button" class="p-button buttonColor" label="ตรวจสอบข้อมูล" [style]="{width: '100%'}" (click)="goToCandidateDetail(candidate.candidate.candiId)"></button>
                             </ng-template>
                         </p-card>
                     </div>

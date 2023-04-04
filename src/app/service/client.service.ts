@@ -42,6 +42,10 @@ export class ClientService {
     return this.http.get<any>(`api/student/std_by_candi/${id}`)
   }
 
+  deleteStudentById(id:number){
+    return this.http.delete<Student>(`api/student/${id}`);
+  }
+
 
   //ElectionService
   getAllElection() {
@@ -90,6 +94,10 @@ export class ClientService {
 
   countCandidate() {
     return this.http.get(`api/election/update_count`);
+  }
+
+  deleteElectionById(id: number){
+    return this.http.delete<any>(`api/election/${id}`);
   }
 
 

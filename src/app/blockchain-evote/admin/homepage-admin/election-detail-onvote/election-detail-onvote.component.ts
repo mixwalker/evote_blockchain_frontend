@@ -61,4 +61,8 @@ export class ElectionDetailOnvoteComponent implements OnInit {
     this.router.navigate(['blockchain-admin/score/', this.election.elecId])
   }
 
+  goToCandidateDetail(id:number){
+    this.router.navigate(['blockchain-admin','election_detail','candidate_detail', id])
+  }
+
 }

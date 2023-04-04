@@ -53,8 +53,15 @@ export class VotingscoreAdminComponent implements OnInit {
                 dataArr.push(items.data.candidate.candiId);
               }
             })
-
             let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), []);
+
+            let scoreList2 = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
+
+            let scoreListArr = Object.entries(scoreList2)
+
+            console.log(scoreListArr);
+
+
 
             this.chartData = {
               labels: [],
@@ -75,19 +82,30 @@ export class VotingscoreAdminComponent implements OnInit {
               ]
             }
 
-            scoreList.map((items: any) => {
-              this.chartData.datasets[0].data.push(items);
-            })
-
             for (let name of candidateNameArr) {
               this.chartData.labels.push(name)
             }
+
+            // for (let candiId of candidateIdArr) {
+            //   for (let candiB of scoreListArr) {
+            //       this.chartData.datasets[0].data.push(candiB[1]);
+            //   }
+
+            // }
+
+
+            // scoreList.map((items: any) => {
+            //   this.chartData.datasets[0].data.push(items);
+            // })
+
+
           }
         })
       }
     });
 
-    this.blockchainService.getChain(elecId).subscribe(res => {this.blockchain = res
+    this.blockchainService.getChain(elecId).subscribe(res => {
+      this.blockchain = res
     })
 
     this.applyOption();

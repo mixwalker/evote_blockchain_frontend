@@ -146,7 +146,11 @@
                                             <th>รหัสนักศึกษา</th>
                                             <th style="width: 10rem;">ชื่อ</th>
                                             <th style="width: 10rem;">นามสกุล</th>
-                                            <th class="justify-content-center" style="width: 6rem">ชั้นปี</th>
+                                            <th class="flex justify-content-center" style="width: 6rem">
+                                                <div class="justify-content-center">
+                                                    ชั้นปี
+                                                </div>
+                                            </th>
                                             <th style="width: 15rem;">สาขาวิชา</th>
                                             <th style="width: 5rem;">สถานะ</th>
                                             <th class="justify-content-center" style="width: 11rem;"></th>
@@ -181,10 +185,12 @@
                                                 <div class="flex justify-content-center">
                                                     <button pButton type="button" icon="pi pi-search"
                                                         class="p-button-rounded p-button-info mr-2"
-                                                        style="width: 2rem;height: 2rem;" (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
+                                                        style="width: 2rem;height: 2rem;"
+                                                        (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
                                                     <button pButton type="button" icon="pi pi-trash"
                                                         class="p-button-rounded p-button-danger"
-                                                        style="width: 2rem;height: 2rem;" (click)="unApprove(studentDetail,i)"></button>
+                                                        style="width: 2rem;height: 2rem;"
+                                                        (click)="unApprove(studentDetail,i)"></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -220,7 +226,11 @@
                                             <th>รหัสนักศึกษา</th>
                                             <th style="width: 10rem;">ชื่อ</th>
                                             <th style="width: 10rem;">นามสกุล</th>
-                                            <th class="justify-content-center" style="width: 6rem">ชั้นปี</th>
+                                            <th class="justify-content-center" style="width: 6rem">
+                                                <div class="justify-content-center">
+                                                    ชั้นปี
+                                                </div>
+                                            </th>
                                             <th style="width: 15rem;">สาขาวิชา</th>
                                             <th style="width: 5rem;">สถานะ</th>
                                             <th class="justify-content-center" style="width: 11rem;"></th>
@@ -257,20 +267,24 @@
                                                 <div class="flex justify-content-center">
                                                     <button pButton type="button" icon="pi pi-search"
                                                         class="p-button-rounded p-button-info mr-2"
-                                                        style="width: 2rem;height: 2rem;" (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
+                                                        style="width: 2rem;height: 2rem;"
+                                                        (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
                                                     <button pButton type="button" icon="pi pi-plus"
                                                         class="p-button-rounded p-button-success mr-2"
-                                                        style="width: 2rem;height: 2rem;" (click)="Approve(studentDetail,i)"></button>
+                                                        style="width: 2rem;height: 2rem;"
+                                                        (click)="Approve(studentDetail,i)"></button>
                                                     <div
                                                         *ngIf="studentDetail.candidate.candiStatus != 2;else notDisable">
                                                         <button pButton type="button" icon="pi pi-times"
                                                             class="p-button-rounded p-button-danger "
-                                                            style="width: 2rem;height: 2rem;" (click)="notApprove(studentDetail,i)"></button>
+                                                            style="width: 2rem;height: 2rem;"
+                                                            (click)="notApprove(studentDetail,i)"></button>
                                                     </div>
                                                     <ng-template #notDisable>
                                                         <button pButton type="button" icon="pi pi-times"
                                                             class="p-button-rounded p-button-danger "
-                                                            style="width: 2rem;height: 2rem;" [disabled]="true"></button>
+                                                            style="width: 2rem;height: 2rem;"
+                                                            [disabled]="true"></button>
                                                     </ng-template>
 
                                                 </div>

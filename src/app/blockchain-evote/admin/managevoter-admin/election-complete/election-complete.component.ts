@@ -10,7 +10,7 @@ import { ClientService } from 'src/app/service/client.service';
 })
 export class ElectionCompleteComponent implements OnInit {
 
-  data:any;
+  data: any;
   election: any;
   studentList: any;
   checked: boolean = true;
@@ -26,23 +26,23 @@ export class ElectionCompleteComponent implements OnInit {
     const id = parseInt(url[url.length - 1]);
 
     this.data = {
-      labels: ['A','B','C'],
+      labels: ['ลงคะแนน', 'ไม่ลงคะแนน'],
       datasets: [
-          {
-              data: [300, 50, 100],
-              backgroundColor: [
-                  "#42A5F5",
-                  "#66BB6A",
-                  "#FFA726"
-              ],
-              hoverBackgroundColor: [
-                  "#64B5F6",
-                  "#81C784",
-                  "#FFB74D"
-              ]
-          }
+        {
+          data: [3, 2],
+          backgroundColor: [
+            "#66BB6A",
+            "#d2222d",
+            "#FFA726"
+          ],
+          hoverBackgroundColor: [
+            "#81C784",
+            "#d63842",
+            "#FFB74D"
+          ]
+        }
       ]
-  };
+    };
 
     this.clientService.getElectionById(id).subscribe({
       next: (res) => {
