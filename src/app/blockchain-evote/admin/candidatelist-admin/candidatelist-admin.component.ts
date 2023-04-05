@@ -18,7 +18,6 @@ export class CandidatelistAdminComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
     this.clientService.getElectionOnVote().subscribe(res => {
       res.map((items: any) => {
         const startDateSplit = items.elecStartdate.split('[UTC]');
@@ -80,8 +79,8 @@ export class CandidatelistAdminComponent implements OnInit {
     this.router.navigate(['blockchain-admin','candidatelist', 'edit_candidate', id])
   }
 
-  goToElectionDetail(id: number) {
-    this.router.navigate(['blockchain-admin', 'election_detail', id])
+  goToCandidateListDetail(id: number) {
+    this.router.navigate(['blockchain-admin', 'candidatelist','candidatelist_detail', id])
   }
 
   goToCompleteElection(id: number) {
