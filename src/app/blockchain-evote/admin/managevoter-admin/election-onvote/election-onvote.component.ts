@@ -25,25 +25,6 @@ export class ElectionOnvoteComponent implements OnInit {
     const url = this.router.url.split('/');
     const id = parseInt(url[url.length - 1]);
 
-    this.data = {
-      labels: ['ลงคะแนน', 'ไม่ลงคะแนน'],
-      datasets: [
-        {
-          data: [3, 2],
-          backgroundColor: [
-            "#66BB6A",
-            "#d2222d",
-            "#FFA726"
-          ],
-          hoverBackgroundColor: [
-            "#81C784",
-            "#d63842",
-            "#FFB74D"
-          ]
-        }
-      ]
-    };
-
     this.clientService.getElectionById(id).subscribe({
       next: (res) => {
         this.election = res;
@@ -60,7 +41,34 @@ export class ElectionOnvoteComponent implements OnInit {
       }
     });
 
-    this.clientService.getStudentByElection(id).subscribe(res => this.studentList = res);
+    this.clientService.getStudentByElection(id).subscribe({
+      next:(res)=>{
+        this.studentList = res
+      },
+      complete:()=>{
+        this.clientService.studentVotedInElection(id).subscribe(res =>{
+          this.data = {
+            labels: ['ลงคะแนน', 'ไม่ลงคะแนน'],
+            datasets: [
+              {
+                data: [],
+                backgroundColor: [
+                  "#66BB6A",
+                  "#d2222d",
+                ],
+                hoverBackgroundColor: [
+                  "#81C784",
+                  "#d63842",
+                ]
+              }
+            ]
+          };
+          const notVote = this.studentList.length - res.length;
+          this.data.datasets[0].data.push(res.length);
+          this.data.datasets[0].data.push(notVote);
+        })
+      }
+    });
   }
 
   inputSearch(inputEL: any, event: any) {

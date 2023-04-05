@@ -59,7 +59,35 @@ export class ElectionCompleteComponent implements OnInit {
         this.election.elecRegisEnddate = new Date(regisEndDateSplit[0]);
       }
     });
-    this.clientService.getStudentByElection(id).subscribe(res => this.studentList = res);
+    
+    this.clientService.getStudentByElection(id).subscribe({
+      next:(res)=>{
+        this.studentList = res
+      },
+      complete:()=>{
+        this.clientService.studentVotedInElection(id).subscribe(res =>{
+          this.data = {
+            labels: ['ลงคะแนน', 'ไม่ลงคะแนน'],
+            datasets: [
+              {
+                data: [],
+                backgroundColor: [
+                  "#66BB6A",
+                  "#d2222d",
+                ],
+                hoverBackgroundColor: [
+                  "#81C784",
+                  "#d63842",
+                ]
+              }
+            ]
+          };
+          const notVote = this.studentList.length - res.length;
+          this.data.datasets[0].data.push(res.length);
+          this.data.datasets[0].data.push(notVote);
+        })
+      }
+    });
   }
 
   inputSearch(inputEL: any, event: any) {

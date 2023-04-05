@@ -5,6 +5,16 @@
             <div class="flex-1 flex align-items-center justify-content-center m-2">
                 <p-panel header="ข้อมูลผู้ลงสมัคร">
                     <div class="card">
+                         <!-- รูปภาพ -->
+                        <div class="flex flex-wrap card-container justify-content-center"
+                            style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-left m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <img src="api/candidate/image/{{candidateData.candiImage}}" id="photo"
+                                    [style]="{width: '180px',height: '200px'}">
+                            </div>
+                        </div>
+                        <!---->
                         <!-- ข้อมูลส่วนตัว -->
                         <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
                             <div class="flex align-items-baseline justify-content-left">
@@ -298,22 +308,7 @@
                         </div>
                         <!---->
 
-                        <!-- รูปภาพ -->
-                        <div class="flex flex-wrap card-container blue-container mt-1" style="max-width: 100%">
-                            <div class="flex align-items-baseline justify-content-left">
-                                <label for="exp" class="block"><b>รูปภาพ</b></label>
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap card-container blue-container"
-                            style="max-width: 100%">
-                            <div class="flex align-items-center justify-content-left m-2 border-round"
-                                style="min-width: 200px; min-height: 100px">
-                                <img src="api/candidate/image/{{candidateData.candiImage}}" id="photo"
-                                    [style]="{width: '180px',height: '200px'}">
-                            </div>
-                        </div>
-                        <!---->
-
+                       
                     </div>
                 </p-panel>
             </div>

@@ -61,8 +61,11 @@ export class EditElectionComponent implements OnInit {
     return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
   }
 
-  editElection(election: any) {
+  checkCandidate(id:number){
+    this.router.navigate(['blockchain-admin','election_detail','candidate_detail', id])
+  }
 
+  editElection(election: any) {
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่แก้ไข',

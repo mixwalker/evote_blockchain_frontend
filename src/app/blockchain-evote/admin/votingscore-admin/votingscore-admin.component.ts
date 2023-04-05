@@ -52,15 +52,14 @@ export class VotingscoreAdminComponent implements OnInit {
               if (items.data) {
                 dataArr.push(items.data.candidate.candiId);
               }
-            })
-            let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), []);
+            });
 
-            let scoreList2 = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
+            let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
 
-            let scoreListArr = Object.entries(scoreList2)
+            console.log(scoreList);
+            console.log(candidateIdArr);
 
-            console.log(scoreListArr);
-
+            
 
 
             this.chartData = {
@@ -81,23 +80,20 @@ export class VotingscoreAdminComponent implements OnInit {
                 }
               ]
             }
+            
+            let dataInDataset = [];
 
             for (let name of candidateNameArr) {
               this.chartData.labels.push(name)
+              dataInDataset.push(0);
             }
 
-            // for (let candiId of candidateIdArr) {
-            //   for (let candiB of scoreListArr) {
-            //       this.chartData.datasets[0].data.push(candiB[1]);
-            //   }
-
-            // }
-
-
-            // scoreList.map((items: any) => {
-            //   this.chartData.datasets[0].data.push(items);
-            // })
-
+            Object.keys(scoreList).map(id => {
+              const index = candidateIdArr.findIndex(i => i == id);
+              dataInDataset[index] = scoreList[id];
+            });
+            this.chartData.datasets[0].data = dataInDataset;
+            console.log(this.chartData);
 
           }
         })

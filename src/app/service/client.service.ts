@@ -26,8 +26,8 @@ export class ClientService {
     return this.http.post(`api/student/`, student);
   }
 
-  editStudent(student:Student){
-    return this.http.put(`api/student/`,student);
+  editStudent(student: Student) {
+    return this.http.put(`api/student/`, student);
   }
 
   getStudentInElection(id: number) {
@@ -38,11 +38,11 @@ export class ClientService {
     return this.http.get(`api/student/std_no_elec/${id}`)
   }
 
-  getStudentDataByCandidateId(id:number){
+  getStudentDataByCandidateId(id: number) {
     return this.http.get<any>(`api/student/std_by_candi/${id}`)
   }
 
-  deleteStudentById(id:number){
+  deleteStudentById(id: number) {
     return this.http.delete<Student>(`api/student/${id}`);
   }
 
@@ -96,7 +96,7 @@ export class ClientService {
     return this.http.get(`api/election/update_count`);
   }
 
-  deleteElectionById(id: number){
+  deleteElectionById(id: number) {
     return this.http.delete<any>(`api/election/${id}`);
   }
 
@@ -157,15 +157,15 @@ export class ClientService {
     return this.http.post<any>(`api/candidate/upload`, formdata);
   }
 
-  unApprove(candiId:number){
+  unApprove(candiId: number) {
     return this.http.get<any>(`api/candidate/candidate_unapprove/${candiId}`);
   }
 
-  Approve(candiId:number){
+  Approve(candiId: number) {
     return this.http.get<any>(`api/candidate/candidate_approve/${candiId}`);
   }
 
-  notApprove(candiId:number){
+  notApprove(candiId: number) {
     return this.http.get<any>(`api/candidate/candidate_notapprove/${candiId}`);
   }
 
@@ -199,32 +199,36 @@ export class ClientService {
     return this.http.get<any>(`api/elec_student/check_voted/${id}`);
   }
 
+  studentVotedInElection(id: number) {
+    return this.http.get<any>(`api/elec_student/findstudent_voted/${id}`);
+  }
+
   //Annoucement
-  getAllAnnoucementList(){
+  getAllAnnoucementList() {
     return this.http.get<any>(`api/annoucement`);
   }
 
-  getStatusOnAnnoucementList(){
+  getStatusOnAnnoucementList() {
     return this.http.get<any>(`api/annoucement/get_status_on`);
   }
 
-  deleteAnnoucement(id:number){
+  deleteAnnoucement(id: number) {
     return this.http.delete<any>(`api/annoucement/${id}`);
   }
 
-  setStatusAnnoucement(id:number,status:boolean){
+  setStatusAnnoucement(id: number, status: boolean) {
     const annoucement = {
       announcementStatus: status
     }
-    return this.http.put<any>(`api/annoucement/set_status/${id}`,annoucement);
-  }
-  
-  createAnnounce(announce:any){
-    return this.http.post<any>(`api/annoucement/`,announce);
+    return this.http.put<any>(`api/annoucement/set_status/${id}`, annoucement);
   }
 
-  uploadImageAnnounce(formdata: any){
-    return this.http.post<any>(`api/annoucement/upload`,formdata);
+  createAnnounce(announce: any) {
+    return this.http.post<any>(`api/annoucement/`, announce);
+  }
+
+  uploadImageAnnounce(formdata: any) {
+    return this.http.post<any>(`api/annoucement/upload`, formdata);
   }
 
 }
