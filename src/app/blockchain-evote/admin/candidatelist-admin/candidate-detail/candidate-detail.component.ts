@@ -100,4 +100,10 @@ export class CandidateDetailComponent implements OnInit {
     this.imageSrc = null;
     this.displayPic = false;
   }
+
+  defaultImage(event: Event) {
+    return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
+  }
+
+  
 }

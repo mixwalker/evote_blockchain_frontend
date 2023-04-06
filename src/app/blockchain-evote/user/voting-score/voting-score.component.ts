@@ -56,9 +56,9 @@ export class VotingScoreComponent implements OnInit {
               if (items.data) {
                 dataArr.push(items.data.candidate.candiId);
               }
-            })
+            });
 
-            let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), []);
+            let scoreList = dataArr.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
 
             this.chartData = {
               labels: [],
@@ -68,24 +68,45 @@ export class VotingScoreComponent implements OnInit {
                   backgroundColor: [
                     "#42A5F5",
                     "#66BB6A",
-                    "#FFA726"
+                    "#FFA726",
+                    "F9ED69",
+                    "F08A5D",
+                    "B83B5E",
+                    "6A2C70",
+                    "00337C",
+                    "1C82AD",
+                    "03C988"
+
                   ],
                   hoverBackgroundColor: [
                     "#64B5F6",
                     "#81C784",
-                    "#FFB74D"
+                    "#FFB74D",
+                    "ffcc00",
+                    "ef4e09",
+                    "b7103d",
+                    "b64dc1",
+                    "0e5cc9",
+                    "2ab4ea",
+                    "01895c",
                   ]
                 }
               ]
             }
 
-            scoreList.map((items: any) => {
-              this.chartData.datasets[0].data.push(items);
-            })
+            let dataInDataset = [];
 
             for (let name of candidateNameArr) {
               this.chartData.labels.push(name)
+              dataInDataset.push(0);
             }
+
+            Object.keys(scoreList).map(id => {
+              const index = candidateIdArr.findIndex(i => i == id);
+              dataInDataset[index] = scoreList[id];
+            });
+            this.chartData.datasets[0].data = dataInDataset;
+
           }
         })
       }

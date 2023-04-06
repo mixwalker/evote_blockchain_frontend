@@ -25,8 +25,12 @@ export class ElectionDetailOnvoteComponent implements OnInit {
       complete: () =>{
           const startDateSplit = this.election.elecStartdate.split('[UTC]');
           const endDateSplit = this.election.elecEnddate.split('[UTC]');
+          const regStartDateSplit = this.election.elecRegisStartdate.split('[UTC]');
+          const regendDateSplit = this.election.elecRegisEnddate.split('[UTC]');
           this.election.elecStartdate = startDateSplit[0];
           this.election.elecEnddate = endDateSplit[0];
+          this.election.elecRegisStartdate = regStartDateSplit[0];
+          this.election.elecRegisEnddate = regendDateSplit[0];
       }
     })
 

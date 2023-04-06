@@ -85,6 +85,24 @@ export class ManageElectionComponent implements OnInit {
     this.router.navigate(['blockchain-admin', 'election_detail',id])
   }
 
+  deleteElectionOnVoteList(id: number,index:number) {
+    this.clientService.deleteElectionById(id).subscribe({
+      complete:()=>{
+        this.electionOnVoteList.splice(index,1)
+        this.displayModal = true;
+        setTimeout(() => {
+          this.displayModal = false;
+        }, 1000);
+      },
+      error:()=>{
+        this.displayModalFail = true;
+        setTimeout(() => {
+          this.displayModalFail = false;
+        }, 1000);
+      }
+    })
+  }
+
   deleteElection(id: number,index:number) {
     this.clientService.deleteElectionById(id).subscribe({
       complete:()=>{

@@ -5,6 +5,27 @@
             <div class="flex-1 flex align-items-center justify-content-center m-2">
                 <p-panel header="ใบลงทะเบียนนายกสโมสร">
                     <div class="card">
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-baseline justify-content-left">
+                                <label for="perInfo" class="block"><b>ข้อมูลการลงสมัคร</b></label>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field" [formGroup]="regisForm">
+                                    <label for="Number" class="block">หมายเลข</label>
+                                    <input id="Number" type="text" pInputText formControlName="candidateNo" />
+                                </div>
+                            </div>
+                            <div class="flex align-items-center justify-content-center m-2 border-round"
+                                style="min-width: 200px; min-height: 100px">
+                                <div class="field" [formGroup]="regisForm">
+                                    <label for="Number" class="block">พรรค</label>
+                                    <input id="Number" type="text" pInputText formControlName="candidateParty" />
+                                </div>
+                            </div>
+                        </div>
                         <!-- ข้อมูลส่วนตัว -->
                         <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
                             <div class="flex align-items-baseline justify-content-left">
@@ -15,7 +36,7 @@
                             <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 200px; min-height: 100px">
                                 <div class="field" [formGroup]="regisForm">
                                     <label for="Number" class="block">หมายเลข</label>
-                                    <input id="Number" type="text" pInputText formControlName="candidateNo" />
+                                    <input id="Number" type="text" pInputText  />
                                 </div>
                             </div>
                             <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 200px; min-height: 100px">

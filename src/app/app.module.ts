@@ -67,6 +67,7 @@ import { AnnouncementComponent } from './blockchain-evote/admin/homepage-admin/a
 import { AddAnnounceComponent } from './blockchain-evote/admin/homepage-admin/announcement/add-announce/add-announce.component';
 import { DateTimePipe } from './pipe/date-time.pipe';
 import { CandidateDataComponent } from './blockchain-evote/admin/homepage-admin/election-detail-onvote/candidate-data/candidate-data.component';
+import { CandidatelistRegisComponent } from './blockchain-evote/admin/candidatelist-admin/candidatelist-regis/candidatelist-regis.component';
 
 
 @NgModule({
@@ -108,6 +109,7 @@ import { CandidateDataComponent } from './blockchain-evote/admin/homepage-admin/
     AddAnnounceComponent,
     DateTimePipe,
     CandidateDataComponent,
+    CandidatelistRegisComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
                             <div class="flex align-items-center justify-content-left m-2 border-round"
                                 style="min-width: 200px; min-height: 100px">
                                 <img src="api/candidate/image/{{candidateData.candiImage}}" id="photo"
-                                    [style]="{width: '180px',height: '200px'}">
+                                    [style]="{width: '180px',height: '200px'}" (error)="defaultImage($event)">
                             </div>
                         </div>
                         <!---->

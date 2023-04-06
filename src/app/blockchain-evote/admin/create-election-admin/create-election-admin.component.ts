@@ -22,10 +22,10 @@ export class CreateElectionAdminComponent implements OnInit {
     elecRegister: new FormControl(false),
     elecOnVote: new FormControl(false),
   })
-  startDate!: Date
-  endDate!: Date
-  regisStartdate!: Date
-  regisEnddate!: Date
+  startDate: Date = new Date(); 
+  endDate: Date = new Date(); 
+  regisStartdate: Date = new Date(); 
+  regisEnddate: Date = new Date(); 
   files: any;
   imageSrc: any;
   getAddCandidate: boolean = false;

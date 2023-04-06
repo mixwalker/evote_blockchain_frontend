@@ -187,10 +187,6 @@
                                                         class="p-button-rounded p-button-info mr-2"
                                                         style="width: 2rem;height: 2rem;"
                                                         (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
-                                                    <button pButton type="button" icon="pi pi-trash"
-                                                        class="p-button-rounded p-button-danger"
-                                                        style="width: 2rem;height: 2rem;"
-                                                        (click)="unApprove(studentDetail,i)"></button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -269,17 +265,6 @@
                                                         class="p-button-rounded p-button-info mr-2"
                                                         style="width: 2rem;height: 2rem;"
                                                         (click)="checkCandidateDetail(studentDetail.candidate.candiId)"></button>
-                                                    <button pButton type="button" icon="pi pi-plus"
-                                                        class="p-button-rounded p-button-success mr-2"
-                                                        style="width: 2rem;height: 2rem;"
-                                                        (click)="Approve(studentDetail,i)"></button>
-                                                    <div
-                                                        *ngIf="studentDetail.candidate.candiStatus != 2;else notDisable">
-                                                        <button pButton type="button" icon="pi pi-times"
-                                                            class="p-button-rounded p-button-danger "
-                                                            style="width: 2rem;height: 2rem;"
-                                                            (click)="notApprove(studentDetail,i)"></button>
-                                                    </div>
                                                     <ng-template #notDisable>
                                                         <button pButton type="button" icon="pi pi-times"
                                                             class="p-button-rounded p-button-danger "

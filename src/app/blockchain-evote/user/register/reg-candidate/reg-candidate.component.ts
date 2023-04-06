@@ -16,6 +16,7 @@ export class RegCandidateComponent implements OnInit {
   regisForm: FormGroup = new FormGroup({
     candidatePhone: new FormControl(),
     candidateNo: new FormControl(),
+    candidateParty: new FormControl()
   })
   regisExpForm: FormGroup = new FormGroup({
     position1: new FormControl(),
