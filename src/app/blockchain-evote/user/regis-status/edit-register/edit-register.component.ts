@@ -14,7 +14,8 @@ import { ClientService } from 'src/app/service/client.service';
 export class EditRegisterComponent implements OnInit {
 
   regisForm: FormGroup = new FormGroup({
-    candidateNo: new FormControl(),
+    candiNo: new FormControl(),
+    candiParty: new FormControl(),
     position1: new FormControl(),
     position2: new FormControl(),
     position3: new FormControl(),
@@ -29,9 +30,11 @@ export class EditRegisterComponent implements OnInit {
   displayPic: boolean = false;
   studentData: any;
   studentAge!: number;
-  candidateData!: Candidate;
+  candidateData!: any;
   candidateId!: number;
   displayModal: boolean = false;
+  submited:boolean = false;
+  election:any;
   constructor(private auth: AuthService,
     private router: Router,
     private clientService: ClientService,
@@ -42,6 +45,9 @@ export class EditRegisterComponent implements OnInit {
     this.candidateId = parseInt(url!);
     this.clientService.getCandidateById(this.candidateId).subscribe(res => {
       this.candidateData = res
+    })
+    this.clientService.getElecByCandidate(this.candidateId).subscribe(res=>{
+      this.election = res;
     })
     this.clientService.getStudentById(this.auth.user.studentId).subscribe(res => {
       this.studentData = res;
@@ -55,6 +61,11 @@ export class EditRegisterComponent implements OnInit {
   }
 
   register() {
+
+    this.submited = true;
+    if(!this.candidateData.candiNo) return
+    if(!this.candidateData.candiParty) return
+
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขข้อมูลหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่กรอก',
@@ -62,12 +73,12 @@ export class EditRegisterComponent implements OnInit {
       acceptLabel: 'แก้ไข',
       rejectLabel: 'ยกเลิก',
       accept: () => {
-        this.candidateData.candiExpList.map(items => {
+        this.candidateData.candiExpList.map((items:any) => {
           items.years = new Date(items.years).getFullYear().toString()
         })
         this.clientService.editCandidateById(this.candidateId, this.candidateData).subscribe({
           next: (res) => {
-            if(this.files){
+            if (this.files) {
               const formData = new FormData();
               formData.append('files', this.files)
               formData.append('fileName', this.candidateData.candiImage);

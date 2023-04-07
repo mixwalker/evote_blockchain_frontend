@@ -14,6 +14,7 @@ export class OtpComponent implements OnInit {
   private password = this.auth.std.password;
   otp!:string;
   blockedUI: boolean = true;
+  submited:boolean = false;
   @Output() unBlock = new EventEmitter;
   constructor(private auth:AuthService, private router: Router,private messageService: MessageService) { }
 
@@ -21,6 +22,8 @@ export class OtpComponent implements OnInit {
   }
 
   cofirme(){
+    this.submited = true;
+    if(!this.otp) return;
     this.auth.login(this.studentCode,this.password,this.otp).subscribe({
       complete:()=>{                
         this.messageService.add({severity:'success', summary: 'เข้าสู่ระบบ', detail: 'เข้าสู่ระบบสำเร็จ'});

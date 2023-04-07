@@ -16,15 +16,23 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="prefix" class="block">อีเมลล์</label>
+                                <label for="prefix" class="block">อีเมล*</label>
                                 <input id="firstname" type="email" pInputText [(ngModel)]="studentData.email" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.email"
+                                        class="text-red-500">กรุณากรอกอีเมล</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="firstname" class="block">รหัสผ่าน</label>
+                                <label for="firstname" class="block">รหัสผ่าน*</label>
                                 <input id="firstname" type="password" pInputText [(ngModel)]="studentData.password" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.password"
+                                        class="text-red-500">กรุณากรอกรหัสผ่าน</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -32,23 +40,36 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="prefix" class="block">คำนำหน้าชื่อ</label>
+                                <label for="prefix" class="block">คำนำหน้าชื่อ*</label>
                                 <p-dropdown [options]="selectPrefix" optionLabel="prefix"
-                                    [style]="{'min-width': '205px'}" [(ngModel)]="studentData.prefix" placeholder="กรุณาเลือกคำนำหน้า"></p-dropdown>
+                                    [style]="{'min-width': '205px'}" [(ngModel)]="studentData.prefix"
+                                    placeholder="กรุณาเลือกคำนำหน้า"></p-dropdown>
+                                <div>
+                                    <small *ngIf="submited && !studentData.prefix"
+                                        class="text-red-500">กรุณาเลือกคำนำหน้า</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="firstname" class="block">ชื่อ</label>
+                                <label for="firstname" class="block">ชื่อ*</label>
                                 <input id="firstname" type="text" pInputText [(ngModel)]="studentData.firstName" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.firstName"
+                                        class="text-red-500">กรุณากรอกชื่อ</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="lastname" class="block">นามสกุล</label>
+                                <label for="lastname" class="block">นามสกุล*</label>
                                 <input id="lastname" type="text" pInputText [(ngModel)]="studentData.lastName" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.lastName"
+                                        class="text-red-500">กรุณากรอกนามสกุล</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -56,22 +77,34 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="birthday" class="block">วันเดือนปีเกิด</label>
+                                <label for="birthday" class="block">วันเดือนปีเกิด*</label>
                                 <p-calendar inputId="birthday" [(ngModel)]="studentData.birthday"></p-calendar>
+                                <div>
+                                    <small *ngIf="submited && !studentData.birthday"
+                                        class="text-red-500">กรุณากรอกวันเดือนปีเกิด</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="national" class="block">สัญชาติ</label>
+                                <label for="national" class="block">สัญชาติ*</label>
                                 <input id="national" type="text" pInputText [(ngModel)]="studentData.nationality" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.nationality"
+                                        class="text-red-500">กรุณากรอกสัญชาติ</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="religion" class="block">ศาสนา</label>
+                                <label for="religion" class="block">ศาสนา*</label>
                                 <input id="religion" type="text" pInputText [(ngModel)]="studentData.religion" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.religion"
+                                        class="text-red-500">กรุณากรอกศาสนา</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,9 +112,13 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 95px; min-height: 100px">
                             <div class="field">
-                                <label for="housenumber" class="block">บ้านเลขที่</label>
+                                <label for="housenumber" class="block">บ้านเลขที่*</label>
                                 <input id="housenumber" type="text" pInputText style="width: 90px;"
                                     [(ngModel)]="studentData.studentAddress.addHouse" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addHouse"
+                                        class="text-red-500">กรุณากรอกบ้านเลขที่</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
@@ -103,9 +140,13 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="township" class="block">แขวง/ตำบล</label>
+                                <label for="township" class="block">แขวง/ตำบล*</label>
                                 <input id="township" type="text" pInputText
                                     [(ngModel)]="studentData.studentAddress.addSubDis" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addSubDis"
+                                        class="text-red-500">กรุณากรอกแขวง/ตำบล</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -113,25 +154,37 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="districts" class="block">เขต/อำเภอ</label>
+                                <label for="districts" class="block">เขต/อำเภอ*</label>
                                 <input id="districts" type="text" pInputText
                                     [(ngModel)]="studentData.studentAddress.addDistrict" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addDistrict"
+                                        class="text-red-500">กรุณากรอกเขต/อำเภอ</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="province" class="block">จังหวัด</label>
+                                <label for="province" class="block">จังหวัด*</label>
                                 <input id="province" type="text" pInputText
                                     [(ngModel)]="studentData.studentAddress.addProvince" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addProvince"
+                                        class="text-red-500">กรุณากรอกจังหวัด</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="post" class="block">รหัสไปรษณีย์</label>
+                                <label for="post" class="block">รหัสไปรษณีย์*</label>
                                 <input id="post" type="text" pInputText
                                     [(ngModel)]="studentData.studentAddress.addPostCode" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addPostCode"
+                                        class="text-red-500">กรุณากรอกรหัสไปรษณีย์</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,16 +192,24 @@
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="phone" class="block">หมายเลขโทรศัพท์</label>
+                                <label for="phone" class="block">หมายเลขโทรศัพท์*</label>
                                 <input id="phone" type="text" pInputText [(ngModel)]="studentData.phoneNo" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.phoneNo"
+                                        class="text-red-500">กรุณากรอกรหัสไปรษณีย์</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 mt-0 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="oriProvince" class="block">ภูมิลำเนาเดิมจังหวัด</label>
+                                <label for="oriProvince" class="block">ภูมิลำเนาเดิมจังหวัด*</label>
                                 <input id="oriProvince" type="text" pInputText
                                     [(ngModel)]="studentData.studentAddress.addOriprovince" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentAddress.addOriprovince"
+                                        class="text-red-500">กรุณากรอกภูมิลำเนาเดิมจังหวัด</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -165,38 +226,32 @@
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
                                 <label for="faculty" class="block">คณะ</label>
-                                <input id="faculty" type="text" pInputText [(ngModel)]="studentData.studentFaculty" disabled="true"/>
+                                <input id="faculty" type="text" pInputText [(ngModel)]="studentData.studentFaculty"
+                                    disabled="true" />
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="studentID" class="block">รหัสนักศึกษา</label>
-                                <input id="studentID" type="text" pInputText [(ngModel)]="studentData.studentCode" disabled="true"/>
+                                <label for="studentID" class="block">รหัสนักศึกษา*</label>
+                                <input id="studentID" type="text" pInputText [(ngModel)]="studentData.studentCode"
+                                    disabled="true" />
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentCode"
+                                        class="text-red-500">กรุณากรอกรหัสนักศึกษา</small>
+                                </div>
                             </div>
                         </div>
                         <div class="flex align-items-center justify-content-center m-2 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="classYear" class="block">ชั้นปี</label>
-                                <input id="classYear" type="text" pInputText [(ngModel)]="studentData.studentClassyear" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
-                        <div class="flex align-items-center justify-content-center m-2 border-round"
-                            style="min-width: 200px; min-height: 100px">
-                            <div class="field">
-                                <label for="faculty" class="block">สาขาวิชา</label>
-                                <p-dropdown [options]="selectMajor" optionLabel="major"
-                                    [style]="{'min-width': '205px'}" [(ngModel)]="studentData.studentMajor" placeholder="กรุณาเลือกสาขาวิชา"></p-dropdown>
-                            </div>
-                        </div>
-                        <div class="flex align-items-center justify-content-center m-2 border-round"
-                            style="min-width: 200px; min-height: 100px">
-                            <div class="field">
-                                <label for="studentID" class="block">ขึ้นทะเบียนนักศึกษาเมื่อปี</label>
-                                <input id="studentID" type="text" pInputText [(ngModel)]="studentData.studentRegisYear"/>
+                                <label for="classYear" class="block">ชั้นปี*</label>
+                                <input id="classYear" type="text" pInputText
+                                    [(ngModel)]="studentData.studentClassyear" maxlength="1"/>
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentClassyear"
+                                        class="text-red-500">กรุณากรอกชั้นปี</small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,8 +259,39 @@
                         <div class="flex align-items-center justify-content-center m-2 border-round"
                             style="min-width: 200px; min-height: 100px">
                             <div class="field">
-                                <label for="gpa" class="block">คะแนนเฉลี่ยสะสม</label>
-                                <input id="gpa" type="text" pInputText [(ngModel)]="studentData.studentGpa"/>
+                                <label for="faculty" class="block">สาขาวิชา*</label>
+                                <p-dropdown [options]="selectMajor" optionLabel="major" [style]="{'min-width': '205px'}"
+                                    [(ngModel)]="studentData.studentMajor"
+                                    placeholder="กรุณาเลือกสาขาวิชา"></p-dropdown>
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentMajor"
+                                        class="text-red-500">กรุณาเลือกสาขาวิชา</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="studentID" class="block">ขึ้นทะเบียนนักศึกษาเมื่อปี(พ.ศ)*</label>
+                                <input id="studentID" type="text" pInputText
+                                    [(ngModel)]="studentData.studentRegisYear" maxlength="4"/>
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentRegisYear"
+                                        class="text-red-500">กรุณากรอกขึ้นทะเบียนนักศึกษาเมื่อปี</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
+                        <div class="flex align-items-center justify-content-center m-2 border-round"
+                            style="min-width: 200px; min-height: 100px">
+                            <div class="field">
+                                <label for="gpa" class="block">คะแนนเฉลี่ยสะสม*</label>
+                                <input id="gpa" type="text" pInputText [(ngModel)]="studentData.studentGpa" maxlength="4"/>
+                                <div>
+                                    <small *ngIf="submited && !studentData.studentGpa"
+                                        class="text-red-500">กรุณากรอกขึ้นทะเบียนคะแนนเฉลี่ยสะสม</small>
+                                </div>
                             </div>
                         </div>
                     </div>

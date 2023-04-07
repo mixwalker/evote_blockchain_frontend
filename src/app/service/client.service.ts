@@ -112,15 +112,23 @@ export class ClientService {
   }
 
   getEWSByStdIdAndElecId(stdId: number, elecId: number) {
-    return this.http.get<ElectionAndStudent[]>(`api/elec_student/findByStdIdAndElecId/${stdId}/${elecId}`);
+    return this.http.get<any>(`api/elec_student/findByStdIdAndElecId/${stdId}/${elecId}`);
   }
 
   createEs(es: any) {
     return this.http.post<any>(`api/elec_student`, es);
   }
 
-  deleteEsByStudent(id: number) {
-    return this.http.delete<any>(`api/elec_student/delby_student/${id}`)
+  deleteEsByStudent(stdId: number,etcId:number) {
+    return this.http.delete<any>(`api/elec_student/delby_student/${stdId}/${etcId}`)
+  }
+
+  getRegisByStudent(id:number){
+    return this.http.get<ElectionAndStudent[]>(`api/elec_student/find_regisbystudent/${id}`);
+  }
+
+  updateRegis(id:number){
+    return this.http.get<any>(`api/elec_student/regis/${id}`);    
   }
 
   //electionAndCandidate
@@ -186,6 +194,10 @@ export class ClientService {
 
   getCandidateNotApprove(id: number) {
     return this.http.get<any>(`api/student_candidate/candidate_notaprrove_elec/${id}`)
+  }
+
+  getCandidateByStdIdandElecId(stdId:number,elecId:number){
+    return this.http.get<any>(`api/student_candidate/findbystudent_election/${stdId}/${elecId}`)
   }
 
 

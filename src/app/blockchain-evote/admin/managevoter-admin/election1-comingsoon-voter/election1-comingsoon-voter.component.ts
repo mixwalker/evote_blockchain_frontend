@@ -80,7 +80,7 @@ export class Election1ComingsoonVoterComponent implements OnInit {
   }
 
   remove(studentDetail: any, index: number) {
-    this.clientService.deleteEsByStudent(studentDetail.studentId).subscribe({
+    this.clientService.deleteEsByStudent(studentDetail.studentId,this.election.elecId).subscribe({
       complete: () => {
         this.studentcantVoteList.push(studentDetail);
         this.studentcanVoteList.splice(index, 1);
@@ -93,7 +93,7 @@ export class Election1ComingsoonVoterComponent implements OnInit {
       next: (res) => {
         this.studentData = res;
         this.studentData.forEach((items: any, index: number) => {
-          this.clientService.deleteEsByStudent(items.studentId).subscribe({
+          this.clientService.deleteEsByStudent(items.studentId,this.election.elecId).subscribe({
           });
         });
       },

@@ -56,7 +56,7 @@ export class AddAnnounceComponent implements OnInit {
         formData.append('fileName', this.announceForm.value.announcementImage);
         this.clientServie.uploadImageAnnounce(formData).subscribe({
           complete: () => {
-            this.messageService.add({ severity: 'success', summary: 'สร้างข่าวสารไม่สำเร็จ', detail: 'สร้างข่าวสารสำเร็จเรียบร้อยแล้ว' });
+            this.messageService.add({ severity: 'success', summary: 'สร้างข่าวสารสำเร็จ', detail: 'สร้างข่าวสารสำเร็จเรียบร้อยแล้ว' });
             setTimeout(() => {
               window.location.reload();
             }, 1000);

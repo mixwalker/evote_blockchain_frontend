@@ -21,6 +21,7 @@ export class CandidateDetailComponent implements OnInit {
   candidateData!: any;
   candidateId!: number;
   displayModal: boolean = false;
+  submited:boolean = false;
   constructor(private auth: AuthService,
     private router: Router,
     private clientService: ClientService,
@@ -52,6 +53,10 @@ export class CandidateDetailComponent implements OnInit {
   }
 
   edit() {
+    this.submited = true;
+    if(!this.candidateData.candiNo) return
+    if(!this.candidateData.candiParty) return
+
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขข้อมูลหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่กรอก',

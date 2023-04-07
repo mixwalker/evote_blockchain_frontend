@@ -54,19 +54,19 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.clientService.getElectionByRegisOn().subscribe({
+    this.clientService.getRegisByStudent(this.auth.user.studentId).subscribe({
       next: (res) => {
         this.election = res;
       },
       complete: () => {
-        for (let electionList of this.election) {
-          const startDateSplit = electionList.elecStartdate.split('[UTC]');
-          const endDateSplit = electionList.elecEnddate.split('[UTC]');
-          electionList.elecStartdate = startDateSplit[0];
-          electionList.elecEnddate = endDateSplit[0];
+        for (let electionList of this.election) {          
+          const startDateSplit = electionList.election.elecRegisStartdate.split('[UTC]');
+          const endDateSplit = electionList.election.elecRegisEnddate.split('[UTC]');
+          electionList.election.elecRegisStartdate = startDateSplit[0];
+          electionList.election.elecRegisEnddate = endDateSplit[0];
         }
       }
-    })
+    });
 
   }
 

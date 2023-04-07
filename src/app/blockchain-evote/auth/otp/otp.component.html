@@ -6,6 +6,9 @@
         <div class="flex m-3">
             <input style="width:360px" type="text" pInputText [(ngModel)]="otp"/>
         </div>
+        <div>
+            <small *ngIf="submited && !otp" class="text-red-500 ml-3">กรุณากรอกรหัส OTP</small>
+        </div>
         <div class="flex mt-3 ml-3 mr-3">
             <button pButton type="button" class="p-button buttonColor" label="ยืนยัน" style="width: 200px;" (click)="cofirme()" [style]="{'width': '100%'}"></button>
         </div>

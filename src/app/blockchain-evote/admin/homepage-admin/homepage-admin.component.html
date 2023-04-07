@@ -98,7 +98,7 @@
                 <ng-template pTemplate="header">
                     <div class="flex justify-content-center">
                         <img alt="Card" src="api/candidate/image/{{elec.elecImages}}"
-                            [style]="{width: '350px',height: '200px'}">
+                            [style]="{width: '350px',height: '200px'}" (error)="defaultImage($event)">
                     </div>
                     <div class="flex justify-content-left font-bold text-xl m-3">
                         <p style="width:340px;height:auto;word-wrap: break-word;">

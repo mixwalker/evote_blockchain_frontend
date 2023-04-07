@@ -9,18 +9,27 @@
         </ng-template>
         <div class="field" style="margin-bottom: 3vh;">
             <span class="p-input-icon-left" [style]="{'width': '100%'}">
-                        <i class="pi pi-user"></i>
-                        <input type="text" pInputText placeholder="บัญชีผู้ใช้งาน" [style]="{'width': '100%'}" [(ngModel)]="studentCode"/>
-                    </span>
+                <i class="pi pi-user"></i>
+                <input type="text" pInputText placeholder="บัญชีผู้ใช้งาน" [style]="{'width': '100%'}"
+                    [(ngModel)]="studentCode" />
+            </span>
+            <div>
+                <small *ngIf="submited && !studentCode" class="text-red-500">กรุณากรอกรหัสนักศึกษา</small>
+            </div>
         </div>
         <div class="field">
             <span class="p-input-icon-left" [style]="{'width': '100%'}">
-                        <i class="pi pi-lock"></i>
-                        <input type="password" pInputText placeholder="รหัสผ่าน" [style]="{'width': '100%'}" [(ngModel)]="password"/>
-                    </span>
+                <i class="pi pi-lock"></i>
+                <input type="password" pInputText placeholder="รหัสผ่าน" [style]="{'width': '100%'}"
+                    [(ngModel)]="password" />
+            </span>
+            <div>
+                <small *ngIf="submited && !password" class="text-red-500">กรุณากรอกรหัสผ่าน</small>
+            </div>
         </div>
         <ng-template pTemplate="footer">
-            <button pButton type="button" class="p-button buttonColor" label="เข้าสู่ระบบ" (click)="login()" icon="pi pi-sign-in" style="width: 200px;" [style]="{'width': '100%'}"></button>
+            <button pButton type="button" class="p-button buttonColor" label="เข้าสู่ระบบ" (click)="login()"
+                icon="pi pi-sign-in" style="width: 200px;" [style]="{'width': '100%'}"></button>
         </ng-template>
     </p-card>
 </div>

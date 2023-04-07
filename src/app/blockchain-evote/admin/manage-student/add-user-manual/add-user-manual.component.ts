@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from 'src/app/service/client.service';
 
@@ -17,34 +17,35 @@ export class AddUserManualComponent implements OnInit {
   displayModal: boolean = false;
   displayModalFail: boolean = false;
   faculty: string = "วิทยาศาสตร์และเทคโนโลยี";
+  submited:boolean = false;
 
   studentDataForm: FormGroup = new FormGroup({
-    birthday: new FormControl(),
-    email: new FormControl(),
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    nationality: new FormControl(),
-    password: new FormControl(),
-    phoneNo: new FormControl(),
-    prefix: new FormControl(),
-    religion: new FormControl(),
+    birthday: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required]),
+    firstName: new FormControl(null, [Validators.required]),
+    lastName: new FormControl(null, [Validators.required]),
+    nationality: new FormControl(null, [Validators.required]),
+    password: new FormControl(null, [Validators.required,Validators.minLength(6)]),
+    phoneNo: new FormControl(null, [Validators.required]),
+    prefix: new FormControl(null, [Validators.required]),
+    religion: new FormControl(null, [Validators.required]),
     role: new FormControl('student'),
-    studentClassyear: new FormControl(),
-    studentCode: new FormControl(),
+    studentClassyear: new FormControl(null, [Validators.required]),
+    studentCode: new FormControl(null, [Validators.required]),
     studentFaculty: new FormControl('วิทยาศาสตร์และเทคโนโลยี'),
-    studentGpa: new FormControl(),
-    studentMajor: new FormControl(),
-    studentRegisYear: new FormControl()
+    studentGpa: new FormControl(null, [Validators.required]),
+    studentMajor: new FormControl(null, [Validators.required]),
+    studentRegisYear: new FormControl(null, [Validators.required]),
   });
 
   studentAddressForm: FormGroup = new FormGroup({
-    addDistrict: new FormControl(),
+    addDistrict: new FormControl(null, [Validators.required]),
     addHouse: new FormControl(),
-    addOriprovince: new FormControl(),
-    addPostCode: new FormControl(),
-    addProvince: new FormControl(),
+    addOriprovince: new FormControl(null, [Validators.required]),
+    addPostCode: new FormControl(null, [Validators.required]),
+    addProvince: new FormControl(null, [Validators.required]),
     addStreet: new FormControl(),
-    addSubDis: new FormControl(),
+    addSubDis: new FormControl(null, [Validators.required]),
     addVillage: new FormControl()
   });
 
@@ -75,6 +76,10 @@ export class AddUserManualComponent implements OnInit {
   }
 
   addStudent() {
+    this.submited = true;
+
+    if(this.studentDataForm.invalid) return;
+    
     this.studentDataForm.value.prefix = this.studentDataForm.value.prefix.prefix;
     this.studentDataForm.value.studentMajor = this.studentDataForm.value.studentMajor.major;
     this.studentDataForm.value.studentAddress = this.studentAddressForm.value

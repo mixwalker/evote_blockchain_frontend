@@ -14,6 +14,14 @@ export class EditElectionComponent implements OnInit {
   checked: boolean = true;
   displaySuccessModal = false;
   displayErrorModal = false;
+  imageSrc: any;
+  files: any;
+  displayPic: boolean = false;
+  noElecName: boolean = false;
+  noElecDetail: boolean = false;
+  wrongDate: boolean = false;
+  wrongRegisDate: boolean = false;
+  wrongRegisDatelessStart: boolean = false;
   constructor(
     private router: Router,
     private clientService: ClientService,
@@ -61,11 +69,44 @@ export class EditElectionComponent implements OnInit {
     return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
   }
 
-  checkCandidate(id:number){
-    this.router.navigate(['blockchain-admin','election_detail','candidate_detail', id])
+  checkCandidate(id: number) {
+    this.router.navigate(['blockchain-admin', 'election_detail', 'candidate_detail', id])
+  }
+
+  selectImage(event: any) {
+    this.files = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(this.files);
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+      this.displayPic = true;
+    };
   }
 
   editElection(election: any) {
+    if (this.election.elecEnddate < this.election.elecStartdate) {
+      this.wrongDate = true;
+      return;
+    }
+    if (this.election.elecRegisEnddate < this.election.elecRegisStartdate) {
+      this.wrongRegisDate = true;
+      return;
+    }
+    if (this.election.elecRegisEnddate > this.election.elecStartdate) {
+      this.wrongRegisDatelessStart = true;
+      return;
+    }
+
+    if(!this.election.elecName){
+      this.noElecName = true;
+      return;
+    }
+
+    if(!this.election.elecDetail){
+      this.noElecDetail = true;
+      return;
+    }
+
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่แก้ไข',
@@ -74,13 +115,19 @@ export class EditElectionComponent implements OnInit {
       rejectLabel: 'ยกเลิก',
       accept: () => {
         this.clientService.editElection(election).subscribe({
-          complete:() =>{
+          complete: () => {
+            if (this.imageSrc) {
+              const formData = new FormData();
+              formData.append('files', this.files)
+              formData.append('fileName', election.elecImages);
+              this.clientService.uploadImageElection(formData).subscribe();
+            }
             this.clientService.checkElectionTime().subscribe();
             this.displaySuccessModal = true;
             setTimeout(() => {
-              this.router.navigateByUrl('/blockchain-admin/homepage');
+              window.location.reload();
             }, 2000);
-          },error:()=>{
+          }, error: () => {
             this.displayErrorModal = true;
             setTimeout(() => {
               window.location.reload();

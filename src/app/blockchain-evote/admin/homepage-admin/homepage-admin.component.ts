@@ -101,4 +101,8 @@ export class HomepageAdminComponent implements OnInit {
     window.location.reload();
   }
 
+  defaultImage(event: Event) {
+    return (event.target as HTMLImageElement).src = "./assets/img/election_default.png";
+  }
+
 }

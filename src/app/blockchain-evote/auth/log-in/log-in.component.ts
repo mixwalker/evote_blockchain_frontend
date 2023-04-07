@@ -14,6 +14,7 @@ export class LogInComponent implements OnInit {
   studentCode!: string;
   password!: string;
   activate: boolean = false;
+  submited:boolean = false;
   constructor(private auth: AuthService, private router: Router,private messageService: MessageService) { }
 
   ngOnInit(): void {
@@ -27,6 +28,11 @@ export class LogInComponent implements OnInit {
   }
 
   login() {
+
+    this.submited = true;
+    if(!this.studentCode) return; 
+    if(!this.password) return; 
+
     this.auth.checkLogin(this.studentCode, this.password).subscribe({
       complete:()=>{
         this.activate = true;

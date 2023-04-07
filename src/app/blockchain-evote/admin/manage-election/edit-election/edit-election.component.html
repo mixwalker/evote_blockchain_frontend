@@ -18,6 +18,7 @@
                                         [(ngModel)]="election.elecName" />
                                 </div>
                             </div>
+                            <small *ngIf="noElecName" class="text-red-500">กรุณากรอกชื่อหัวข้อการเลือกตั้ง</small>
                         </div>
                         <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
                             <div class="flex-row align-items-start justify-content-start border-round"
@@ -33,6 +34,7 @@
                                 </div>
                             </div>
                         </div>
+                        <small *ngIf="noElecDetail" class="text-red-500">กรุณากรอกรายละเอียดการเลือกตั้ง</small>
                         <div class="flex flex-wrap card-container blue-container" style="max-width: 100%">
                             <div class="flex align-items-center justify-content-center m-2 border-round"
                                 style="min-width: 200px; min-height: 10px">
@@ -105,6 +107,7 @@
                                                     appendTo="body"
                                                     [(ngModel)]="election.elecRegisStartdate" ></p-calendar>
                                             </div>
+                                            <small *ngIf="wrongDate" class="text-red-500">กรุณาเลือกวันที่ให้ถูกต้อง</small>
                                         </div>
                                     </div>
                                     <div class="flex flex-wrap card-container blue-container border-round mt-2 border-300 "
@@ -119,6 +122,8 @@
                                                     appendTo="body"
                                                     [(ngModel)]="election.elecRegisEnddate"></p-calendar>
                                             </div>
+                                            <small *ngIf="wrongRegisDate" class="text-red-500">กรุณาเลือกวันที่ให้ถูกต้อง</small>
+                                            <small *ngIf="wrongRegisDatelessStart" class="text-red-500">กรุณาเลือกวันที่เริ่มต้นลงคะแนนหลังจากวันที่ปิดรับสมัคร</small>
                                         </div>
                                     </div>
                                 </div>
@@ -127,6 +132,43 @@
                     </p-panel>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="card-container overflow-hidden " style="max-width: 100% ">
+        <div class="flex flex-wrap border-round m-2 justify-content-center ">
+            <p-panel header="อัพโหลดรูปภาพ">
+                <div class="flex flex-wrap card-container align-items-center justify-content-start ">
+                    <div class="flex m-2 ">
+                        <div *ngIf="displayPic">
+                            <p-card [style]="{width: '440px'} " styleClass="p-card-shadow ">
+                                <img [src]="imageSrc" id="photo" [style]="{width: '400px',height: '300px'}">
+                                <ng-template pTemplate="footer ">
+                                </ng-template>
+                            </p-card>
+                        </div>
+                        <div *ngIf="displayPic == false">
+                            <p-card [style]="{width: '440px'} " styleClass="p-card-shadow ">
+                                <img src="api/election/image/{{election.elecImages}}" id="photo" [style]="{width: '400px',height: '300px'}">
+                                <ng-template pTemplate="footer ">
+                                </ng-template>
+                            </p-card>
+                        </div>
+                    </div>
+                    <label for="buttonClick">
+                    <div class="flex m-2 blockCandidate align-items-center justify-content-center" style="width: 340px;height: 374.8px;cursor: pointer;">
+                       <div class="flex-row">
+                        <div class="card flex align-items-center justify-content-center">
+                            <i class="pi pi-plus" style="font-size: 2rem"></i>
+                        </div>
+                        <div class="card flex align-items-center justify-content-center m-2">
+                            เพิ่มรูปปกการเลือกตั้ง
+                        </div>
+                       </div> 
+                    </div>
+                </label>
+                    <input type="file" id="buttonClick" style="display: none;visibility: hidden;" accept="image/*" (change)="selectImage($event)">
+                </div>
+            </p-panel>
         </div>
     </div>
     <div class="card-container overflow-hidden " style="max-width: 100% ">

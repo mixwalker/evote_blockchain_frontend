@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
 
   
   defaultImage(event: Event) {
-    return (event.target as HTMLImageElement).src = "./assets/img/icon/candidate.png";
+    return (event.target as HTMLImageElement).src = "./assets/img/election_default.png";
   }
 
 }

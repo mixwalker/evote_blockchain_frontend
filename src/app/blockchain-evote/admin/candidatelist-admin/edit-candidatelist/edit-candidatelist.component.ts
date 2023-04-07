@@ -61,7 +61,6 @@ export class EditCandidatelistComponent implements OnInit {
   }
 
   editElection(election: any) {
-
     this.confirmationService.confirm({
       header: 'ต้องการแก้ไขหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่แก้ไข',

@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/service/auth.service';
@@ -15,8 +15,8 @@ export class RegCandidateComponent implements OnInit {
 
   regisForm: FormGroup = new FormGroup({
     candidatePhone: new FormControl(),
-    candidateNo: new FormControl(),
-    candidateParty: new FormControl()
+    candiNo: new FormControl("0",[Validators.required]),
+    candiParty: new FormControl(null,[Validators.required])
   })
   regisExpForm: FormGroup = new FormGroup({
     position1: new FormControl(),
@@ -34,7 +34,10 @@ export class RegCandidateComponent implements OnInit {
   studentData: any;
   studentAge!: number;
   electionId!: number;
+  election:any;
   displayModal: boolean = false;
+  submited:boolean = false;
+  displayModalCheck:boolean = false;
   constructor(private auth: AuthService,
     private router: Router,
     private clientService: ClientService,
@@ -42,11 +45,9 @@ export class RegCandidateComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit(): void {
-
     const url = this.router.url.split('/').at(-1);
     this.electionId = parseInt(url!);
-    this.clientService.getElectionById(this.electionId).subscribe(res => {
-    })
+    this.clientService.getElectionById(this.electionId).subscribe(res => this.election = res)
     this.clientService.getStudentById(this.auth.user.studentId).subscribe(res => {
       this.studentData = res;
       let dateSplit = this.studentData.birthday.toString().split('[UTC]');
@@ -59,6 +60,10 @@ export class RegCandidateComponent implements OnInit {
   }
 
   register() {
+
+    this.submited = true;
+    if(this.regisForm.invalid) return
+
     this.confirmationService.confirm({
       header: 'ต้องการลงทะเบียนหรือไม่?',
       message: 'กรุณาตรวจสอบข้อมูลที่กรอก',
@@ -87,8 +92,9 @@ export class RegCandidateComponent implements OnInit {
         
 
         let candiObj = {
-          candiNo: this.regisForm.value.candidateNo,
-          candiPhone: this.regisForm.value.candidatePhone,
+          candiNo: this.regisForm.value.candiNo,
+          candiParty: this.regisForm.value.candiParty,
+          candiPhone: this.studentData.phoneNo,
           candiImage: `${candiImage}.png`,
           regisDate: now,
           candiExpList: [
@@ -135,10 +141,20 @@ export class RegCandidateComponent implements OnInit {
                 }
                 this.clientService.createStdBeCandidate(stdBCandi).subscribe({
                   complete: () => {
-                    this.displayModal = true;
-                    setTimeout(() => {
-                      this.router.navigateByUrl('/blockchain-evote/homepage');
-                    }, 2000);
+                    this.clientService.getEWSByStdIdAndElecId(this.auth.user.studentId,this.electionId).subscribe(res=>{
+                      const esId = res[0].esId;
+                      this.clientService.updateRegis(esId).subscribe({
+                        complete:()=>{
+                          this.displayModal = true;
+                          setTimeout(() => {
+                            this.router.navigateByUrl('/blockchain-evote/homepage');
+                          }, 2000);
+                        },
+                        error: () => {
+                          this.messageService.add({ severity: 'error', summary: 'การลงทะเบียนไม่สำเร็จ', detail: 'การลงทะเบียนของคุณไม่สำเร็จ' });
+                        }
+                      });                   
+                    })
                   },
                   error: () => {
                     this.messageService.add({ severity: 'error', summary: 'การลงทะเบียนไม่สำเร็จ', detail: 'การลงทะเบียนของคุณไม่สำเร็จ' });
